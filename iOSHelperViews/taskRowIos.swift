@@ -44,7 +44,7 @@ struct taskRowiOS: View {
             
         }
         .contentShape(Rectangle())
-        
+
 //        .frame(height:30)
 //        .padding()
 //            .background(RoundedRectangle(cornerRadius: 10)

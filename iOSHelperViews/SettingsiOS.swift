@@ -14,13 +14,13 @@ struct SettingsiOS: View {
     @State var activeView:Binding<Bool>
 
     var body: some View {
-        VStack{
+        Form{
   
-        ScrollView
+        Section
             {
                 Toggle(isOn: self.$data.concurrentTasks) {
                     Text("Concurrent tasks")
-                }.padding()
+                }
                 .onDisappear(perform: {
                     if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
                     {
@@ -30,14 +30,17 @@ struct SettingsiOS: View {
                     }
                     }
                 })
-                
-                Button(action:{
-                    self.activeView.wrappedValue = false
-                })
-                {
-                    Text("Done")
-                }
-        }
+            }
+//            Section{
+//
+//                Button(action:{
+//                    self.activeView.wrappedValue = false
+//                })
+//                {
+//                    Text("Done")
+//                }
+//            }
+        
         }
     .onAppear(perform: {
         self.originalConcurrentState = self.data.concurrentTasks

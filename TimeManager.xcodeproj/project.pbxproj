@@ -14,7 +14,6 @@
 		1F15EBE02456674F006E283D /* taskEditiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBDF2456674F006E283D /* taskEditiOS.swift */; };
 		1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AABB9244E211A00134634 /* AppDelegate.swift */; };
 		1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AABBB244E211A00134634 /* SceneDelegate.swift */; };
-		1F1AABBE244E211A00134634 /* ContentView_v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AABBD244E211A00134634 /* ContentView_v1.swift */; };
 		1F1AABC0244E211C00134634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AABBF244E211C00134634 /* Assets.xcassets */; };
 		1F1AABC3244E211C00134634 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AABC2244E211C00134634 /* Preview Assets.xcassets */; };
 		1F1AABC6244E211C00134634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AABC4244E211C00134634 /* LaunchScreen.storyboard */; };
@@ -51,6 +50,10 @@
 		1F1AAC3B244EB44E00134634 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
 		1F1AAC3C244F7F6600134634 /* TaskEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC38244EA8DD00134634 /* TaskEdit.swift */; };
 		1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
+		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
+		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
+		1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2924993E96002B10AA /* CategoryName.swift */; };
+		1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */; };
 		1FE107932455E240000934C2 /* taskRowIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE107922455E240000934C2 /* taskRowIos.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -120,7 +123,6 @@
 		1F1AABB6244E211A00134634 /* TimeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1AABB9244E211A00134634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F1AABBB244E211A00134634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1F1AABBD244E211A00134634 /* ContentView_v1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_v1.swift; sourceTree = "<group>"; };
 		1F1AABBF244E211C00134634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F1AABC2244E211C00134634 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F1AABC5244E211C00134634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,6 +158,10 @@
 		1F1AAC34244EA5D400134634 /* TaskOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOptions.swift; sourceTree = "<group>"; };
 		1F1AAC36244EA8C100134634 /* TaskSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSummary.swift; sourceTree = "<group>"; };
 		1F1AAC38244EA8DD00134634 /* TaskEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEdit.swift; sourceTree = "<group>"; };
+		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		1FAF1D2924993E96002B10AA /* CategoryName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryName.swift; sourceTree = "<group>"; };
+		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +207,10 @@
 				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
 				1F15EBDF2456674F006E283D /* taskEditiOS.swift */,
 				1F15EBDD24566424006E283D /* SettingsiOS.swift */,
+				1F7BF80E249862E5001D7021 /* CategoryList.swift */,
+				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
+				1FAF1D2924993E96002B10AA /* CategoryName.swift */,
+				1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */,
 			);
 			path = iOSHelperViews;
 			sourceTree = "<group>";
@@ -237,7 +247,6 @@
 			children = (
 				1F1AABB9244E211A00134634 /* AppDelegate.swift */,
 				1F1AABBB244E211A00134634 /* SceneDelegate.swift */,
-				1F1AABBD244E211A00134634 /* ContentView_v1.swift */,
 				1FF9BCB82497086A002C19B6 /* ContentView.swift */,
 				1F1AABBF244E211C00134634 /* Assets.xcassets */,
 				1F1AABC4244E211C00134634 /* LaunchScreen.storyboard */,
@@ -528,13 +537,17 @@
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
+				1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */,
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
+				1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,
+				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
 				1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */,
+				1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */,
 				1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */,
 				1F1AAC24244E288900134634 /* taskRow.swift in Sources */,
 				1F15EBDA245654D6006E283D /* taskSummaryiOS.swift in Sources */,
@@ -543,7 +556,6 @@
 				1FE107932455E240000934C2 /* taskRowIos.swift in Sources */,
 				1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */,
 				1F15EBE02456674F006E283D /* taskEditiOS.swift in Sources */,
-				1F1AABBE244E211A00134634 /* ContentView_v1.swift in Sources */,
 				1F15EBDC24565518006E283D /* taskOptionsiOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

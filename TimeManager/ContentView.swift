@@ -52,7 +52,7 @@ struct ContentView: View {
         /*
         If the task is selected, increment its counter
          */
-        
+        let originalTaskname = task.wrappedValue.name
             let interval = task.wrappedValue.timestamp[self.today]
             /*
              Check if the timer was changed recently.
@@ -60,6 +60,11 @@ struct ContentView: View {
              */
             let lastChangedDate = Date(timeIntervalSince1970: task.wrappedValue.lastChanged ?? Date().timeIntervalSince1970)
 //        print(lastChangedDate.timeIntervalSince1970)
+        let newTaskname = task.wrappedValue.name
+        if(originalTaskname != newTaskname)
+        {
+            print("Task changed from \(originalTaskname) to \(newTaskname)")
+        }
             let duration = DateInterval(start: lastChangedDate, end: Date()).duration.magnitude
             
             task.wrappedValue.lastChanged = Date().timeIntervalSince1970
@@ -113,15 +118,13 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView{
-      
-        Form{
-           
-            
-            Section{
-                Text("Today's summary").bold()
+//        NavigationView{
+    
+            TabView() {
                 
-            }
+                NavigationView{
+        Form{
+    
             
             Section{
                             
@@ -141,7 +144,6 @@ struct ContentView: View {
                                 self.selectedTaskInd = index
                                 self.showTaskOptions = true
                                 self.showSheet = true
-
                             }
                             .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                 
@@ -158,7 +160,7 @@ struct ContentView: View {
                         })
                        
             }
-              
+            
 
                     
                             NavigationLink(destination:addTaskiOS(activeView: self.$addTaskRequest).environmentObject(data))
@@ -180,10 +182,60 @@ struct ContentView: View {
                             Image(systemName: "slider.horizontal.3")
                             }
                         }
-                    .navigationBarTitle("Tasks")
                         .accentColor(.orange)
-                            }
-    }
+                }
+                .navigationBarTitle("Tasks")
+            
+                .navigationBarItems(trailing:
+              
+                    Button(action:{
+                        self.addTaskRequest = true
+                        self.showSheet = true
+                    })
+                        {
+                    Image(systemName: "square.and.pencil")
+                    }
+                    
+                    
+                    )
+                }
+        
+        .tabItem{
+            Image(systemName: "list.bullet")
+            Text("Tasks")
+                }
+                
+                //Summary
+                Text("Summary")
+                    .tabItem {
+                        Image(systemName: "chart.pie")
+                        Text("Summary")
+                }
+                
+                
+                CategoryList().environmentObject(self.data)
+                    .tabItem({
+                        Image(systemName: "bookmark")
+                        Text("Categories")
+                    })
+                
+                
+                NavigationView{
+                  
+                    SettingsiOS(activeView:.constant(false)).environmentObject(self.data)
+                    
+                    .navigationBarTitle("Settings")
+                    .environmentObject(self.data)
+                }
+                    .tabItem{
+                        Image(systemName: "slider.horizontal.3")
+                        Text("Settings")
+                }
+                
+            
+                
+            } //ending tabView
+//    }//ending Navigation View
             .onReceive(self.timer) { _ in
 
                                    if self.data.taskData.count == 0

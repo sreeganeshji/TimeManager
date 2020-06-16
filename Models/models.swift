@@ -12,7 +12,7 @@ import SwiftUI
 class models: ObservableObject
 {
     
-    var categories:[category]
+     @Published var categories:[category]
     
      struct task:Equatable, Hashable
      {
