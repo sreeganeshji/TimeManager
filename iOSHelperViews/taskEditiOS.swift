@@ -44,7 +44,7 @@ struct TaskEditiOS: View {
     
     var body: some View {
        
-            List{
+            Form{
                 HStack{
                     Text("Name").bold()
                     Spacer()

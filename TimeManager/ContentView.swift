@@ -134,7 +134,9 @@ struct ContentView: View {
                             index in
 
                             Button(action:{}){
-                            taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
+                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.$data.taskData[index].category.color, isActive: self.$data.taskData[index].selected)
+                                
+//                                ,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                           
                             
                             .onTapGesture {
@@ -145,7 +147,7 @@ struct ContentView: View {
                                 self.showTaskOptions = true
                                 self.showSheet = true
                             }
-                            .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
+//                            .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                 
                            
                             }

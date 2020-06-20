@@ -121,7 +121,10 @@ struct ContentView: View {
                             index in
 
                             Button(action:{}){
-                            taskRow(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
+                                taskRow(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: ( self.data.taskData[index].selected) ? .green :
+//                                    (self.data.taskData[index].category?.color ?? .blue)
+                                    .blue
+                                )
                           
                             
                             .onTapGesture {
@@ -133,7 +136,8 @@ struct ContentView: View {
                                 self.showSheet = true
 
                             }
-                            .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
+                                .accentColor(( self.data.taskData[index].selected) ? .green : .blue)
+//                                    (self.data.taskData[index].category.color ?? .blue))
                 
                            
                             }

@@ -46,6 +46,7 @@ struct TaskOptionsiOS: View {
 
         }
         .navigationBarItems(trailing: EditButton())
+        .navigationBarTitle("Task")
 
         }
     }

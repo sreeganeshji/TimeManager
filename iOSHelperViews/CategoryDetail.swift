@@ -48,9 +48,11 @@ struct CategoryDetail: View {
                             HStack{
 //                                Spacer()
                               
-                                RoundedRectangle(cornerRadius: 4)
-                                .foregroundColor(color)
-                                    .frame(width:30)
+//                                RoundedRectangle(cornerRadius: 4)
+//                                .foregroundColor(color)
+//                                    .frame(width:30)
+                                Image(systemName: "bookmark.fill")
+                                    .foregroundColor(color)
 //                                Spacer()
                                 Text(color.description)
                                                               Spacer()

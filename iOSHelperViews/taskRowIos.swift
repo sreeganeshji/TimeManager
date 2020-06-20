@@ -11,7 +11,8 @@ import SwiftUI
 struct taskRowiOS: View {
     var name:String
     var time:TimeInterval?
-    var color:Color
+    @Binding var color:Color
+    @Binding var isActive:Bool
     
     func giveTime(time:Int)->String
     {
@@ -40,7 +41,21 @@ struct taskRowiOS: View {
             
             Text(name)
             Spacer()
+
+           
             Text("\(self.giveTime(time:Int(time?.magnitude ?? 0)))")
+            if(self.isActive)
+            {
+                Image(systemName: "play.fill")
+                    .foregroundColor(color)
+            }
+            else{
+//            RoundedRectangle(cornerRadius: 5).foregroundColor(color)
+//                .frame(width:30)
+                Image(systemName: "stop.fill")
+                .foregroundColor(color)
+            }
+        
             
         }
         .contentShape(Rectangle())
@@ -58,8 +73,8 @@ struct taskRowIos_Previews: PreviewProvider {
     static var previews: some View {
         Group
             {
-                taskRowiOS(name: "HW", time: .init(120),color: .blue)
-                taskRowiOS(name: "HW", time: .init(3600),color: .red)
+                taskRowiOS(name: "HW", time: .init(120),color: .constant(.black), isActive: .constant(true)).frame(height:40)
+                taskRowiOS(name: "HW", time: .init(3600),color: .constant(.red), isActive: .constant(false)).frame(height:40)
         }
     }
 }

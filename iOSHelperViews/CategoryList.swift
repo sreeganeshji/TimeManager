@@ -22,8 +22,10 @@ struct CategoryList: View {
                     HStack{
                     Text(self.data.categories[catInd].name)
                         Spacer()
-                        RoundedRectangle(cornerRadius: 5)
-                            .frame(width:30)
+//                        RoundedRectangle(cornerRadius: 5)
+//                            .frame(width:30)
+//                            .foregroundColor(self.data.categories[catInd].color)
+                        Image(systemName: "bookmark.fill")
                             .foregroundColor(self.data.categories[catInd].color)
                     }
                 }
