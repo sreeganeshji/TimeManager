@@ -36,7 +36,7 @@ struct deleteTasks: View {
                                             Image(systemName: "minus.circle.fill")
                                             }
                                              
-                                         }.accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
+                                         }
                                            
                                         
                                      }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CategoryList: View {
 @EnvironmentObject var data:models
+    @State var showAddCategoryView = false
     
     var body: some View {
         NavigationView{
@@ -34,13 +35,16 @@ struct CategoryList: View {
         .onDelete(perform: {
             index in
             for i in index{
-                print("Index is \(i), category is \(self.data.categories[i])")
+//                print("Index is \(i), category is \(self.data.categories[i])")
                 self.data.categories.remove(at: i)
             }
         })
         }
         .navigationBarTitle("Categories")
+        .navigationBarItems(leading: EditButton())
+        .navigationBarItems(trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
         }
+        .sheet(isPresented: self.$showAddCategoryView, content: {addCategoryiOS(activeView: .constant(true)).environmentObject(self.data)})
     }
 }
 

@@ -117,6 +117,11 @@ struct ContentView: View {
         self.currentTaskIndx = taskInd
     }
     
+    func getColor(_ taskInd:Int)->Binding<Color>
+    {
+        return .constant(self.data.taskData[taskInd].category?.color ?? .blue)
+    }
+    
     var body: some View {
 //        NavigationView{
     
@@ -134,7 +139,7 @@ struct ContentView: View {
                             index in
 
                             Button(action:{}){
-                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.$data.taskData[index].category.color, isActive: self.$data.taskData[index].selected)
+                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.getColor(index), isActive: self.$data.taskData[index].selected)
                                 
 //                                ,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                           
@@ -165,28 +170,28 @@ struct ContentView: View {
             
 
                     
-                            NavigationLink(destination:addTaskiOS(activeView: self.$addTaskRequest).environmentObject(data))
-                                        {
-                                            HStack{
-                                                Text("Add task")
-                                                Spacer()
-                                            Image(systemName: "plus.circle.fill")
-                                                .accentColor(.green)
-                                            }
-                                        }
- 
-                        
-                        NavigationLink(destination: Settings(activeView: .constant(false)).environmentObject(self.data))
-                        {
-                            HStack{
-                            Text("Settings")
-                            Spacer()
-                            Image(systemName: "slider.horizontal.3")
-                            }
-                        }
-                        .accentColor(.orange)
+//                            NavigationLink(destination:addTaskiOS(activeView: self.$addTaskRequest).environmentObject(data))
+//                                        {
+//                                            HStack{
+//                                                Text("Add task")
+//                                                Spacer()
+//                                            Image(systemName: "plus.circle.fill")
+//                                                .accentColor(.green)
+//                                            }
+//                                        }
+//
+//
+//                        NavigationLink(destination: Settings(activeView: .constant(false)).environmentObject(self.data))
+//                        {
+//                            HStack{
+//                            Text("Settings")
+//                            Spacer()
+//                            Image(systemName: "slider.horizontal.3")
+//                            }
+//                        }
+//                        .accentColor(.orange)
                 }
-                .navigationBarTitle("Tasks")
+                .navigationBarTitle("Dashboard")
             
                 .navigationBarItems(trailing:
               
@@ -200,24 +205,31 @@ struct ContentView: View {
                     
                     
                     )
+       
                 }
         
         .tabItem{
-            Image(systemName: "list.bullet")
-            Text("Tasks")
+            Image(systemName: "play.fill")
+            Text("Dashboard")
                 }
+                
+                TaskList().environmentObject(self.data)
+                    .tabItem({
+                        Image(systemName: "list.bullet")
+                                   Text("Tasks")
+                    })
                 
                 //Summary
                 Text("Summary")
                     .tabItem {
-                        Image(systemName: "chart.pie")
+                        Image(systemName: "chart.pie.fill")
                         Text("Summary")
                 }
                 
                 
                 CategoryList().environmentObject(self.data)
                     .tabItem({
-                        Image(systemName: "bookmark")
+                        Image(systemName: "bookmark.fill")
                         Text("Categories")
                     })
                 
@@ -279,7 +291,7 @@ struct ContentView: View {
                 }
                 else if (self.addTaskRequest)
                 {
-                    addTask(activeView: self.$showSheet).environmentObject(self.data)
+                    addTaskiOS(activeView: self.$showSheet).environmentObject(self.data)
                     .onDisappear()
                         {
                             self.addTaskRequest = false

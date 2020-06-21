@@ -35,11 +35,9 @@ struct CategoryDetail: View {
 //                    }
 //                    }
                     
-                    Picker(selection: $category.color, label: HStack{
+                    Picker(selection: $category.color, label: 
                         Text("Color:")
-                        Spacer()
-                        
-                        }
+                      
                         
                     ) {
                         ForEach(self.data.colors,id:\.self)
@@ -58,6 +56,7 @@ struct CategoryDetail: View {
                                                               Spacer()
 
                             }
+                        .tag(color)
                         }
                     }
                 }

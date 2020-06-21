@@ -53,7 +53,7 @@ struct TaskSummary: View {
                       Text("Category:")
                    
                       Spacer()
-                      Text("\(self.data.taskData[self.taskInd].category.name)").foregroundColor(self.data.taskData[self.taskInd].category.color)
+                      Text("\(self.data.taskData[self.taskInd].category?.name ?? "")")
                   }
                    Divider()
                    VStack{

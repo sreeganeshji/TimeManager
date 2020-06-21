@@ -27,9 +27,9 @@ struct addTaskiOS: View {
     }
     
     var body: some View {
-  
+        NavigationView{
            
-                Form
+                List
                     {
                         
                         TextField("Name", text: $task.name)
@@ -40,31 +40,33 @@ struct addTaskiOS: View {
                             ForEach(data.categories,id: \.self)
                             {
                                 category in
+                                HStack{
+                                    Image(systemName:"bookmark.fill").foregroundColor(category.color)
+                                   
                                 Text(category.name).tag(category)
-                                    .accentColor(category.color)
-                                
+                                    Spacer()
+                                }
+//                            .padding()
                             }
 
                         }
-                        .tabItem({Text("Stuff")})
-
-                        
-                Button(action:
-                    {
-                        self.addTaskToList(task: self.task)
-                        self.activeView.wrappedValue = false
-                }) {
-                    Text("Add")
-                }
-
-                
+                    .labelsHidden()
+//                        .tabItem({Text("Stuff")})
                         
                 }
     .padding()
     .navigationBarTitle("Add task")
+        .navigationBarItems(trailing:  Button(action:
+                           {
+                               self.addTaskToList(task: self.task)
+                               self.activeView.wrappedValue = false
+                       }) {
+                           Text("Add")
+                       })
          
     }
             
+    }
         }
         
 

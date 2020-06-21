@@ -27,7 +27,7 @@ class models: ObservableObject
         var id:Int
         var name:String
         var description:String
-        var category:category
+        var category:category?
         var timestamp:[String:TimeInterval] = ["":TimeInterval()]
         var selected:Bool = false // if the current task is ON
         
@@ -39,10 +39,13 @@ class models: ObservableObject
         
         init(_ name:String) {
             self.name = name
-            self.color = .accentColor
+            self.color = .orange
         }
         
+        
     }
+    
+    var nullCategory = category("No category")
     
     var today:String = ""
     
@@ -56,6 +59,6 @@ class models: ObservableObject
     {
         categories = [category("Work"),category("Study"),category("Play"),category("Socialize")]
         taskData = [task( id:1,name: "CS6515", description: "Study that", category: category("Study")),task(id:2,name: "analog work", description: "run simulation", category: category("Work"))]
-
+        self.nullCategory.color = .gray
     }
 }
