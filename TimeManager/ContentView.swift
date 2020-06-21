@@ -128,23 +128,25 @@ struct ContentView: View {
             TabView() {
                 
                 NavigationView{
-        Form{
+//        Form{
     
             
-            Section{
-                            
- 
+            List{
                         ForEach($data.taskData.wrappedValue.indices,id: \.self)
                         {
                             index in
 
-                            Button(action:{}){
-                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.getColor(index), isActive: self.$data.taskData[index].selected)
+//                            Button(action:{}){
+//                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.getColor(index), isActive: self.$data.taskData[index].selected)
+                                
+                                taskRowiOS2(task: self.$data.taskData[index])
+                                    
                                 
 //                                ,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                           
                             
                             .onTapGesture {
+                                print("selected \(index)")
                                     self.selectTask(taskInd: index)
                                     }
                             .onLongPressGesture {
@@ -155,7 +157,7 @@ struct ContentView: View {
 //                            .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
                 
                            
-                            }
+//                            }
 
                         }
                         
@@ -163,10 +165,13 @@ struct ContentView: View {
                             for k in ind{
                             self.data.taskData.remove(at: k)
                             }
-                            
+
                         })
+                            .onMove { (IndSet, ind) in
+                                self.data.taskData.move(fromOffsets: IndSet, toOffset: ind)
+                }
                        
-            }
+//            }
             
 
                     
@@ -191,9 +196,9 @@ struct ContentView: View {
 //                        }
 //                        .accentColor(.orange)
                 }
-                .navigationBarTitle("Dashboard")
+                .navigationBarTitle("Tasks")
             
-                .navigationBarItems(trailing:
+                .navigationBarItems(leading: EditButton() ,trailing:
               
                     Button(action:{
                         self.addTaskRequest = true
@@ -209,15 +214,15 @@ struct ContentView: View {
                 }
         
         .tabItem{
-            Image(systemName: "play.fill")
-            Text("Dashboard")
+            Image(systemName: "list.bullet")
+            Text("Tasks")
                 }
                 
-                TaskList().environmentObject(self.data)
-                    .tabItem({
-                        Image(systemName: "list.bullet")
-                                   Text("Tasks")
-                    })
+//                TaskList().environmentObject(self.data)
+//                    .tabItem({
+//                        Image(systemName: "list.bullet")
+//                                   Text("Tasks")
+//                    })
                 
                 //Summary
                 Text("Summary")
@@ -283,7 +288,7 @@ struct ContentView: View {
                 }
                 else if (self.showTaskOptions)
                 {
-                    TaskOptionsiOS(taskInd: self.selectedTaskInd).environmentObject(self.data)
+                    TaskSummaryiOS(taskInd: self.selectedTaskInd).environmentObject(self.data)
                     .onDisappear()
                         {
                             self.showTaskOptions = false

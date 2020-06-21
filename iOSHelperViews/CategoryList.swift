@@ -41,8 +41,8 @@ struct CategoryList: View {
         })
         }
         .navigationBarTitle("Categories")
-        .navigationBarItems(leading: EditButton())
-        .navigationBarItems(trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
+            .navigationBarItems(leading: EditButton(), trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
+       
         }
         .sheet(isPresented: self.$showAddCategoryView, content: {addCategoryiOS(activeView: .constant(true)).environmentObject(self.data)})
     }

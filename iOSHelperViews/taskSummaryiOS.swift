@@ -51,6 +51,7 @@ struct TaskSummaryiOS: View {
         return self.data.taskData[self.taskInd].category?.color ?? .blue
     }
     var body: some View {
+        NavigationView{
         Form{
             HStack{
                 Text("Name:").bold()
@@ -98,7 +99,8 @@ struct TaskSummaryiOS: View {
             HStack{
                 Text("Description").bold()
                 Spacer()
-                Text(self.data.taskData[self.taskInd].description)
+//                Text(self.data.taskData[self.taskInd].description)
+                TextField("", text: self.$data.taskData[self.taskInd].description)
             }
             
 //                   Divider()
@@ -118,6 +120,8 @@ struct TaskSummaryiOS: View {
     .onDisappear()
         {
             self.data.taskData[self.taskInd].category = self.category
+        }
+            
         }
     }
 }

@@ -32,9 +32,9 @@ struct TaskList: View {
                 self.data.taskData.move(fromOffsets: indSet, toOffset: ind)
             }
         }
-            .navigationBarItems(leading: EditButton())
+      
             .navigationBarTitle("Tasks")
-        .navigationBarItems(trailing:       Button(action:{
+        .navigationBarItems(leading:EditButton(),trailing: Button(action:{
                           self.addTaskRequest = true
                       })
                           {

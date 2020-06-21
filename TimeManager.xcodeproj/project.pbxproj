@@ -52,6 +52,7 @@
 		1F250E9E249EDD5A005674E2 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9D249EDD5A005674E2 /* TaskList.swift */; };
 		1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9F249F099C005674E2 /* addCategoryiOS.swift */; };
 		1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
+		1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A05249F3F630096EA60 /* taskRowiOS2.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
 		1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2924993E96002B10AA /* CategoryName.swift */; };
@@ -162,6 +163,7 @@
 		1F1AAC38244EA8DD00134634 /* TaskEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEdit.swift; sourceTree = "<group>"; };
 		1F250E9D249EDD5A005674E2 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		1F250E9F249F099C005674E2 /* addCategoryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCategoryiOS.swift; sourceTree = "<group>"; };
+		1F544A05249F3F630096EA60 /* taskRowiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowiOS2.swift; sourceTree = "<group>"; };
 		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		1FAF1D2924993E96002B10AA /* CategoryName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryName.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE107922455E240000934C2 /* taskRowIos.swift */,
+				1F544A05249F3F630096EA60 /* taskRowiOS2.swift */,
 				1F15EBD9245654D6006E283D /* taskSummaryiOS.swift */,
 				1F15EBD724564A94006E283D /* addTaskiOS.swift */,
 				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
@@ -554,6 +557,7 @@
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
 				1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */,
+				1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */,
 				1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */,
 				1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */,
 				1F1AAC24244E288900134634 /* taskRow.swift in Sources */,

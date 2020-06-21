@@ -63,7 +63,7 @@ struct taskRowiOS: View {
 //        .frame(height:30)
 //        .padding()
 //            .background(RoundedRectangle(cornerRadius: 10)
-            .foregroundColor(color)
+//            .foregroundColor(color)
 //            .padding(.bottom, 10)
         
     }

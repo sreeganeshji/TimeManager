@@ -11,7 +11,7 @@ import SwiftUI
 struct addTaskiOS: View {
     @State var activeView:Binding<Bool>
     @EnvironmentObject var data:models
-    @State var task:models.task = models.task(id: 0, name: "", description: "", category:  models.category("Work"))
+    @State var task:models.task = models.task(id: 0, name: "", description: "", category:  models().categories[1])
     
     
     func addTaskToList(task: models.task)
@@ -22,7 +22,7 @@ struct addTaskiOS: View {
         if self.task.name != ""
         {
             self.data.taskData.append(taskLocal)
-            self.task = models.task(id: 0, name: "", description: "", category: models.category("Work"))
+            self.task = models.task(id: 0, name: "", description: "", category: models().categories[1])
         }
     }
     
@@ -45,13 +45,14 @@ struct addTaskiOS: View {
                                    
                                 Text(category.name).tag(category)
                                     Spacer()
-                                }
+                                }.tag(category)
 //                            .padding()
                             }
 
                         }
                     .labelsHidden()
 //                        .tabItem({Text("Stuff")})
+                        TextField("Description",text: $task.description)
                         
                 }
     .padding()
