@@ -20,7 +20,7 @@ struct SummaryiOS: View {
     @State var summaryRecord:SummaryDaemon = .init(taskArray: [])
     @State var ShowTaskvsCategory = true
     let today = Date()
-    
+
     func giveTime(time:Int)->String
      {
          var sec = time
@@ -46,10 +46,13 @@ struct SummaryiOS: View {
             VStack{
             Picker(selection: $calComponent, label: Text("Interval")) {
                 Text("Day").tag(Calendar.Component.day)
-                Text("Week").tag(Calendar.Component.weekday)
+                Text("Week").tag(Calendar.Component.weekOfMonth)
                 Text("Month").tag(Calendar.Component.month)
                 Text("Year").tag(Calendar.Component.year)
             }
+            .onReceive([self.calComponent].publisher.first(), perform: { value in
+                print("changed, \(value)")
+            })
             .pickerStyle(SegmentedPickerStyle())
             
                 VStack{
@@ -130,7 +133,6 @@ struct SummaryiOS: View {
                                     Spacer()
                                     Text(self.giveTime(time:Int(self.summaryRecord.DayCatRecord[ind].time)))
                                 }
-                               
                               }
                                         }
                                     }
@@ -160,7 +162,7 @@ struct SummaryiOS: View {
             {
                 self.format.dateFormat = "MM_dd_yyyy"
                 self.summaryRecord.taskArr = self.data.taskData
-                self.summaryRecord.day(date: self.today)
+//                self.summaryRecord.update(calendarComponent: .day, startDate: .init())
         }
     }
 }

@@ -31,19 +31,13 @@ class SummaryDaemon
         var time:TimeInterval
     }
     
-    enum Range {
-        case Day
-        case Week
-        case Month
-        case Year
-    }
-    
     var taskArr:[models.task]
     var formatter = DateFormatter()
     var DayTaskWise:[models.task:TimeInterval] = .init()
     var DayCatWise:[Int:TimeInterval] = .init()
     var DayTaskRecord : [taskRecord] = .init()
     var DayCatRecord : [catRecord] = .init()
+    var processing:Bool = false
 
     init(taskArray:[models.task],format:String = "MM_dd_yyyy")
     {
@@ -84,7 +78,7 @@ class SummaryDaemon
         self.DayTaskWise = .init()
         self.DayCatWise = .init()
     }
-    func day(date:Date)->()
+    func dayExecute(date:Date)->()
     {
         // find all tasks in that day and add up their values
         let today = self.formatter.string(from: date)
@@ -108,20 +102,29 @@ class SummaryDaemon
     
     
     
-//    func update(_ range:Range)
-//    {
-//
-//        switch range {
-//        case .Day:
-//            <#code#>
-//        case .Week:
-//        <#code#>
-//        case .Month:
-//        <#code#>
-//        case .Year:
-//        <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
+    func update(dateComponent:Calendar.Component, startDate:Date)
+    {
+        //clear previous results
+        self.refresh()
+        //declarations
+        let calendar = Calendar.autoupdatingCurrent
+        var dateDecrement = DateComponents()
+        dateDecrement.day = -1
+        //extract current date component
+        let currentComponentValue = calendar.component(dateComponent, from: startDate)
+    
+        var newComponentValue = calendar.component(dateComponent, from: startDate)
+        var date = startDate
+        while(newComponentValue == currentComponentValue)
+        {
+            //execute day function
+            self.dayExecute(date: date)
+            
+            //update date and components
+            date = calendar.date(byAdding: dateDecrement, to: date) ?? date
+            newComponentValue = calendar.component(dateComponent, from: date)
+        }
+        
+
+    }
 }
