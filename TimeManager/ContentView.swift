@@ -26,7 +26,7 @@ struct ContentView: View {
     @State var selectedTaskInd : Int = 0
     
     
-    let tempTask = models.task(id: 5, name: "Test task", description: "Something's wrong", category: .init("Work"))
+    let tempTask = models.task(myId: 5, name: "Test task", description: "Something's wrong")
     
     init() {
         self.format.dateFormat = "MM_dd_yyyy"
@@ -119,7 +119,7 @@ struct ContentView: View {
     
     func getColor(_ taskInd:Int)->Binding<Color>
     {
-        return .constant(self.data.taskData[taskInd].category?.color ?? .blue)
+        return .constant( self.data.categories[self.data.taskData[taskInd].categoryInd].color)
     }
     
     var body: some View {
@@ -132,21 +132,17 @@ struct ContentView: View {
     
             
             List{
-                        ForEach($data.taskData.wrappedValue.indices,id: \.self)
+                        ForEach(data.taskData.indices,id: \.self)
                         {
                             index in
 
-//                            Button(action:{}){
+
 //                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.getColor(index), isActive: self.$data.taskData[index].selected)
                                 
-                                taskRowiOS2(task: self.$data.taskData[index])
-                                    
-                                
-//                                ,color: ( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
-                          
+                            taskRowiOS2(taskInd:index)
+                             
                             
                             .onTapGesture {
-                                print("selected \(index)")
                                     self.selectTask(taskInd: index)
                                     }
                             .onLongPressGesture {
@@ -154,17 +150,14 @@ struct ContentView: View {
                                 self.showTaskOptions = true
                                 self.showSheet = true
                             }
-//                            .accentColor(( self.data.taskData[index].selected) ? .green : self.data.taskData[index].category.color)
-                
+
                            
 //                            }
 
                         }
                         
-                        .onDelete(perform: {ind in
-                            for k in ind{
-                            self.data.taskData.remove(at: k)
-                            }
+                        .onDelete(perform: { ind in
+                            self.data.taskData.remove(atOffsets: ind)
 
                         })
                             .onMove { (IndSet, ind) in
@@ -225,7 +218,7 @@ struct ContentView: View {
 //                    })
                 
                 //Summary
-                Text("Summary")
+                SummaryiOS().environmentObject(self.data)
                     .tabItem {
                         Image(systemName: "chart.pie.fill")
                         Text("Summary")

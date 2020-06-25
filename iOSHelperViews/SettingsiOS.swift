@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsiOS: View {
     @EnvironmentObject var data:models
-    @State var originalConcurrentState:Bool?
+    @State var originalConcurrentState = false
     @State var activeView:Binding<Bool>
 
     var body: some View {
@@ -21,15 +21,7 @@ struct SettingsiOS: View {
                 Toggle(isOn: self.$data.concurrentTasks) {
                     Text("Concurrent tasks")
                 }
-                .onDisappear(perform: {
-                    if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
-                    {
-                    for i in 0...self.data.taskData.count-1
-                    {
-                        self.data.taskData[i].selected = false
-                    }
-                    }
-                })
+          
             }
 //            Section{
 //
@@ -45,6 +37,15 @@ struct SettingsiOS: View {
     .onAppear(perform: {
         self.originalConcurrentState = self.data.concurrentTasks
     })
+    .onDisappear(perform: {
+                          if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
+                          {
+                          for i in 0...self.data.taskData.count-1
+                          {
+                              self.data.taskData[i].selected = false
+                          }
+                          }
+                      })
     .navigationBarTitle("Settings")
     }
 }

@@ -53,9 +53,10 @@
 		1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9F249F099C005674E2 /* addCategoryiOS.swift */; };
 		1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
 		1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A05249F3F630096EA60 /* taskRowiOS2.swift */; };
+		1F544A08249FE7A80096EA60 /* SummaryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A07249FE7A80096EA60 /* SummaryiOS.swift */; };
+		1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
-		1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2924993E96002B10AA /* CategoryName.swift */; };
 		1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */; };
 		1FE107932455E240000934C2 /* taskRowIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE107922455E240000934C2 /* taskRowIos.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
@@ -164,9 +165,10 @@
 		1F250E9D249EDD5A005674E2 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		1F250E9F249F099C005674E2 /* addCategoryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCategoryiOS.swift; sourceTree = "<group>"; };
 		1F544A05249F3F630096EA60 /* taskRowiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowiOS2.swift; sourceTree = "<group>"; };
+		1F544A07249FE7A80096EA60 /* SummaryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryiOS.swift; sourceTree = "<group>"; };
+		1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
 		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
-		1FAF1D2924993E96002B10AA /* CategoryName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryName.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,8 +220,10 @@
 				1F250E9D249EDD5A005674E2 /* TaskList.swift */,
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
-				1FAF1D2924993E96002B10AA /* CategoryName.swift */,
-				1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */,
+				1F544A07249FE7A80096EA60 /* SummaryiOS.swift */,
+				1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */,
+				1F544A1224A456880096EA60 /* Archives */,
+				1F544A1124A44E030096EA60 /* Summary */,
 			);
 			path = iOSHelperViews;
 			sourceTree = "<group>";
@@ -348,6 +352,21 @@
 				1F1AAC1F244E288900134634 /* taskRow.swift */,
 			);
 			path = WatchHelperViews;
+			sourceTree = "<group>";
+		};
+		1F544A1124A44E030096EA60 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		1F544A1224A456880096EA60 /* Archives */ = {
+			isa = PBXGroup;
+			children = (
+				1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */,
+			);
+			path = Archives;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +570,7 @@
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
+				1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */,
 				1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,
 				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
@@ -558,7 +578,6 @@
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
 				1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */,
 				1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */,
-				1FAF1D2A24993E96002B10AA /* CategoryName.swift in Sources */,
 				1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */,
 				1F1AAC24244E288900134634 /* taskRow.swift in Sources */,
 				1F15EBDA245654D6006E283D /* taskSummaryiOS.swift in Sources */,
@@ -569,6 +588,7 @@
 				1F15EBE02456674F006E283D /* taskEditiOS.swift in Sources */,
 				1F15EBDC24565518006E283D /* taskOptionsiOS.swift in Sources */,
 				1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */,
+				1F544A08249FE7A80096EA60 /* SummaryiOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,7 +895,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -895,7 +915,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

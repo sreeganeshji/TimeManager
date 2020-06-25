@@ -11,7 +11,7 @@ import SwiftUI
 struct TaskEdit: View {
     @EnvironmentObject var data:models
     let taskInd:Int
-    @State var defaultTask : models.task = models.task(id: 10, name: "Default", description: "Default", category: .init("default"))
+    @State var defaultTask : models.task = models.task(myId: 10, name: "Default", description: "Default")
 
     @State var today:String = ""
     @State var timeText:String = ""

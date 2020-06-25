@@ -15,7 +15,7 @@ struct TaskSummaryiOS: View {
     var format = DateFormatter()
     var displayFormat = DateFormatter()
     @EnvironmentObject var data:models
-    @State var category:models.category = models.category("")
+    @State var categoryInd:Int = 0
     
     
     func giveTime(time:Int)->String
@@ -43,12 +43,12 @@ struct TaskSummaryiOS: View {
      }
     func getName(_ taskInd:Int)->String
     {
-        return self.data.taskData[self.taskInd].category?.name ?? "No category"
+        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].name
     }
     
     func getColor(_ taskInd:Int)->Color
     {
-        return self.data.taskData[self.taskInd].category?.color ?? .blue
+        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].color
     }
     var body: some View {
         NavigationView{
@@ -66,24 +66,20 @@ struct TaskSummaryiOS: View {
 //                  }
             
             
-            Picker(selection: self.$category, label:  HStack{Text("Category:").bold()
+            Picker(selection: self.$categoryInd, label:  HStack{Text("Category:").bold()
   
             }) {
                 
-                ForEach(self.data.categories,id:\.self)
+                ForEach(self.data.categories.indices,id:\.self)
                 {
-                    category in
+                    categoryInd in
                     HStack{
-                        Image(systemName: "bookmark.fill").foregroundColor(category.color)
-                        Text(category.name)
+                        Image(systemName: "bookmark.fill").foregroundColor(self.data.categories[categoryInd].color)
+                        Text(self.data.categories[categoryInd].name)
                     }
-                .tag(category)
+                .tag(categoryInd)
                 }
-                
-                HStack{
-                    Image(systemName: "bookmark.fill").foregroundColor(self.data.nullCategory.color)
-                    Text(self.data.nullCategory.name)
-                }.tag(self.data.nullCategory)
+
             }
                    HStack{
                        Text("Today's time:").bold()
@@ -111,15 +107,16 @@ struct TaskSummaryiOS: View {
              self.format.dateFormat = "MM_dd_yyyy"
             self.today = self.format.string(from: Date())
              self.displayFormat.dateFormat = "hh:MM:ss"
-            if (self.category.name != "")
-            {
-                self.data.taskData[self.taskInd].category = self.category
-            }
-            self.category = self.data.taskData[self.taskInd].category ?? models().nullCategory
+//            if (self.category.name != "")
+//            {
+//                self.data.taskData[self.taskInd].category = self.category
+//            }
+//            self.category = self.data.taskData[self.taskInd].category ?? models().nullCategory
+            self.categoryInd = self.data.taskData[self.taskInd].categoryInd
         }
     .onDisappear()
         {
-            self.data.taskData[self.taskInd].category = self.category
+            self.data.taskData[self.taskInd].categoryInd = self.categoryInd
         }
             
         }

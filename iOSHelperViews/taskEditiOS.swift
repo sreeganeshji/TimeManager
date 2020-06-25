@@ -11,7 +11,7 @@ import SwiftUI
 struct TaskEditiOS: View {
     @EnvironmentObject var data:models
     let taskInd:Int
-    @State var defaultTask : models.task = models.task(id: 10, name: "Default", description: "Default", category: .init("default"))
+    @State var defaultTask : models.task = models.task(myId: 10, name: "Default", description: "Default")
 
     @State var today:String = ""
     @State var timeText:String = ""
@@ -66,14 +66,14 @@ struct TaskEditiOS: View {
                         TextField(self.giveTime(time: Int(self.defaultTask.timestamp[self.today] ?? 0)), text: self.$timeText)
                 }
 
-                Picker(selection: self.$defaultTask.category, label: Text("Category").bold()) {
-                    ForEach(self.data.categories,id:\.self)
+                Picker(selection: self.$defaultTask.categoryInd, label: Text("Category").bold()) {
+                    ForEach(self.data.categories.indices,id:\.self)
                     {
-                        category in
+                        categoryInd in
 
-                                Text(category.name)
-                                    .foregroundColor(category.color)
-                        .tag(category)
+                        Text(self.data.categories[categoryInd].name)
+                                    .foregroundColor(self.data.categories[categoryInd].color)
+                        .tag(categoryInd)
                     }
 
                     }

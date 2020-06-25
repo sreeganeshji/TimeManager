@@ -37,8 +37,7 @@ struct CategoryDetail: View {
                     
                     Picker(selection: $category.color, label: 
                         Text("Color:")
-                      
-                        
+
                     ) {
                         ForEach(self.data.colors,id:\.self)
                         {

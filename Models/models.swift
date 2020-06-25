@@ -24,11 +24,12 @@ class models: ObservableObject
          *
          */
         var lastChanged:TimeInterval?
-        var id:Int
+        var myId:Int
         var name:String
         var description:String
-        var category:category?
-        var timestamp:[String:TimeInterval] = ["":TimeInterval()]
+        var categoryInd:Int = 0 //0 is uncategorized
+        var timestamp:[String:TimeInterval] = .init()
+//            ["":TimeInterval()]
         var selected:Bool = false // if the current task is ON
         
     }
@@ -37,15 +38,12 @@ class models: ObservableObject
         var name:String
         var color:Color
         
-        init(_ name:String) {
+        init(_ name:String, _ color:Color = .orange) {
             self.name = name
-            self.color = .orange
+            self.color = color
         }
-        
-        
+ 
     }
-    
-    var nullCategory = category("No category")
     
     var today:String = ""
     
@@ -55,10 +53,11 @@ class models: ObservableObject
     @Published var concurrentTasks:Bool = false
     
     @Published var taskData:[task]
+
     init()
     {
-        categories = [category("Work"),category("Study"),category("Play"),category("Socialize")]
-        taskData = [task( id:1,name: "CS6515", description: "Study that", category: category("Study")),task(id:2,name: "analog work", description: "run simulation", category: category("Work"))]
-        self.nullCategory.color = .gray
+        categories = [category("No category", .gray),category("Work"),category("Study"),category("Play"),category("Socialize")]
+        taskData = [task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
+        
     }
 }

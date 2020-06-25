@@ -15,7 +15,7 @@ struct CategoryList: View {
     var body: some View {
         NavigationView{
         List {
-            ForEach(data.categories.indices,id: \.self )
+            ForEach(1...self.data.categories.count-1,id: \.self )
             {
                 catInd in
                 NavigationLink(destination: CategoryDetail(category: self.$data.categories[catInd]).environmentObject(self.data))
@@ -36,7 +36,16 @@ struct CategoryList: View {
             index in
             for i in index{
 //                print("Index is \(i), category is \(self.data.categories[i])")
-                self.data.categories.remove(at: i)
+              
+                //change the task categories to 0 when deleted
+                for taskInd in self.data.taskData.indices
+                {
+                    if(self.data.taskData[taskInd].categoryInd == i+1)
+                    {
+                        self.data.taskData[taskInd].categoryInd  = 0
+                    }
+                }
+                  self.data.categories.remove(at: i+1)
             }
         })
         }

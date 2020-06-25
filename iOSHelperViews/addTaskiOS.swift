@@ -11,18 +11,20 @@ import SwiftUI
 struct addTaskiOS: View {
     @State var activeView:Binding<Bool>
     @EnvironmentObject var data:models
-    @State var task:models.task = models.task(id: 0, name: "", description: "", category:  models().categories[1])
+    @State var categoryInd :Int = 0
+    @State var task:models.task = models.task(myId: 0, name: "", description: "")
     
     
     func addTaskToList(task: models.task)
     {
             let len = self.data.taskData.count
             var taskLocal = task
-            taskLocal.id = len
+            taskLocal.myId = len
+            taskLocal.categoryInd = self.categoryInd
         if self.task.name != ""
         {
             self.data.taskData.append(taskLocal)
-            self.task = models.task(id: 0, name: "", description: "", category: models().categories[1])
+            self.task = models.task(myId: 0, name: "", description: "")
         }
     }
     
@@ -34,18 +36,17 @@ struct addTaskiOS: View {
                         
                         TextField("Name", text: $task.name)
                 
-
-                    
-                        Picker( selection: $task.category,label: Text("Category")) {
-                            ForEach(data.categories,id: \.self)
+                        Picker( selection: self.$categoryInd,label: Text("Category")) {
+                            ForEach(data.categories.indices,id: \.self)
                             {
-                                category in
+                                ind in
                                 HStack{
-                                    Image(systemName:"bookmark.fill").foregroundColor(category.color)
+                                    Image(systemName:"bookmark.fill").foregroundColor(self.data.categories[ind].color)
                                    
-                                Text(category.name).tag(category)
+                                Text(self.data.categories[ind].name).tag(ind)
                                     Spacer()
-                                }.tag(category)
+                                }
+//                                .tag(category)
 //                            .padding()
                             }
 
@@ -55,6 +56,7 @@ struct addTaskiOS: View {
                         TextField("Description",text: $task.description)
                         
                 }
+        
     .padding()
     .navigationBarTitle("Add task")
         .navigationBarItems(trailing:  Button(action:

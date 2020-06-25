@@ -11,18 +11,18 @@ import SwiftUI
 struct addTask: View {
     @State var activeView:Binding<Bool>
     @EnvironmentObject var data:models
-    @State var task:models.task = models.task(id: 0, name: "", description: "", category:  models.category("Work"))
+    @State var task:models.task = models.task(myId: 0, name: "", description: "")
     
     
     func addTaskToList(task: models.task)
     {
             let len = self.data.taskData.count
             var taskLocal = task
-            taskLocal.id = len
+            taskLocal.myId = len
         if self.task.name != ""
         {
             self.data.taskData.append(taskLocal)
-            self.task = models.task(id: 0, name: "", description: "", category: models.category("Work"))
+            self.task = models.task(myId: 0, name: "", description: "")
         }
     }
     
@@ -32,15 +32,15 @@ struct addTask: View {
                 ScrollView
                     {
                         
-                        TextField("Name", text: $task.name)
+                        TextField("Name", text: self.$task.name)
                 
 
-                        Picker(selection: $task.category, label: Text("Category")) {
-                            ForEach(data.categories,id: \.self)
+                        Picker(selection:  $task.categoryInd, label: Text("Category")) {
+                            ForEach(data.categories.indices,id: \.self)
                             {
-                                category in
-                                Text(category.name).tag(category)
-                                    .accentColor(category.color)
+                                categoryInd in
+                                Text(self.data.categories[categoryInd].name).tag(categoryInd)
+                                    .accentColor(self.data.categories[categoryInd].color)
                             }
 
                         }.frame(height:100)

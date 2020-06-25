@@ -26,7 +26,7 @@ struct ContentView: View {
     @State var selectedTaskInd : Int = 0
     
     
-    let tempTask = models.task(id: 5, name: "Test task", description: "Something's wrong", category: .init("Work"))
+    let tempTask = models.task(myId: 5, name: "Test task", description: "Something's wrong")
     
     init() {
         self.format.dateFormat = "MM_dd_yyyy"
