@@ -51,8 +51,9 @@ struct SummaryiOS: View {
                 Text("Year").tag(Calendar.Component.year)
             }
             .onReceive([self.calComponent].publisher.first(), perform: { value in
-                print("changed, \(value)")
-            })
+                print("updating View")
+                self.summaryRecord.taskArr = self.data.taskData
+                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())})
             .pickerStyle(SegmentedPickerStyle())
             
                 VStack{
@@ -81,8 +82,8 @@ struct SummaryiOS: View {
                                 }
                 
                     HStack{
-                        Rectangle().frame(width:20)
-                            .foregroundColor(.gray)
+//                        Rectangle().frame(width:20)
+//                            .foregroundColor(.gray)
                         Text("Task").bold()
                         Spacer()
                         Text("Time").bold()
@@ -116,8 +117,8 @@ struct SummaryiOS: View {
                     
                     
                      HStack{
-                                Image(systemName: "bookmark.fill").frame(width:20)
-                                      .foregroundColor(.gray)
+//                                Image(systemName: "bookmark.fill").frame(width:20)
+//                                      .foregroundColor(.gray)
                                   Text("Category").bold()
                                   Spacer()
                                   Text("Time").bold()
@@ -151,17 +152,17 @@ struct SummaryiOS: View {
                 
             }
     .navigationBarTitle("Summary")
-        .navigationBarItems(trailing: Button(action:{
-//            self.summaryRecord.refresh()
-        })
-        {
-            Text("Refresh")
-        })
+//        .navigationBarItems(trailing: Button(action:{
+////            self.summaryRecord.refresh()
+//        })
+//        {
+//            Text("Refresh")
+//        })
         }
         .onAppear()
             {
                 self.format.dateFormat = "MM_dd_yyyy"
-                self.summaryRecord.taskArr = self.data.taskData
+//                self.summaryRecord.taskArr = self.data.taskData
 //                self.summaryRecord.update(calendarComponent: .day, startDate: .init())
         }
     }
