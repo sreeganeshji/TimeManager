@@ -12,9 +12,9 @@ import SwiftUI
 class models: ObservableObject
 {
     
-     @Published var categories:[category]
+     @Published var categories:[category] = []
     
-     struct task:Equatable, Hashable
+     struct task:Equatable, Hashable, Codable
      {
         
         /*
@@ -34,30 +34,82 @@ class models: ObservableObject
         
     }
     
-    struct category:Equatable, Hashable {
+    struct category:Equatable, Hashable, Codable {
         var name:String
-        var color:Color
+        var color:String
         
-        init(_ name:String, _ color:Color = .orange) {
+        init(_ name:String, _ color:String = "orange") {
             self.name = name
             self.color = color
         }
  
     }
     
+    func getColorName(_ color:Color)->String
+    {
+        switch color {
+        case .gray:
+            return "gray"
+        case .blue:
+            return "blue"
+        case .green:
+            return "green"
+        case .orange:
+            return "orange"
+        case .pink:
+            return "pink"
+        case .purple:
+            return "purple"
+        case .red:
+            return "red"
+        case .yellow:
+            return "yellow"
+        default:
+            return "orange"
+        }
+    }
+    
+    func getColor(_ colorName:String)->Color
+    {
+        switch colorName {
+        case "gray":
+            return .gray
+        case "blue":
+            return .blue
+        case "yellow":
+            return .yellow
+        case "red":
+            return .red
+        case "purple":
+            return .purple
+        case "pink":
+            return .pink
+        case "orange":
+            return .orange
+        case "green":
+            return .green
+        default:
+            return .orange
+        }
+    }
+    
     var today:String = ""
     
-    var colors:[Color] = [.blue,.red,.orange,.pink,.purple,.yellow]
+    var colors:[Color] = [.blue,.red,.orange,.pink,.purple,.yellow,.green]
     
+    @Published var sumaryRecord = SummaryDaemon()
     
     @Published var concurrentTasks:Bool = false
     
-    @Published var taskData:[task]
+    @Published var taskData:[task] = []
 
     init()
     {
-        categories = [category("No category", .gray),category("Work"),category("Study"),category("Play"),category("Socialize")]
-        taskData = [task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
+//        categories = [category("No category", .gray),category("Work"),category("Study"),category("Play"),category("Socialize")]
+
+        
+        //        taskData = taskData = [task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
+        
         
     }
 }

@@ -114,19 +114,20 @@ struct ContentView: View {
         }
         
         self.$data.taskData[taskInd].wrappedValue.selected = true
-        self.currentTaskIndx = taskInd
+        if(!self.data.concurrentTasks){
+            self.currentTaskIndx = taskInd
+        }
     }
     
     func getColor(_ taskInd:Int)->Binding<Color>
     {
-        return .constant( self.data.categories[self.data.taskData[taskInd].categoryInd].color)
+        return .constant(.init( self.data.categories[self.data.taskData[taskInd].categoryInd].color))
     }
     
     var body: some View {
 //        NavigationView{
     
             TabView() {
-                
                 NavigationView{
 //        Form{
     
@@ -158,6 +159,9 @@ struct ContentView: View {
                         
                         .onDelete(perform: { ind in
                             self.data.taskData.remove(atOffsets: ind)
+                            self.data.sumaryRecord.taskArr = self.data.taskData
+                            self.data.sumaryRecord.categoryList = self.data.categories
+                            self.data.sumaryRecord.update(dateComponent: .day, startDate: Date())
 
                         })
                             .onMove { (IndSet, ind) in
@@ -189,6 +193,22 @@ struct ContentView: View {
 //                        }
 //                        .accentColor(.orange)
                 }
+            .onAppear(){
+                if(self.data.concurrentTasks)
+                {
+                    self.currentTaskIndx = nil
+                }
+                
+                if(self.currentTaskIndx == nil && !self.data.concurrentTasks)
+                {
+                    for i in 0...self.data.taskData.count-1
+                    {
+                        self.data.taskData[i].selected = false
+                        self.data.taskData[i].lastChanged = nil
+                    }
+                }
+            }
+   
                 .navigationBarTitle("Tasks")
             
                 .navigationBarItems(leading: EditButton() ,trailing:
@@ -218,7 +238,8 @@ struct ContentView: View {
 //                    })
                 
                 //Summary
-                SummaryiOS().environmentObject(self.data)
+                
+                SummaryiOS(summaryRecord: self.$data.sumaryRecord).environmentObject(self.data)
                     .tabItem {
                         Image(systemName: "chart.pie.fill")
                         Text("Summary")
@@ -281,7 +302,8 @@ struct ContentView: View {
                 }
                 else if (self.showTaskOptions)
                 {
-                    TaskSummaryiOS(taskInd: self.selectedTaskInd).environmentObject(self.data)
+                    TaskSummaryiOS(taskInd: self.selectedTaskInd, showSheet: self.$showSheet).environmentObject(self.data)
+//                    TaskEditiOS(taskInd: self.selectedTaskInd, activeView: self.$showSheet).environmentObject(self.data)
                     .onDisappear()
                         {
                             self.showTaskOptions = false

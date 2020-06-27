@@ -21,8 +21,9 @@ struct SettingsiOS: View {
                 Toggle(isOn: self.$data.concurrentTasks) {
                     Text("Concurrent tasks")
                 }
-          
+
             }
+
 //            Section{
 //
 //                Button(action:{
@@ -34,18 +35,23 @@ struct SettingsiOS: View {
 //            }
         
         }
-    .onAppear(perform: {
-        self.originalConcurrentState = self.data.concurrentTasks
-    })
-    .onDisappear(perform: {
+        .onDisappear(perform: {
+        print("Disappering")
                           if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
                           {
                           for i in 0...self.data.taskData.count-1
                           {
                               self.data.taskData[i].selected = false
+                            self.data.taskData[i].lastChanged = nil
                           }
                           }
                       })
+
+    .onAppear(perform: {
+        print("on Appear")
+        self.originalConcurrentState = self.data.concurrentTasks
+    })
+
     .navigationBarTitle("Settings")
     }
 }

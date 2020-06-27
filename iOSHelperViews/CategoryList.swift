@@ -15,7 +15,9 @@ struct CategoryList: View {
     var body: some View {
         NavigationView{
         List {
-            ForEach(1...self.data.categories.count-1,id: \.self )
+            if(self.data.categories.count > 1)
+            {
+            ForEach(1...self.data.categories.count-1, id: \.self)
             {
                 catInd in
                 NavigationLink(destination: CategoryDetail(category: self.$data.categories[catInd]).environmentObject(self.data))
@@ -27,7 +29,7 @@ struct CategoryList: View {
 //                            .frame(width:30)
 //                            .foregroundColor(self.data.categories[catInd].color)
                         Image(systemName: "bookmark.fill")
-                            .foregroundColor(self.data.categories[catInd].color)
+                            .foregroundColor(self.data.getColor(self.data.categories[catInd].color))
                     }
                 }
                 
@@ -49,11 +51,12 @@ struct CategoryList: View {
             }
         })
         }
+        }
         .navigationBarTitle("Categories")
             .navigationBarItems(leading: EditButton(), trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
        
         }
-        .sheet(isPresented: self.$showAddCategoryView, content: {addCategoryiOS(activeView: .constant(true)).environmentObject(self.data)})
+        .sheet(isPresented: self.$showAddCategoryView, content: {addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)})
     }
 }
 

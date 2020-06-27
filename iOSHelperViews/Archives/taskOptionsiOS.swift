@@ -27,7 +27,7 @@ struct TaskOptionsiOS: View {
 
             Section{
                 if mode?.wrappedValue != .active{
-                    TaskSummaryiOS(taskInd: self.taskInd).environmentObject(self.data)
+                    TaskSummaryiOS(taskInd: self.taskInd,showSheet: .constant(true)).environmentObject(self.data)
 //                    NavigationLink(destination:TaskEditiOS( taskInd: self.taskInd, activeView: self.$edit))
 //                    {
 //                        Text("Edit")

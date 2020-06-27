@@ -41,7 +41,7 @@ struct addTaskiOS: View {
                             {
                                 ind in
                                 HStack{
-                                    Image(systemName:"bookmark.fill").foregroundColor(self.data.categories[ind].color)
+                                    Image(systemName:"bookmark.fill").foregroundColor(self.data.getColor(self.data.categories[ind].color))
                                    
                                 Text(self.data.categories[ind].name).tag(ind)
                                     Spacer()
@@ -61,8 +61,8 @@ struct addTaskiOS: View {
     .navigationBarTitle("Add task")
         .navigationBarItems(trailing:  Button(action:
                            {
-                               self.addTaskToList(task: self.task)
-                               self.activeView.wrappedValue = false
+                                self.addTaskToList(task: self.task)
+                                self.activeView.wrappedValue = false
                        }) {
                            Text("Add")
                        })

@@ -33,7 +33,7 @@ struct categoryEditView: View {
                     ForEach(self.data.colors,id: \.self)
                     {
                         color in
-                        Text(color.description).tag(color)
+                        Text(color.description).tag(self.data.getColorName(color))
                         .accentColor(color)
                     }
                     

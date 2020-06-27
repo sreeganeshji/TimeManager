@@ -11,14 +11,15 @@
 
 import SwiftUI
 
+
 struct SummaryiOS: View {
     
     var format = DateFormatter()
     @EnvironmentObject var data:models
     @State var selection = 0
-    @State var calComponent:Calendar.Component = .day
-    @State var summaryRecord:SummaryDaemon = .init(taskArray: [])
+    @State var calComponent:Calendar.Component = .weekOfMonth
     @State var ShowTaskvsCategory = true
+    @Binding var summaryRecord:SummaryDaemon
     let today = Date()
 
     func giveTime(time:Int)->String
@@ -51,15 +52,14 @@ struct SummaryiOS: View {
                 Text("Year").tag(Calendar.Component.year)
             }
             .onReceive([self.calComponent].publisher.first(), perform: { value in
-                print("updating View")
+//                print("updating View")
                 self.summaryRecord.taskArr = self.data.taskData
+                self.summaryRecord.categoryList = self.data.categories
                 self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())})
             .pickerStyle(SegmentedPickerStyle())
             
                 VStack{
-               
-          
-                            if(self.summaryRecord.DayTaskRecord.count == 0)
+                    if(self.summaryRecord.DayTaskRecord.count == 0)
                             {
                                 Spacer()
 //                                HStack(){
@@ -75,11 +75,11 @@ struct SummaryiOS: View {
                                 {
                                     VStack{
                                         List{
-                                HStack{
-                                    Spacer()
-                                    Text("Task breakdown").bold()
-                                    Spacer()
-                                }
+//                                HStack{
+//                                    Spacer()
+//                                    Text("Task breakdown").bold()
+//                                    Spacer()
+//                                }
                 
                     HStack{
 //                        Rectangle().frame(width:20)
@@ -88,18 +88,17 @@ struct SummaryiOS: View {
                         Spacer()
                         Text("Time").bold()
                     }
-             
-            
-                ForEach(self.summaryRecord.DayTaskRecord.indices,id:\.self)
+                                            
+                                            ForEach(self.summaryRecord.DayTaskRecord.indices,id:\.self)
             {
                 ind in
              
                 HStack{
                     Rectangle().frame(width:20)
-                        .foregroundColor(self.data.categories[self.summaryRecord.DayTaskRecord[ind].task.categoryInd].color)
-                Text(self.summaryRecord.DayTaskRecord[ind].task.name)
+                        .foregroundColor((self.data.taskData.count > ind) ? self.data.getColor(self.data.categories[self.summaryRecord.DayTaskRecord[ind].task.categoryInd].color) : .gray)
+                    Text((self.data.taskData.count > ind) ? self.summaryRecord.DayTaskRecord[ind].task.name : "Deleted")
                     Spacer()
-                    Text(self.giveTime(time:Int(self.summaryRecord.DayTaskRecord[ind].time)))
+                    Text(self.giveTime(time: (self.data.taskData.count > ind) ? Int(self.summaryRecord.DayTaskRecord[ind].time) : 0))
                 }
 
                 }
@@ -109,11 +108,11 @@ struct SummaryiOS: View {
                                 else{
                                     VStack{
                                         List{
-                                HStack{
-                                    Spacer()
-                                    Text("Category breakdown").bold()
-                                    Spacer()
-                                }
+//                                HStack{
+//                                    Spacer()
+//                                    Text("Category breakdown").bold()
+//                                    Spacer()
+//                                }
                     
                     
                      HStack{
@@ -123,18 +122,19 @@ struct SummaryiOS: View {
                                   Spacer()
                                   Text("Time").bold()
                               }
-                    ForEach(self.summaryRecord.DayCatRecord.indices,id:\.self)
+                                            ForEach(self.summaryRecord.DayCatRecord.indices,id:\.self)
                               {
                                   ind in
                                 
                                 HStack{
                                     Image(systemName: "bookmark.fill")
-                                        .foregroundColor(self.data.categories[self.summaryRecord.DayCatRecord[ind].categoryInd].color)
+                                        .foregroundColor(self.data.getColor(self.data.categories[self.summaryRecord.DayCatRecord[ind].categoryInd].color))
                                     Text(self.data.categories[self.summaryRecord.DayCatRecord[ind].categoryInd].name)
                                     Spacer()
                                     Text(self.giveTime(time:Int(self.summaryRecord.DayCatRecord[ind].time)))
                                 }
                               }
+        
                                         }
                                     }
                                 }
@@ -161,15 +161,15 @@ struct SummaryiOS: View {
         }
         .onAppear()
             {
+                print("onAppear Summary")
                 self.format.dateFormat = "MM_dd_yyyy"
-//                self.summaryRecord.taskArr = self.data.taskData
-//                self.summaryRecord.update(calendarComponent: .day, startDate: .init())
+                self.calComponent = .day
         }
     }
 }
 
 struct SummaryiOS_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryiOS().environmentObject(models())
+        SummaryiOS(summaryRecord: .constant(.init())).environmentObject(models())
     }
 }

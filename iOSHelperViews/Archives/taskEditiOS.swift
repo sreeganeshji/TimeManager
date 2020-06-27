@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TaskEditiOS: View {
     @EnvironmentObject var data:models
-    let taskInd:Int
-    @State var defaultTask : models.task = models.task(myId: 10, name: "Default", description: "Default")
+    var taskInd:Int
+//    @State var defaultTask : models.task = models.task(myId: 10, name: "Default", description: "Default")
 
     @State var today:String = ""
     @State var timeText:String = ""
@@ -37,10 +37,10 @@ struct TaskEditiOS: View {
         }
 
     
-    func saveTask()
-    {
-        self.data.taskData[self.taskInd] = self.defaultTask
-    }
+//    func saveTask()
+//    {
+//        self.data.taskData[self.taskInd] = self.defaultTask
+//    }
     
     var body: some View {
        
@@ -48,7 +48,7 @@ struct TaskEditiOS: View {
                 HStack{
                     Text("Name").bold()
                     Spacer()
-                    TextField("", text: self.$defaultTask.name)
+                    TextField("", text: self.$data.taskData[self.taskInd].name)
                 }
                 
 //                HStack{
@@ -63,16 +63,16 @@ struct TaskEditiOS: View {
                     {
                         Text("Time").bold()
                         Spacer()
-                        TextField(self.giveTime(time: Int(self.defaultTask.timestamp[self.today] ?? 0)), text: self.$timeText)
+                        TextField(self.giveTime(time: Int(self.data.taskData[self.taskInd].timestamp[self.today] ?? 0)), text: self.$timeText)
                 }
 
-                Picker(selection: self.$defaultTask.categoryInd, label: Text("Category").bold()) {
+                Picker(selection: self.$data.taskData[self.taskInd].categoryInd, label: Text("Category").bold()) {
                     ForEach(self.data.categories.indices,id:\.self)
                     {
                         categoryInd in
 
                         Text(self.data.categories[categoryInd].name)
-                                    .foregroundColor(self.data.categories[categoryInd].color)
+                            .foregroundColor(.init(self.data.categories[categoryInd].color))
                         .tag(categoryInd)
                     }
 
@@ -81,26 +81,27 @@ struct TaskEditiOS: View {
                 HStack{
                 Text("Description").bold()
             Spacer()
-                    TextField("", text: self.$defaultTask.description)
+                    TextField("", text: self.$data.taskData[self.taskInd].description)
 
                 }
             }
 
             
             
-    .navigationBarTitle(self.defaultTask.name)
-    .navigationBarItems(trailing:                 Button(action: {self.saveTask()
+    .navigationBarTitle(self.data.taskData[self.taskInd].name)
+    .navigationBarItems(trailing:
+        Button(action: {
+//        self.saveTask()
         self.activeView = false
     }) {
         Text("Done")
-        
     })
     .onAppear()
         {
-            if (self.defaultTask.name == "Default")
-            {
-            self.defaultTask = self.data.taskData[self.taskInd]
-            }
+//            if (self.defaultTask.name == "Default")
+//            {
+//            self.defaultTask = self.data.taskData[self.taskInd]
+//            }
             self.format.dateFormat = "MM_dd_yyyy"
             self.today = self.format.string(from: Date())
         }

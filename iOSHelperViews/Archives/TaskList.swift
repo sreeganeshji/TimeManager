@@ -18,7 +18,7 @@ struct TaskList: View {
             {
                 taskInd in
                 
-                NavigationLink(destination: TaskSummaryiOS(taskInd:taskInd ).environmentObject(self.data))
+                NavigationLink(destination: TaskSummaryiOS(taskInd:taskInd,showSheet: .constant(true) ).environmentObject(self.data))
                 {
                     Text(self.data.taskData[taskInd].name)
                 }

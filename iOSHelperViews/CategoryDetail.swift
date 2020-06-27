@@ -55,7 +55,7 @@ struct CategoryDetail: View {
                                                               Spacer()
 
                             }
-                        .tag(color)
+                            .tag(self.data.getColorName(color))
                         }
                     }
                 }

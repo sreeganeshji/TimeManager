@@ -55,6 +55,9 @@
 		1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A05249F3F630096EA60 /* taskRowiOS2.swift */; };
 		1F544A08249FE7A80096EA60 /* SummaryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A07249FE7A80096EA60 /* SummaryiOS.swift */; };
 		1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */; };
+		1F544A1624A5627A0096EA60 /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */; };
+		1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5924A68AD40096EA60 /* DataManager.swift */; };
+		1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5B24A70AD40096EA60 /* pieChart.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
 		1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */; };
@@ -167,6 +170,8 @@
 		1F544A05249F3F630096EA60 /* taskRowiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowiOS2.swift; sourceTree = "<group>"; };
 		1F544A07249FE7A80096EA60 /* SummaryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryiOS.swift; sourceTree = "<group>"; };
 		1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
+		1F544A5924A68AD40096EA60 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1F544A5B24A70AD40096EA60 /* pieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pieChart.swift; sourceTree = "<group>"; };
 		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
@@ -209,19 +214,15 @@
 		1F15EBD624562F10006E283D /* iOSHelperViews */ = {
 			isa = PBXGroup;
 			children = (
-				1FE107922455E240000934C2 /* taskRowIos.swift */,
 				1F544A05249F3F630096EA60 /* taskRowiOS2.swift */,
 				1F15EBD9245654D6006E283D /* taskSummaryiOS.swift */,
 				1F15EBD724564A94006E283D /* addTaskiOS.swift */,
-				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
-				1F15EBDF2456674F006E283D /* taskEditiOS.swift */,
 				1F15EBDD24566424006E283D /* SettingsiOS.swift */,
 				1F7BF80E249862E5001D7021 /* CategoryList.swift */,
-				1F250E9D249EDD5A005674E2 /* TaskList.swift */,
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
+				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
 				1F544A07249FE7A80096EA60 /* SummaryiOS.swift */,
-				1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
 			);
@@ -333,7 +334,9 @@
 		1F1AAC1A244E233200134634 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */,
 				1F1AAC26244E289100134634 /* models.swift */,
+				1F544A5924A68AD40096EA60 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,6 +367,10 @@
 		1F544A1224A456880096EA60 /* Archives */ = {
 			isa = PBXGroup;
 			children = (
+				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
+				1F250E9D249EDD5A005674E2 /* TaskList.swift */,
+				1FE107922455E240000934C2 /* taskRowIos.swift */,
+				1F15EBDF2456674F006E283D /* taskEditiOS.swift */,
 				1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */,
 			);
 			path = Archives;
@@ -387,6 +394,8 @@
 				1F1AABE3244E211D00134634 /* PBXTargetDependency */,
 			);
 			name = TimeManager;
+			packageProductDependencies = (
+			);
 			productName = TimeManager;
 			productReference = 1F1AABB6244E211A00134634 /* TimeManager.app */;
 			productType = "com.apple.product-type.application";
@@ -499,6 +508,8 @@
 				Base,
 			);
 			mainGroup = 1F1AABAD244E211A00134634;
+			packageReferences = (
+			);
 			productRefGroup = 1F1AABB7244E211A00134634 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -562,8 +573,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */,
 				1F250E9E249EDD5A005674E2 /* TaskList.swift in Sources */,
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
+				1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
 				1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */,
@@ -620,6 +633,7 @@
 				1F1AABFB244E211E00134634 /* NotificationController.swift in Sources */,
 				1F1AAC29244E293D00134634 /* addTask.swift in Sources */,
 				1F1AAC3B244EB44E00134634 /* TaskSummary.swift in Sources */,
+				1F544A1624A5627A0096EA60 /* SummaryManager.swift in Sources */,
 				1F1AAC2D244E293D00134634 /* taskRow.swift in Sources */,
 				1F1AAC3A244EAADF00134634 /* TaskOptions.swift in Sources */,
 				1F1AABF9244E211E00134634 /* ExtensionDelegate.swift in Sources */,

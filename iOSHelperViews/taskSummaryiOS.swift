@@ -15,7 +15,7 @@ struct TaskSummaryiOS: View {
     var format = DateFormatter()
     var displayFormat = DateFormatter()
     @EnvironmentObject var data:models
-    @State var categoryInd:Int = 0
+    @Binding var showSheet:Bool
     
     
     func giveTime(time:Int)->String
@@ -41,15 +41,15 @@ struct TaskSummaryiOS: View {
      {
         self.data.taskData[self.taskInd].timestamp[self.today] = TimeInterval(0)
      }
-    func getName(_ taskInd:Int)->String
-    {
-        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].name
-    }
-    
-    func getColor(_ taskInd:Int)->Color
-    {
-        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].color
-    }
+//    func getName(_ taskInd:Int)->String
+//    {
+//        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].name
+//    }
+//
+//    func getColor(_ taskInd:Int)->Color
+//    {
+//        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].color
+//    }
     var body: some View {
         NavigationView{
         Form{
@@ -66,7 +66,7 @@ struct TaskSummaryiOS: View {
 //                  }
             
             
-            Picker(selection: self.$categoryInd, label:  HStack{Text("Category:").bold()
+            Picker(selection: self.$data.taskData[self.taskInd].categoryInd, label:  HStack{Text("Category:").bold()
   
             }) {
                 
@@ -74,7 +74,7 @@ struct TaskSummaryiOS: View {
                 {
                     categoryInd in
                     HStack{
-                        Image(systemName: "bookmark.fill").foregroundColor(self.data.categories[categoryInd].color)
+                        Image(systemName: "bookmark.fill").foregroundColor(self.data.getColor((self.data.categories[categoryInd].color)))
                         Text(self.data.categories[categoryInd].name)
                     }
                 .tag(categoryInd)
@@ -101,6 +101,7 @@ struct TaskSummaryiOS: View {
             
 //                   Divider()
         }
+        .navigationBarItems(trailing: Button(action:{self.showSheet = false}){Text("Done")})
         .navigationBarTitle(self.data.taskData[self.taskInd].name)
     .onAppear()
         {
@@ -112,12 +113,12 @@ struct TaskSummaryiOS: View {
 //                self.data.taskData[self.taskInd].category = self.category
 //            }
 //            self.category = self.data.taskData[self.taskInd].category ?? models().nullCategory
-            self.categoryInd = self.data.taskData[self.taskInd].categoryInd
+//            self.categoryInd = self.data.taskData[self.taskInd].categoryInd
         }
-    .onDisappear()
-        {
-            self.data.taskData[self.taskInd].categoryInd = self.categoryInd
-        }
+//    .onDisappear()
+//        {
+////            self.data.taskData[self.taskInd].categoryInd = self.categoryInd
+//        }
             
         }
     }
@@ -125,6 +126,6 @@ struct TaskSummaryiOS: View {
 
 struct TaskSummaryiOS_Previews: PreviewProvider {
     static var previews: some View {
-        TaskSummaryiOS(taskInd: 0).environmentObject(models())
+        TaskSummaryiOS(taskInd: 0,showSheet: .constant(true)).environmentObject(models())
     }
 }

@@ -42,7 +42,7 @@ struct addCategoryiOS: View {
                                 HStack{
                                     Image(systemName:"bookmark.fill").foregroundColor(color)
                                    
-                                    Text(color.description).tag(color)
+                                    Text(color.description).tag(self.data.getColorName(color))
                                     Spacer()
                                 }
 //                            .padding()

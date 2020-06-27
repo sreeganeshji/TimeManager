@@ -31,17 +31,17 @@ class SummaryDaemon
         var time:TimeInterval
     }
     
-    var taskArr:[models.task]
+    var taskArr:[models.task] = .init()
     var formatter = DateFormatter()
     var DayTaskWise:[models.task:TimeInterval] = .init()
     var DayCatWise:[Int:TimeInterval] = .init()
-    var DayTaskRecord : [taskRecord] = .init()
-    var DayCatRecord : [catRecord] = .init()
+    @Published  var DayTaskRecord : [taskRecord] = .init()
+    @Published  var DayCatRecord : [catRecord] = .init()
     var processing:Bool = false
+    var categoryList: [models.category] = .init()
 
-    init(taskArray:[models.task],format:String = "MM_dd_yyyy")
+    init(format:String = "MM_dd_yyyy")
     {
-        self.taskArr = taskArray
         self.formatter.dateFormat = format
     }
 //    func fillArray<K:Hashable,L>(dictionary:[K:TimeInterval],array:inout[L])
@@ -59,9 +59,20 @@ class SummaryDaemon
             array.append(.init(task, time))
         }
         array.sort { (taskRecord1, taskRecord2) -> Bool in
-            taskRecord1.time > taskRecord2.time
+            if(taskRecord1.time > taskRecord2.time)
+            {
+                return true
+            }
+            else if (taskRecord1.time == taskRecord2.time) && (taskRecord1.task.name > taskRecord2.task.name)
+            {
+                return true
+            }
+            return false
+        
         }
     }
+
+    
     func fillCatArray(dic:[Int:TimeInterval],array:inout [catRecord])
        {
         array = .init()
@@ -69,9 +80,18 @@ class SummaryDaemon
                array.append(.init(cat, time))
            }
            array.sort { (catRecord1, catRecord2) -> Bool in
-               catRecord1.time > catRecord2.time
+               if(catRecord1.time > catRecord2.time)
+               {
+                return true
            }
+            else if (catRecord1.time == catRecord2.time) && ( self.categoryList[catRecord1.categoryInd].name > categoryList[catRecord2.categoryInd].name)
+               {
+                return true
+            }
+            return false
+
        }
+    }
     func refresh()
     {
 //        self.day(date: Date())

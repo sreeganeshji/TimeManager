@@ -40,7 +40,7 @@ struct addTask: View {
                             {
                                 categoryInd in
                                 Text(self.data.categories[categoryInd].name).tag(categoryInd)
-                                    .accentColor(self.data.categories[categoryInd].color)
+                                    .accentColor(self.data.getColor(self.data.categories[categoryInd].color))
                             }
 
                         }.frame(height:100)
