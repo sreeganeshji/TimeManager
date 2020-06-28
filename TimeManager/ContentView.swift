@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var data:models
     @State var i:Int = 0
     @State var currentTaskIndx:Int? //set if concurrent tasks are disabled
-    let timer = Timer.publish(every: 1.0, on: .main  , in: .common).autoconnect()
+    
 //    let today = Calendar.current.dateComponents([.day,.hour,.minute,.second], from: Date())
     @State var interval = TimeInterval()
     let format = DateFormatter()
@@ -239,7 +239,8 @@ struct ContentView: View {
                 
                 //Summary
                 
-                SummaryiOS(summaryRecord: self.$data.sumaryRecord).environmentObject(self.data)
+//                SummaryiOS(summaryRecord: self.$data.sumaryRecord).environmentObject(self.data)
+                SummaryiOS().environmentObject(self.data)
                     .tabItem {
                         Image(systemName: "chart.pie.fill")
                         Text("Summary")
@@ -269,7 +270,7 @@ struct ContentView: View {
                 
             } //ending tabView
 //    }//ending Navigation View
-            .onReceive(self.timer) { _ in
+                .onReceive(self.data.timer) { _ in
 
                                    if self.data.taskData.count == 0
                                    {
@@ -281,6 +282,11 @@ struct ContentView: View {
                                      self.incrementTaskCounter(task: self.$data.taskData[ind])
                                    }
                                  }
+                    self.data.sumaryRecord.taskArr = self.data.taskData
+                    self.data.sumaryRecord.categoryList = self.data.categories
+                    self.data.sumaryRecord.update(dateComponent: .day, startDate: Date())
+                    self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
+                    self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
                                }
             
                                                             

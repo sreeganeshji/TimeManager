@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBD724564A94006E283D /* addTaskiOS.swift */; };
 		1F15EBDA245654D6006E283D /* taskSummaryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBD9245654D6006E283D /* taskSummaryiOS.swift */; };
-		1F15EBDC24565518006E283D /* taskOptionsiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBDB24565518006E283D /* taskOptionsiOS.swift */; };
 		1F15EBDE24566424006E283D /* SettingsiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBDD24566424006E283D /* SettingsiOS.swift */; };
-		1F15EBE02456674F006E283D /* taskEditiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15EBDF2456674F006E283D /* taskEditiOS.swift */; };
 		1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AABB9244E211A00134634 /* AppDelegate.swift */; };
 		1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AABBB244E211A00134634 /* SceneDelegate.swift */; };
 		1F1AABC0244E211C00134634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AABBF244E211C00134634 /* Assets.xcassets */; };
@@ -49,19 +47,16 @@
 		1F1AAC3A244EAADF00134634 /* TaskOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC34244EA5D400134634 /* TaskOptions.swift */; };
 		1F1AAC3B244EB44E00134634 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
 		1F1AAC3C244F7F6600134634 /* TaskEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC38244EA8DD00134634 /* TaskEdit.swift */; };
-		1F250E9E249EDD5A005674E2 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9D249EDD5A005674E2 /* TaskList.swift */; };
 		1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9F249F099C005674E2 /* addCategoryiOS.swift */; };
 		1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
+		1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F51D56224A8207E000D118D /* SummaryiOS2.swift */; };
 		1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A05249F3F630096EA60 /* taskRowiOS2.swift */; };
-		1F544A08249FE7A80096EA60 /* SummaryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A07249FE7A80096EA60 /* SummaryiOS.swift */; };
 		1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */; };
 		1F544A1624A5627A0096EA60 /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */; };
 		1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5924A68AD40096EA60 /* DataManager.swift */; };
 		1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5B24A70AD40096EA60 /* pieChart.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
-		1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */; };
-		1FE107932455E240000934C2 /* taskRowIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE107922455E240000934C2 /* taskRowIos.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +162,7 @@
 		1F1AAC38244EA8DD00134634 /* TaskEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEdit.swift; sourceTree = "<group>"; };
 		1F250E9D249EDD5A005674E2 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		1F250E9F249F099C005674E2 /* addCategoryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCategoryiOS.swift; sourceTree = "<group>"; };
+		1F51D56224A8207E000D118D /* SummaryiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryiOS2.swift; sourceTree = "<group>"; };
 		1F544A05249F3F630096EA60 /* taskRowiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowiOS2.swift; sourceTree = "<group>"; };
 		1F544A07249FE7A80096EA60 /* SummaryiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryiOS.swift; sourceTree = "<group>"; };
 		1F544A0B24A2C0C20096EA60 /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
@@ -222,7 +218,7 @@
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
 				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
-				1F544A07249FE7A80096EA60 /* SummaryiOS.swift */,
+				1F51D56224A8207E000D118D /* SummaryiOS2.swift */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
 			);
@@ -367,6 +363,7 @@
 		1F544A1224A456880096EA60 /* Archives */ = {
 			isa = PBXGroup;
 			children = (
+				1F544A07249FE7A80096EA60 /* SummaryiOS.swift */,
 				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
 				1F250E9D249EDD5A005674E2 /* TaskList.swift */,
 				1FE107922455E240000934C2 /* taskRowIos.swift */,
@@ -574,7 +571,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */,
-				1F250E9E249EDD5A005674E2 /* TaskList.swift in Sources */,
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
 				1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
@@ -584,10 +580,10 @@
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
 				1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */,
-				1FAF1D2C24993EA5002B10AA /* CategoryColor.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,
 				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
+				1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
 				1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */,
 				1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */,
@@ -596,12 +592,8 @@
 				1F15EBDA245654D6006E283D /* taskSummaryiOS.swift in Sources */,
 				1F15EBDE24566424006E283D /* SettingsiOS.swift in Sources */,
 				1F1AAC22244E288900134634 /* deleteTasks.swift in Sources */,
-				1FE107932455E240000934C2 /* taskRowIos.swift in Sources */,
 				1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */,
-				1F15EBE02456674F006E283D /* taskEditiOS.swift in Sources */,
-				1F15EBDC24565518006E283D /* taskOptionsiOS.swift in Sources */,
 				1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */,
-				1F544A08249FE7A80096EA60 /* SummaryiOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

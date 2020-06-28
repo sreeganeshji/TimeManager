@@ -21,7 +21,14 @@ struct SummaryiOS: View {
     @State var ShowTaskvsCategory = true
     @Binding var summaryRecord:SummaryDaemon
     let today = Date()
+//    let timer4 = Timer.publish(every: 0.5, on: .main  , in: .common).autoconnect()
 
+//    init(taskList:[models.task],categoryList:[models.category])
+//    {
+////        self.summaryRecord = .init(taskList:taskList,categoryList:categoryList)
+//        print("calling init")
+//    }
+    
     func giveTime(time:Int)->String
      {
          var sec = time
@@ -45,17 +52,18 @@ struct SummaryiOS: View {
     
         NavigationView{
             VStack{
-            Picker(selection: $calComponent, label: Text("Interval")) {
+                Picker(selection: self.$data.sumaryRecord.timeRange, label: Text("Interval")) {
                 Text("Day").tag(Calendar.Component.day)
                 Text("Week").tag(Calendar.Component.weekOfMonth)
                 Text("Month").tag(Calendar.Component.month)
                 Text("Year").tag(Calendar.Component.year)
             }
-            .onReceive([self.calComponent].publisher.first(), perform: { value in
+//            .onReceive([self.calComponent].publisher.first(), perform: { value in
+//                .onReceive(self.timer4){ _ in
 //                print("updating View")
-                self.summaryRecord.taskArr = self.data.taskData
-                self.summaryRecord.categoryList = self.data.categories
-                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())})
+//                self.summaryRecord.taskArr = self.data.taskData
+//                self.summaryRecord.categoryList = self.data.categories
+//                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
             .pickerStyle(SegmentedPickerStyle())
             
                 VStack{
@@ -164,7 +172,15 @@ struct SummaryiOS: View {
                 print("onAppear Summary")
                 self.format.dateFormat = "MM_dd_yyyy"
                 self.calComponent = .day
+                self.summaryRecord.taskArr = self.data.taskData
+                self.summaryRecord.categoryList = self.data.categories
+                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())
         }
+//        .onReceive(self.timer4){ _ in
+//        print("updating View")
+//        self.summaryRecord.taskArr = self.data.taskData
+//        self.summaryRecord.categoryList = self.data.categories
+//        self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
     }
 }
 

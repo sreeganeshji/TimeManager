@@ -103,6 +103,8 @@ class models: ObservableObject
     
     @Published var taskData:[task] = []
 
+    let timer = Timer.publish(every: 1.0, on: .main  , in: .common).autoconnect()
+    
     init()
     {
 //        categories = [category("No category", .gray),category("Work"),category("Study"),category("Play"),category("Socialize")]
@@ -112,4 +114,28 @@ class models: ObservableObject
         
         
     }
+    //Summary models
+    struct taskRecord : Hashable
+    {
+        init(_ task:models.task,_ time:TimeInterval)
+        {
+            self.task = task
+            self.time = time
+        }
+        var task:models.task
+        var time:TimeInterval
+    }
+    struct catRecord : Hashable
+    {
+        init(_ catInd:Int,_ time:TimeInterval)
+        {
+            self.categoryInd = catInd
+            self.time = time
+        }
+        var categoryInd:Int
+        var time:TimeInterval
+    }
+    
+    @Published var taskRecordArr:[taskRecord] = .init()
+    @Published var catRecordArr:[catRecord] = .init()
 }

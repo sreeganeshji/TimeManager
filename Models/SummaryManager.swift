@@ -8,41 +8,31 @@
 
 import Foundation
 
-class SummaryDaemon
+class SummaryDaemon:ObservableObject
 {
-    struct taskRecord : Hashable
-    {
-        init(_ task:models.task,_ time:TimeInterval)
-        {
-            self.task = task
-            self.time = time
-        }
-        var task:models.task
-        var time:TimeInterval
-    }
-    struct catRecord : Hashable
-    {
-        init(_ catInd:Int,_ time:TimeInterval)
-        {
-            self.categoryInd = catInd
-            self.time = time
-        }
-        var categoryInd:Int
-        var time:TimeInterval
-    }
+
     
-    var taskArr:[models.task] = .init()
+  
+    var taskArr:[models.task]
     var formatter = DateFormatter()
     var DayTaskWise:[models.task:TimeInterval] = .init()
     var DayCatWise:[Int:TimeInterval] = .init()
-    @Published  var DayTaskRecord : [taskRecord] = .init()
-    @Published  var DayCatRecord : [catRecord] = .init()
+    var taskRecordArr : [models.taskRecord] = .init()
+    var catRecordArr : [models.catRecord] = .init()
     var processing:Bool = false
-    var categoryList: [models.category] = .init()
+    var categoryList: [models.category]
 
     init(format:String = "MM_dd_yyyy")
     {
         self.formatter.dateFormat = format
+        self.taskArr = []
+        self.categoryList = []
+    }
+    init(taskList:[models.task],categoryList:[models.category])
+    {
+        self.formatter.dateFormat = "MM_dd_yyyy"
+        self.taskArr = taskList
+        self.categoryList = categoryList
     }
 //    func fillArray<K:Hashable,L>(dictionary:[K:TimeInterval],array:inout[L])
 //    {
@@ -52,9 +42,9 @@ class SummaryDaemon
 //            array.append(L(key,value))
 //        }
 //    }
-    func fillTaskArray(dic:[models.task:TimeInterval],array:inout [taskRecord])
+    func fillTaskArray(dic:[models.task:TimeInterval],curArray:inout [models.taskRecord])
     {
-        array = .init()
+        var array:[models.taskRecord] = .init()
         for (task,time) in dic{
             array.append(.init(task, time))
         }
@@ -70,12 +60,33 @@ class SummaryDaemon
             return false
         
         }
+        curArray = .init(array)
     }
 
+    func giveTaskArray(dic:[models.task:TimeInterval]) ->([models.taskRecord])
+    {
+        var array:[models.taskRecord] = .init()
+        for (task,time) in dic{
+            array.append(.init(task, time))
+        }
+        array.sort { (taskRecord1, taskRecord2) -> Bool in
+            if(taskRecord1.time > taskRecord2.time)
+            {
+                return true
+            }
+            else if (taskRecord1.time == taskRecord2.time) && (taskRecord1.task.name > taskRecord2.task.name)
+            {
+                return true
+            }
+            return false
+        
+        }
+        return array
+    }
     
-    func fillCatArray(dic:[Int:TimeInterval],array:inout [catRecord])
+    func fillCatArray(dic:[Int:TimeInterval],curArray:inout [models.catRecord])
        {
-        array = .init()
+        var array :[models.catRecord] = .init()
            for (cat,time) in dic{
                array.append(.init(cat, time))
            }
@@ -91,7 +102,31 @@ class SummaryDaemon
             return false
 
        }
+        curArray = .init(array)
     }
+    
+    func giveCatArray(dic:[Int:TimeInterval])->([models.catRecord])
+       {
+        var array :[models.catRecord] = .init()
+           for (cat,time) in dic{
+               array.append(.init(cat, time))
+           }
+           array.sort { (catRecord1, catRecord2) -> Bool in
+               if(catRecord1.time > catRecord2.time)
+               {
+                return true
+           }
+            else if (catRecord1.time == catRecord2.time) && ( self.categoryList[catRecord1.categoryInd].name > categoryList[catRecord2.categoryInd].name)
+               {
+                return true
+            }
+            return false
+
+       }
+        return array
+    }
+
+    
     func refresh()
     {
 //        self.day(date: Date())
@@ -116,11 +151,11 @@ class SummaryDaemon
                 }
             }
         
-        self.fillTaskArray(dic: self.DayTaskWise, array: &self.DayTaskRecord)
-        self.fillCatArray(dic: self.DayCatWise, array: &self.DayCatRecord)
+        self.fillTaskArray(dic: self.DayTaskWise, curArray: &self.taskRecordArr)
+        self.fillCatArray(dic: self.DayCatWise, curArray: &self.catRecordArr)
     }
     
-    
+    var timeRange:Calendar.Component = .day
     
     func update(dateComponent:Calendar.Component, startDate:Date)
     {
@@ -131,9 +166,9 @@ class SummaryDaemon
         var dateDecrement = DateComponents()
         dateDecrement.day = -1
         //extract current date component
-        let currentComponentValue = calendar.component(dateComponent, from: startDate)
+        let currentComponentValue = calendar.component(timeRange, from: startDate)
     
-        var newComponentValue = calendar.component(dateComponent, from: startDate)
+        var newComponentValue = calendar.component(timeRange, from: startDate)
         var date = startDate
         while(newComponentValue == currentComponentValue)
         {
@@ -142,9 +177,8 @@ class SummaryDaemon
             
             //update date and components
             date = calendar.date(byAdding: dateDecrement, to: date) ?? date
-            newComponentValue = calendar.component(dateComponent, from: date)
+            newComponentValue = calendar.component(timeRange, from: date)
         }
-        
-
+        print("problem")
     }
 }
