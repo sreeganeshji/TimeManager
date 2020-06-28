@@ -142,7 +142,9 @@ struct SummaryiOS: View {
                                     Text(self.giveTime(time:Int(self.data.catRecordArr[ind].time)))
                                 }
                               }
-        
+                                            pieChart(catRecordArr: self.$data.catRecordArr)
+                                                .frame(height:300)
+                                            .padding()
                                         }
                                     }
                                 }
