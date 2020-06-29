@@ -154,9 +154,14 @@ struct SummaryiOS: View {
                                     
                                         }
                               }
-                                            pieChart(catRecordArr: self.$data.catRecordArr)
-                                                .frame(height:300)
-                                            .padding()
+                                                GeometryReader{
+                                                    reader in
+                                                    pieChart(catRecordArr: self.$data.catRecordArr,width:Double(reader.size.width),height:Double(reader.size.height))
+                                                
+                                          
+                    }
+                                                      .padding()
+                    .frame(height:300)
                     }
                 }
             }

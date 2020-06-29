@@ -224,7 +224,6 @@
 				1F7BF80E249862E5001D7021 /* CategoryList.swift */,
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
-				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
 			);
@@ -362,6 +361,7 @@
 		1F544A1124A44E030096EA60 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
 				1F51D56224A8207E000D118D /* SummaryiOS2.swift */,
 				1F51D56524A842CC000D118D /* selectRange.swift */,
 				1F51D56724A86FE9000D118D /* chooseDate.swift */,

@@ -37,28 +37,32 @@ struct pieChart: View {
     }
     @EnvironmentObject var data:models
     @Binding var catRecordArr:[models.catRecord]
+//    @Binding var reader:GeometryProxy
+    var width:Double
+    var height:Double
+    
     var body: some View {
 
-        GeometryReader{
-            reader in
+//        GeometryReader{
+//            reader in
             ForEach(self.slices,id:\.self)
             {
                 slice in
                 Path{
                     path in
-                    path.addArc(center: .init(x: reader.size.width/2, y: reader.size.height/2), radius: min(reader.size.width/2,reader.size.height/2), startAngle: slice.startAngle, endAngle: slice.endAngle, clockwise: false)
-                    path.addLine(to: .init(x: reader.size.width/2, y: reader.size.height/2))
+                    path.addArc(center: .init(x: self.width/2, y: self.height/2), radius: CGFloat(min(self.width/2,self.height/2)), startAngle: slice.startAngle, endAngle: slice.endAngle, clockwise: false)
+                    path.addLine(to: .init(x: self.width/2, y: self.height/2))
                     path.closeSubpath()
                 }
                 .animation(.linear)
                 .foregroundColor((slice.catInd < self.data.categories.count) ? self.data.getColor(self.data.categories[slice.catInd].color) : .white)
             }
-        }
+//        }
     }
 }
 
 struct pieChart_Previews: PreviewProvider {
     static var previews: some View {
-        pieChart(catRecordArr: .constant(.init())).environmentObject(models())
+        pieChart(catRecordArr: .constant(.init()), width:300,height:300).environmentObject(models())
     }
 }
