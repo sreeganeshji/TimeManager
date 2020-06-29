@@ -103,7 +103,8 @@ class models: ObservableObject
     
     @Published var taskData:[task] = []
 
-    let timer = Timer.publish(every: 1.0, on: .main  , in: .common).autoconnect()
+    var timeCounter = 0
+    let timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
     
     init()
     {
@@ -112,7 +113,7 @@ class models: ObservableObject
         
         //        taskData = taskData = [task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
         
-        
+        print("Initializing models")
     }
     //Summary models
     struct taskRecord : Hashable
@@ -135,7 +136,9 @@ class models: ObservableObject
         var categoryInd:Int
         var time:TimeInterval
     }
-    
+    var summaryTimeRange = Calendar.Component.day
+    var refDate = Date()
     @Published var taskRecordArr:[taskRecord] = .init()
     @Published var catRecordArr:[catRecord] = .init()
+    var calculateSummary = false
 }

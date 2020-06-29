@@ -271,7 +271,9 @@ struct ContentView: View {
             } //ending tabView
 //    }//ending Navigation View
                 .onReceive(self.data.timer) { _ in
-
+                    if(self.data.timeCounter == 4)
+                    {
+                        self.data.timeCounter = 0
                                    if self.data.taskData.count == 0
                                    {
                                        return
@@ -282,9 +284,12 @@ struct ContentView: View {
                                      self.incrementTaskCounter(task: self.$data.taskData[ind])
                                    }
                                  }
+                    }
+                    self.data.timeCounter += 1
+                    
                     self.data.sumaryRecord.taskArr = self.data.taskData
                     self.data.sumaryRecord.categoryList = self.data.categories
-                    self.data.sumaryRecord.update(dateComponent: .day, startDate: Date())
+                    self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
                     self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
                     self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
                                }

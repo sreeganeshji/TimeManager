@@ -155,7 +155,6 @@ class SummaryDaemon:ObservableObject
         self.fillCatArray(dic: self.DayCatWise, curArray: &self.catRecordArr)
     }
     
-    var timeRange:Calendar.Component = .day
     
     func update(dateComponent:Calendar.Component, startDate:Date)
     {
@@ -166,9 +165,9 @@ class SummaryDaemon:ObservableObject
         var dateDecrement = DateComponents()
         dateDecrement.day = -1
         //extract current date component
-        let currentComponentValue = calendar.component(timeRange, from: startDate)
+        let currentComponentValue = calendar.component(dateComponent, from: startDate)
     
-        var newComponentValue = calendar.component(timeRange, from: startDate)
+        var newComponentValue = calendar.component(dateComponent, from: startDate)
         var date = startDate
         while(newComponentValue == currentComponentValue)
         {
@@ -177,8 +176,8 @@ class SummaryDaemon:ObservableObject
             
             //update date and components
             date = calendar.date(byAdding: dateDecrement, to: date) ?? date
-            newComponentValue = calendar.component(timeRange, from: date)
+            newComponentValue = calendar.component(dateComponent, from: date)
         }
-        print("problem")
+//        print("problem")
     }
 }

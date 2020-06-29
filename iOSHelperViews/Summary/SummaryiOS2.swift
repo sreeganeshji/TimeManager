@@ -52,9 +52,10 @@ struct SummaryiOS: View {
     
         NavigationView{
             VStack{
-                Picker(selection: self.$data.sumaryRecord.timeRange, label: Text("Interval")) {
+          
+                Picker(selection: self.$data.summaryTimeRange, label: Text("Interval")) {
                 Text("Day").tag(Calendar.Component.day)
-                Text("Week").tag(Calendar.Component.weekOfMonth)
+                Text("Week").tag(Calendar.Component.weekOfYear)
                 Text("Month").tag(Calendar.Component.month)
                 Text("Year").tag(Calendar.Component.year)
             }
@@ -66,6 +67,8 @@ struct SummaryiOS: View {
 //                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
             .pickerStyle(SegmentedPickerStyle())
             
+             
+                
                 VStack{
                     if(self.data.taskRecordArr.count == 0)
                             {
@@ -136,8 +139,8 @@ struct SummaryiOS: View {
                                 
                                 HStack{
                                     Image(systemName: "bookmark.fill")
-                                        .foregroundColor(self.data.getColor(self.data.categories[self.data.catRecordArr[ind].categoryInd].color))
-                                    Text(self.data.categories[self.data.catRecordArr[ind].categoryInd].name)
+                                        .foregroundColor((self.data.catRecordArr[ind].categoryInd < self.data.categories.count) ?  self.data.getColor(self.data.categories[self.data.catRecordArr[ind].categoryInd].color) : .white)
+                                    Text((self.data.catRecordArr[ind].categoryInd < self.data.categories.count) ? self.data.categories[self.data.catRecordArr[ind].categoryInd].name : "")
                                     Spacer()
                                     Text(self.giveTime(time:Int(self.data.catRecordArr[ind].time)))
                                 }
@@ -149,18 +152,22 @@ struct SummaryiOS: View {
                                     }
                                 }
                             }
-                }
+                    
              
-                Section{
+                }
+                
+                selectRange(dateField: self.$data.summaryTimeRange, dateValue: self.$data.refDate).environmentObject(self.data)
+
                     Picker(selection: self.$ShowTaskvsCategory, label:Text("Choice"))
                     {
+                        
                         Text("Task").tag(true)
                         Text("Category").tag(false)
                     }
                 .pickerStyle(SegmentedPickerStyle())
-                }
                 
-            }
+                }
+            
     .navigationBarTitle("Summary")
 //        .navigationBarItems(trailing: Button(action:{
 ////            self.summaryRecord.refresh()
@@ -177,6 +184,10 @@ struct SummaryiOS: View {
 //                self.summaryRecord.taskArr = self.data.taskData
 //                self.summaryRecord.categoryList = self.data.categories
 //                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())
+                self.data.calculateSummary = true
+        }
+        .onDisappear(){
+            self.data.calculateSummary = false
         }
 //        .onReceive(self.timer4){ _ in
 //        print("updating View")
