@@ -63,6 +63,7 @@ struct iconMaker: View {
         }
         
     }
+        .frame(width:200)
 }
 }
 struct iconMaker_Previews: PreviewProvider {

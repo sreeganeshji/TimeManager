@@ -63,6 +63,8 @@
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
+		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
+		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,7 +130,7 @@
 		1F15EBDB24565518006E283D /* taskOptionsiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskOptionsiOS.swift; sourceTree = "<group>"; };
 		1F15EBDD24566424006E283D /* SettingsiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsiOS.swift; sourceTree = "<group>"; };
 		1F15EBDF2456674F006E283D /* taskEditiOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskEditiOS.swift; sourceTree = "<group>"; };
-		1F1AABB6244E211A00134634 /* TimeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F1AABB6244E211A00134634 /* Time Tally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Tally.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1AABB9244E211A00134634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F1AABBB244E211A00134634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1F1AABBF244E211C00134634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,6 +187,8 @@
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
+		1FF8BA4324AA72E20068C894 /* LaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchIcon.png; sourceTree = "<group>"; };
+		1FF8BA4524AA851E0068C894 /* circle-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-cropped.png"; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,7 +258,7 @@
 		1F1AABB7244E211A00134634 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F1AABB6244E211A00134634 /* TimeManager.app */,
+				1F1AABB6244E211A00134634 /* Time Tally.app */,
 				1F1AABCC244E211D00134634 /* TimeManagerTests.xctest */,
 				1F1AABD7244E211D00134634 /* TimeManagerUITests.xctest */,
 				1F1AABE0244E211D00134634 /* TimeManager WatchKit App.app */,
@@ -270,6 +274,7 @@
 				1F1AABBB244E211A00134634 /* SceneDelegate.swift */,
 				1FF9BCB82497086A002C19B6 /* ContentView.swift */,
 				1F1AABBF244E211C00134634 /* Assets.xcassets */,
+				1FF8BA4224AA72AB0068C894 /* Resources */,
 				1F1AABC4244E211C00134634 /* LaunchScreen.storyboard */,
 				1F1AABC7244E211C00134634 /* Info.plist */,
 				1F1AABC1244E211C00134634 /* Preview Content */,
@@ -393,6 +398,15 @@
 			path = Archives;
 			sourceTree = "<group>";
 		};
+		1FF8BA4224AA72AB0068C894 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1FF8BA4524AA851E0068C894 /* circle-cropped.png */,
+				1FF8BA4324AA72E20068C894 /* LaunchIcon.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,7 +428,7 @@
 			packageProductDependencies = (
 			);
 			productName = TimeManager;
-			productReference = 1F1AABB6244E211A00134634 /* TimeManager.app */;
+			productReference = 1F1AABB6244E211A00134634 /* Time Tally.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1F1AABCB244E211D00134634 /* TimeManagerTests */ = {
@@ -545,8 +559,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */,
 				1F1AABC6244E211C00134634 /* LaunchScreen.storyboard in Resources */,
 				1F1AABC3244E211C00134634 /* Preview Assets.xcassets in Resources */,
+				1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */,
 				1F1AABC0244E211C00134634 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -925,7 +941,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -945,7 +961,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
