@@ -13,8 +13,8 @@ struct selectRange: View {
     @Binding var dateValue:Date
     @State var weekOffset:Int = 0
     @State var thisMonth:Int = 0
-    @State var loadingMonth = true
     @State var showSheet = false
+    @State var yearOffset:Int = 0
 //    init()
 //    {
 //        self.weekOffset = 0
@@ -60,22 +60,40 @@ struct selectRange: View {
     }
     
     func updateMonth(monthNo:Int)->String{
-        if(self.loadingMonth)
-        {
-            return "Month:"
-        }
         var monthComponent = calendar.dateComponents(in: .autoupdatingCurrent, from: self.dateValue)
         monthComponent.month = monthNo
         self.dateValue = calendar.date(from: monthComponent)!
         return "Month:"
     }
     
+    func getYearRange(yearOffset:Int)->String{
+        //get the start of this week
+        let yearInterval = self.calendar.dateInterval(of: .year, for: .init())
+        let endDate = yearInterval?.end
+        var offsetEndDate = self.calendar.date(byAdding: .year, value: yearOffset, to: endDate ?? .init())!
+        offsetEndDate = self.calendar.date(byAdding: .day, value: -1, to: offsetEndDate)!
+        self.dateValue = offsetEndDate
+        let offsetYearInterval = self.calendar.dateInterval(of: .year, for: offsetEndDate) ?? DateInterval.init()
+        let offsetWeekStartDate = offsetYearInterval.start
+        let offsetWeekEndDate = calendar.date(byAdding: .day, value: -1, to: offsetYearInterval.end)!
+        return getYear(offsetEndDate)
+    }
+    
+//    func updateYear(yearNo:Int)->String{
+//        let yearInterval = calendar.dateInterval(of: .year, for: calendar.date(bySetting: .year, value: yearNo, of: .init())!)
+//        let nextYearFirstDay = yearInterval!.end
+//        let givenYearLastDay = calendar.date(byAdding: .day, value: -1, to: nextYearFirstDay)
+//        self.dateValue = givenYearLastDay!
+//        return "Year:"
+//    }
+    
     var body: some View {
         VStack{
         
         if(self.dateField == .day)
         {
-            NavigationLink(destination: chooseDate(dateVal: self.$dateValue,showSheet: self.$showSheet))
+//            NavigationLink(destination: chooseDate(dateVal: self.$dateValue,showSheet: self.$showSheet))
+            Button(action:{self.showSheet = true})
             {
                 HStack{
                     Text("Date:").bold()
@@ -91,10 +109,6 @@ struct selectRange: View {
                    
                 }
                 .padding(.horizontal)
-            .onAppear()
-                {
-                    self.dateValue = .init()
-                }
             }
             
         }
@@ -116,50 +130,41 @@ struct selectRange: View {
         else if(self.dateField == .month)
         {
             
-            NavigationLink(destination:chooseMonth(monthVal: self.$thisMonth,showSheet: self.$showSheet))
+            Button(action:{self.showSheet = true})
             {
                 Text(updateMonth(monthNo: self.thisMonth)).bold()
                 Text(getMonth(self.dateValue))
                 Text(getYear(self.dateValue))
             }
                 .onAppear(){
-                    self.showSheet = true
                     self.dateValue = .init()
                     self.thisMonth = self.calendar.component(.month, from: self.dateValue)
-                    self.loadingMonth = false
             }
             
             }
         else if(self.dateField == .year)
         {
-            Text("Year")
+           Stepper(value: self.$yearOffset, in: -10...10) {
+               VStack{
+                   Text("Year:").bold()
+                Text(getYearRange(yearOffset: self.yearOffset))
+               }
+           }
+           .padding(.horizontal)
+                .onAppear(){
+                    self.dateValue = .init()    
+            }
+
             }
         }
         .sheet(isPresented: self.$showSheet, content: {
             if(self.dateField == .day)
                     {
-                        NavigationLink(destination: chooseDate(dateVal: self.$dateValue, showSheet: self.$showSheet))
-                        {
-                            HStack{
-                                Text("Date:").bold()
-                                Spacer()
-                                Text(self.getMonth(self.dateValue))
-                                Text(self.getDate(self.dateValue))
-                                Text(self.getYear(self.dateValue))
-                                Spacer()
-                                Button(action:{self.dateValue = Date()})
-                                {
-                                    Text("Today").bold()
-                                }
-                               
-                            }
-                            .padding(.horizontal)
-                        .onAppear()
-                            {
-                                self.dateValue = .init()
-                            }
+                        NavigationView{
+                       chooseDate(dateVal: self.$dateValue, showSheet: self.$showSheet)
+
                         }
-                        
+   
                     }
                     else if(self.dateField == .weekOfYear)
                     {
@@ -178,25 +183,12 @@ struct selectRange: View {
                     }
                     else if(self.dateField == .month)
                     {
-                        
-                        NavigationLink(destination:chooseMonth(monthVal: self.$thisMonth,showSheet: self.$showSheet))
-                        {
-                            Text(self.updateMonth(monthNo: self.thisMonth)).bold()
-                            Text(self.getMonth(self.dateValue))
-                            Text(self.getYear(self.dateValue))
-                        }
-                            .onAppear(){
-                                self.showSheet = true
-                                self.dateValue = .init()
-                                self.thisMonth = self.calendar.component(.month, from: self.dateValue)
-                                self.loadingMonth = false
-                        }
+                        NavigationView{
+                        chooseMonth(monthVal: self.$thisMonth,showSheet: self.$showSheet)
                         
                         }
-                    else if(self.dateField == .year)
-                    {
-                        Text("Year")
-                        }
+            }
+                    
         })
         
     }

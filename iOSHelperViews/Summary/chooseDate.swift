@@ -16,6 +16,10 @@ struct chooseDate: View {
         DatePicker(selection: self.$dateVal, displayedComponents: .date, label: { Text("Date") })
         .labelsHidden()
         .navigationBarTitle("Select day")
+            .navigationBarItems(trailing: Button(action:{self.showSheet = false})
+            {
+                Text("Done")
+            })
     }
 }
 

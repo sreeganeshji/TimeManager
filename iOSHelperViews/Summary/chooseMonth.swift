@@ -23,6 +23,11 @@ struct chooseMonth: View {
             }
         })
         .labelsHidden()
+            .navigationBarTitle("Select month")
+        .navigationBarItems(trailing: Button(action:{self.showSheet = false})
+        {
+            Text("Done")
+        })
     }
 }
 
