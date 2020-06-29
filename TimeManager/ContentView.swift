@@ -285,14 +285,14 @@ struct ContentView: View {
                                    }
                                  }
                     }
-                    self.data.timeCounter += 1
-                    
                     self.data.sumaryRecord.taskArr = self.data.taskData
                     self.data.sumaryRecord.categoryList = self.data.categories
                     self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
                     self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
                     self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
-                               }
+                               
+                    self.data.timeCounter += 1
+            }
             
                                                             
 //                        .sheet(isPresented: $addTaskRequest, content:{ addTask(activeView: self.$addTaskRequest).environmentObject(self.data)})

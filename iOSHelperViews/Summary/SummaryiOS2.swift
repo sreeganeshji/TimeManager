@@ -48,6 +48,16 @@ struct SummaryiOS: View {
          
      }
     
+    func updateSummaryAndGiveInterval()->String
+    {
+        self.data.sumaryRecord.taskArr = self.data.taskData
+        self.data.sumaryRecord.categoryList = self.data.categories
+        self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
+        self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
+        self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
+        return ("Interval")
+    }
+    
     var body: some View {
     
         NavigationView{
@@ -169,6 +179,7 @@ struct SummaryiOS: View {
                 }
             
     .navigationBarTitle("Summary")
+//            .navigationBarItems(trailing: Text(self.updateSummaryAndGiveInterval()))
 //        .navigationBarItems(trailing: Button(action:{
 ////            self.summaryRecord.refresh()
 //        })

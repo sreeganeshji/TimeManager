@@ -685,8 +685,8 @@
             filePath = "iOSHelperViews/Summary/SummaryiOS2.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -701,9 +701,9 @@
                   urlString = "file:///Users/ganesh/Desktop/Apps/TimeManager/iOSHelperViews/Summary/SummaryiOS2.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "1004">
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "1072">
                </Location>
                <Location
                   uuid = "E45DC51C-C58B-4B79-B632-C0004CA07178 - 4a0d14e009e0ccec"
@@ -716,8 +716,8 @@
                   urlString = "file:///Users/ganesh/Desktop/Apps/TimeManager/iOSHelperViews/Summary/SummaryiOS2.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
                   offsetFromSymbolStart = "320">
                </Location>
             </Locations>
@@ -925,8 +925,8 @@
             filePath = "iOSHelperViews/Summary/selectRange.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -941,8 +941,8 @@
             filePath = "iOSHelperViews/Summary/selectRange.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -992,6 +992,22 @@
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "updateMonth(monthNo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B1E3940-78BE-47D9-9CC2-D3F7DDD1A9F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSHelperViews/Summary/SummaryiOS2.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "updateSummaryAndGiveInterval()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

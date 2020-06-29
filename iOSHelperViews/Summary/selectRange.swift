@@ -106,6 +106,9 @@ struct selectRange: View {
                     {
                         Text("Today").bold()
                     }
+                    .onAppear(){
+                        self.dateValue = Date()
+                    }
                    
                 }
                 .padding(.horizontal)
@@ -145,14 +148,15 @@ struct selectRange: View {
         else if(self.dateField == .year)
         {
            Stepper(value: self.$yearOffset, in: -10...10) {
-               VStack{
+               HStack{
                    Text("Year:").bold()
                 Text(getYearRange(yearOffset: self.yearOffset))
                }
            }
            .padding(.horizontal)
                 .onAppear(){
-                    self.dateValue = .init()    
+                    self.dateValue = .init()
+                    self.yearOffset = 0
             }
 
             }
