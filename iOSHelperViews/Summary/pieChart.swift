@@ -54,7 +54,6 @@ struct pieChart: View {
                     path.addLine(to: .init(x: self.width/2, y: self.height/2))
                     path.closeSubpath()
                 }
-                .animation(.linear)
                 .foregroundColor((slice.catInd < self.data.categories.count) ? self.data.getColor(self.data.categories[slice.catInd].color) : .white)
             }
 //        }

@@ -589,8 +589,8 @@
             filePath = "iOSHelperViews/Summary/pieChart.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "previews"
             landmarkType = "24">
             <Locations>
@@ -637,8 +637,8 @@
             filePath = "iOSHelperViews/Summary/pieChart.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "previews"
             landmarkType = "24">
             <Locations>
@@ -973,8 +973,8 @@
             filePath = "iOSHelperViews/Summary/SummaryiOS2.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

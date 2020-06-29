@@ -197,7 +197,7 @@ struct ContentView: View {
                 
                 //Summary tab view
                 NavigationView{
-                SummaryiOS().environmentObject(self.data)
+                    SummaryiOS().environmentObject(self.data)
             }
                     .tabItem {
                         Image(systemName: "chart.pie.fill")

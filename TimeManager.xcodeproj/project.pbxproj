@@ -58,8 +58,11 @@
 		1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5924A68AD40096EA60 /* DataManager.swift */; };
 		1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5B24A70AD40096EA60 /* pieChart.swift */; };
 		1F6290E824A96D7B008C57A4 /* chooseMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290E724A96D7B008C57A4 /* chooseMonth.swift */; };
+		1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290EB24AA5C20008C57A4 /* taskSummary.swift */; };
+		1F6290EE24AA5C2D008C57A4 /* categorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
+		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -175,10 +178,13 @@
 		1F544A5B24A70AD40096EA60 /* pieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pieChart.swift; sourceTree = "<group>"; };
 		1F6290E724A96D7B008C57A4 /* chooseMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chooseMonth.swift; sourceTree = "<group>"; };
 		1F6290E924A9AAF0008C57A4 /* chooseYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chooseYear.swift; sourceTree = "<group>"; };
+		1F6290EB24AA5C20008C57A4 /* taskSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSummary.swift; sourceTree = "<group>"; };
+		1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorySummary.swift; sourceTree = "<group>"; };
 		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
+		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -361,8 +367,10 @@
 		1F544A1124A44E030096EA60 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
 				1F51D56224A8207E000D118D /* SummaryiOS2.swift */,
+				1F6290EB24AA5C20008C57A4 /* taskSummary.swift */,
+				1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */,
+				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
 				1F51D56524A842CC000D118D /* selectRange.swift */,
 				1F51D56724A86FE9000D118D /* chooseDate.swift */,
 				1F6290E724A96D7B008C57A4 /* chooseMonth.swift */,
@@ -375,6 +383,7 @@
 			children = (
 				1F6290E924A9AAF0008C57A4 /* chooseYear.swift */,
 				1F544A07249FE7A80096EA60 /* SummaryiOS.swift */,
+				1FF8BA4024AA67050068C894 /* iconMaker.swift */,
 				1F15EBDB24565518006E283D /* taskOptionsiOS.swift */,
 				1F250E9D249EDD5A005674E2 /* TaskList.swift */,
 				1FE107922455E240000934C2 /* taskRowIos.swift */,
@@ -584,14 +593,17 @@
 				1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */,
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
 				1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */,
+				1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
 				1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */,
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
+				1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */,
 				1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,
+				1F6290EE24AA5C2D008C57A4 /* categorySummary.swift in Sources */,
 				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
 				1F51D56824A86FE9000D118D /* chooseDate.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
