@@ -13,7 +13,7 @@ struct CategoryList: View {
     @State var showAddCategoryView = false
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
         List {
             if(self.data.categories.count > 1)
             {
@@ -55,8 +55,11 @@ struct CategoryList: View {
         .navigationBarTitle("Categories")
             .navigationBarItems(leading: EditButton(), trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
        
-        }
-        .sheet(isPresented: self.$showAddCategoryView, content: {addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)})
+//        }
+        .sheet(isPresented: self.$showAddCategoryView, content: {
+            addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)
+            
+        })
     }
 }
 

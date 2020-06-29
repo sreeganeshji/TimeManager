@@ -46,7 +46,7 @@ struct ContentView: View {
         return("\(hours):\(minutes):\(seconds)")
     }
     
-    
+    // increment the activated task times based on the timer.
     func incrementTaskCounter(task:Binding< models.task>)
     {
         /*
@@ -79,6 +79,7 @@ struct ContentView: View {
         
     }
     
+    //select task based on app settings.
     func selectTask(taskInd:Int)
     {
   
@@ -128,17 +129,13 @@ struct ContentView: View {
 //        NavigationView{
     
             TabView() {
+                //Begin task tab view
                 NavigationView{
-//        Form{
-    
-            
+
             List{
                         ForEach(data.taskData.indices,id: \.self)
                         {
                             index in
-
-
-//                                taskRowiOS(name: self.data.taskData[index].name, time: self.$data.taskData[index].timestamp[self.today].wrappedValue,color: self.getColor(index), isActive: self.$data.taskData[index].selected)
                                 
                             taskRowiOS2(taskInd:index)
                              
@@ -151,12 +148,7 @@ struct ContentView: View {
                                 self.showTaskOptions = true
                                 self.showSheet = true
                             }
-
-                           
-//                            }
-
                         }
-                        
                         .onDelete(perform: { ind in
                             self.data.taskData.remove(atOffsets: ind)
                             self.data.sumaryRecord.taskArr = self.data.taskData
@@ -166,32 +158,7 @@ struct ContentView: View {
                         })
                             .onMove { (IndSet, ind) in
                                 self.data.taskData.move(fromOffsets: IndSet, toOffset: ind)
-                }
-                       
-//            }
-            
-
-                    
-//                            NavigationLink(destination:addTaskiOS(activeView: self.$addTaskRequest).environmentObject(data))
-//                                        {
-//                                            HStack{
-//                                                Text("Add task")
-//                                                Spacer()
-//                                            Image(systemName: "plus.circle.fill")
-//                                                .accentColor(.green)
-//                                            }
-//                                        }
-//
-//
-//                        NavigationLink(destination: Settings(activeView: .constant(false)).environmentObject(self.data))
-//                        {
-//                            HStack{
-//                            Text("Settings")
-//                            Spacer()
-//                            Image(systemName: "slider.horizontal.3")
-//                            }
-//                        }
-//                        .accentColor(.orange)
+                    }
                 }
             .onAppear(){
                 if(self.data.concurrentTasks)
@@ -208,7 +175,6 @@ struct ContentView: View {
                     }
                 }
             }
-   
                 .navigationBarTitle("Tasks")
             
                 .navigationBarItems(leading: EditButton() ,trailing:
@@ -219,35 +185,30 @@ struct ContentView: View {
                     })
                         {
                     Image(systemName: "square.and.pencil")
-                    }
-                    
-                    
+                        }
                     )
-       
                 }
-        
         .tabItem{
             Image(systemName: "list.bullet")
             Text("Tasks")
                 }
+                //End Tasks tab view
                 
-//                TaskList().environmentObject(self.data)
-//                    .tabItem({
-//                        Image(systemName: "list.bullet")
-//                                   Text("Tasks")
-//                    })
                 
-                //Summary
-                
-//                SummaryiOS(summaryRecord: self.$data.sumaryRecord).environmentObject(self.data)
+                //Summary tab view
+                NavigationView{
                 SummaryiOS().environmentObject(self.data)
+            }
                     .tabItem {
                         Image(systemName: "chart.pie.fill")
                         Text("Summary")
                 }
                 
                 
+                //Cattegories tab view
+                NavigationView{
                 CategoryList().environmentObject(self.data)
+            }
                     .tabItem({
                         Image(systemName: "bookmark.fill")
                         Text("Categories")
@@ -269,8 +230,10 @@ struct ContentView: View {
             
                 
             } //ending tabView
-//    }//ending Navigation View
+
+                // Timer handler
                 .onReceive(self.data.timer) { _ in
+                    //update every fourth count or 1 second.
                     if(self.data.timeCounter == 4)
                     {
                         self.data.timeCounter = 0
@@ -285,22 +248,18 @@ struct ContentView: View {
                                    }
                                  }
                     }
+                    //Update Summary records
+                    if(self.data.calculateSummary){
                     self.data.sumaryRecord.taskArr = self.data.taskData
                     self.data.sumaryRecord.categoryList = self.data.categories
                     self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
                     self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
                     self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
-                               
+                    }
                     self.data.timeCounter += 1
             }
-            
-                                                            
-//                        .sheet(isPresented: $addTaskRequest, content:{ addTask(activeView: self.$addTaskRequest).environmentObject(self.data)})
-//
-                        
+                     
                     .navigationBarTitle("Tasks")
-                   
-              
             .sheet(isPresented: $showSheet, content: {
                 
                 if (self.settingsView)
@@ -314,7 +273,6 @@ struct ContentView: View {
                 else if (self.showTaskOptions)
                 {
                     TaskSummaryiOS(taskInd: self.selectedTaskInd, showSheet: self.$showSheet).environmentObject(self.data)
-//                    TaskEditiOS(taskInd: self.selectedTaskInd, activeView: self.$showSheet).environmentObject(self.data)
                     .onDisappear()
                         {
                             self.showTaskOptions = false

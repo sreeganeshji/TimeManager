@@ -40,8 +40,7 @@ struct taskRowiOS2: View {
             {
             Rectangle().frame(width:20)
                 .foregroundColor(data.getColor(self.data.categories[self.data.taskData[self.taskInd].categoryInd].color ))
-            Spacer()
-            VStack{
+                VStack(alignment:.leading){
                 Text(self.data.taskData[self.taskInd].name).bold()
                 Text(self.data.taskData[self.taskInd].description)
             }

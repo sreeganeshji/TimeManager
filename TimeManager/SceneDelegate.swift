@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        data.taskData = dataManager.load("tasks") ?? [models.task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),models.task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
-        data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Play","purple"),models.category("Socialize","green")]
+        data.taskData = dataManager.load("tasks") ?? [models.task( myId:1,name: "Workout", description: "Weight traininig", categoryInd:5),models.task(myId:2,name: "Read", description: "Read novel",categoryInd:3),models.task(myId:4,name: "Jogging", description: "",categoryInd:5),models.task(myId:5,name: "Party", description: "Hang out with friends",categoryInd:4)]
+        data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Unwind","purple"),models.category("Socialize","green"),models.category("Fitness","Orange")]
 
         
         // Create the SwiftUI view that provides the window contents.

@@ -20,14 +20,23 @@ struct SummaryiOS: View {
   
     @State var ShowTaskvsCategory = true
 
-    let today = Date()
-//    let timer4 = Timer.publish(every: 0.5, on: .main  , in: .common).autoconnect()
 
-//    init(taskList:[models.task],categoryList:[models.category])
-//    {
-////        self.summaryRecord = .init(taskList:taskList,categoryList:categoryList)
-//        print("calling init")
-//    }
+    var catSum :Int{
+        var currSum = 0
+        for cat in self.data.catRecordArr{
+            currSum += Int(cat.time)
+        }
+        return currSum
+    }
+    
+    var catPercentages :[Int]{
+        var catPerArr:[Int] = []
+        for cat in self.data.catRecordArr{
+            let value = (Double(cat.time)/Double(self.catSum)) * 100
+            catPerArr.append(Int(value))
+        }
+        return catPerArr
+    }
     
     func giveTime(time:Int)->String
      {
@@ -45,7 +54,6 @@ struct SummaryiOS: View {
          }
          
          return ("\(sec)")
-         
      }
     
     func updateSummaryAndGiveInterval()->String
@@ -60,7 +68,7 @@ struct SummaryiOS: View {
     
     var body: some View {
     
-        NavigationView{
+//        NavigationView{
             VStack{
           
                 Picker(selection: self.$data.summaryTimeRange, label: Text("Interval")) {
@@ -76,73 +84,59 @@ struct SummaryiOS: View {
 //                self.summaryRecord.categoryList = self.data.categories
 //                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
             .pickerStyle(SegmentedPickerStyle())
-            
-             
-                
+                 
+
                 VStack{
                     if(self.data.taskRecordArr.count == 0)
                             {
                                 Spacer()
-//                                HStack(){
-//                                    Spacer()
-//                                Text("Loading...").bold()
-//                                    Spacer()
-//                                }
-                                Spacer()
                             }
            
-                            else{
-                                if(self.ShowTaskvsCategory)
-                                {
-                                    VStack{
-                                        List{
-//                                HStack{
-//                                    Spacer()
-//                                    Text("Task breakdown").bold()
-//                                    Spacer()
-//                                }
+    else{
+            if(self.ShowTaskvsCategory)
+            {
+            VStack{
+                List{
+
                 
-                    HStack{
-//                        Rectangle().frame(width:20)
-//                            .foregroundColor(.gray)
+                    HStack  {
                         Text("Task").bold()
                         Spacer()
                         Text("Time").bold()
-                    }
+                            }
                                             
-                                            ForEach(self.data.taskRecordArr.indices,id:\.self)
-            {
+                                            
+                ForEach(self.data.taskRecordArr.indices,id:\.self)
+                        {
                 ind in
              
-                HStack{
+                HStack      {
                     Rectangle().frame(width:20)
                         .foregroundColor((self.data.taskData.count > ind) ? self.data.getColor(self.data.categories[self.data.taskRecordArr[ind].task.categoryInd].color) : .gray)
                     Text((self.data.taskData.count > ind) ? self.data.taskRecordArr[ind].task.name : "Deleted")
                     Spacer()
                     Text(self.giveTime(time: (self.data.taskData.count > ind) ? Int(self.data.taskRecordArr[ind].time) : 0))
+                            }
+                        }
+                    }
                 }
-
-                }
-                                }
-                                }
-                                }
-                                else{
-                                    VStack{
-                                        List{
-//                                HStack{
-//                                    Spacer()
-//                                    Text("Category breakdown").bold()
-//                                    Spacer()
-//                                }
+            }
+        else{
+            VStack{
+                List{
                     
                     
                      HStack{
 //                                Image(systemName: "bookmark.fill").frame(width:20)
 //                                      .foregroundColor(.gray)
                                   Text("Category").bold()
+                                    .frame(width:140)
                                   Spacer()
                                   Text("Time").bold()
-                              }
+                                    .frame(width:80)
+                        Spacer()
+                        Text("%").bold()
+                            }
                                             ForEach(self.data.catRecordArr.indices,id:\.self)
                               {
                                   ind in
@@ -151,21 +145,24 @@ struct SummaryiOS: View {
                                     Image(systemName: "bookmark.fill")
                                         .foregroundColor((self.data.catRecordArr[ind].categoryInd < self.data.categories.count) ?  self.data.getColor(self.data.categories[self.data.catRecordArr[ind].categoryInd].color) : .white)
                                     Text((self.data.catRecordArr[ind].categoryInd < self.data.categories.count) ? self.data.categories[self.data.catRecordArr[ind].categoryInd].name : "")
+                                        .frame(width:150)
                                     Spacer()
                                     Text(self.giveTime(time:Int(self.data.catRecordArr[ind].time)))
-                                }
+                                        .frame(width:80)
+                                    Spacer()
+                                    Text(String(self.catPercentages[ind]))
+                                    
+                                        }
                               }
                                             pieChart(catRecordArr: self.$data.catRecordArr)
                                                 .frame(height:300)
                                             .padding()
-                                        }
-                                    }
-                                }
-                            }
-                    
-             
+                    }
                 }
-                
+            }
+        }
+    }
+    
                 selectRange(dateField: self.$data.summaryTimeRange, dateValue: self.$data.refDate).environmentObject(self.data)
 
                     Picker(selection: self.$ShowTaskvsCategory, label:Text("Choice"))
@@ -179,32 +176,17 @@ struct SummaryiOS: View {
                 }
             
     .navigationBarTitle("Summary")
-//            .navigationBarItems(trailing: Text(self.updateSummaryAndGiveInterval()))
-//        .navigationBarItems(trailing: Button(action:{
-////            self.summaryRecord.refresh()
-//        })
-//        {
-//            Text("Refresh")
-//        })
-        }
+
+//        }
         .onAppear()
             {
-                print("onAppear Summary")
                 self.format.dateFormat = "MM_dd_yyyy"
-//                self.calComponent = .day
-//                self.summaryRecord.taskArr = self.data.taskData
-//                self.summaryRecord.categoryList = self.data.categories
-//                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())
+
                 self.data.calculateSummary = true
         }
         .onDisappear(){
             self.data.calculateSummary = false
         }
-//        .onReceive(self.timer4){ _ in
-//        print("updating View")
-//        self.summaryRecord.taskArr = self.data.taskData
-//        self.summaryRecord.categoryList = self.data.categories
-//        self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
     }
 }
 

@@ -30,7 +30,7 @@ struct pieChart: View {
         {
             let angleValue = 360*(Double(self.catRecordArr[ind].time)/self.totalTime)
             nextAngle = (prevAngle+Angle(degrees:angleValue))
-            slices.append(.init(startAngle: prevAngle, endAngle: nextAngle, catInd: ind))
+            slices.append(.init(startAngle: prevAngle, endAngle: nextAngle, catInd: self.catRecordArr[ind].categoryInd))
             prevAngle = nextAngle
         }
         return slices
@@ -50,7 +50,7 @@ struct pieChart: View {
                     path.addLine(to: .init(x: reader.size.width/2, y: reader.size.height/2))
                     path.closeSubpath()
                 }
-                .animation(.interactiveSpring())
+                .animation(.linear)
                 .foregroundColor((slice.catInd < self.data.categories.count) ? self.data.getColor(self.data.categories[slice.catInd].color) : .white)
             }
         }

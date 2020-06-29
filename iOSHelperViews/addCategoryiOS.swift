@@ -28,30 +28,25 @@ struct addCategoryiOS: View {
     
     var body: some View {
         NavigationView{
-           
                 List
                     {
-                        
                         TextField("Name", text: $category.name)
-                
-                    
                         Picker( selection: $category.color,label: Text("Color")) {
                             ForEach(data.colors,id: \.self)
                             {
                                 color in
                                 HStack{
                                     Image(systemName:"bookmark.fill").foregroundColor(color)
-                                   
-                                    Text(color.description).tag(self.data.getColorName(color))
+                                    Text(color.description)
                                     Spacer()
                                 }
+                                    .tag(self.data.getColorName(color))
+                
 //                            .padding()
                             }
-
                         }
                     .labelsHidden()
 //                        .tabItem({Text("Stuff")})
-                        
                 }
     .padding()
     .navigationBarTitle("Add Category")

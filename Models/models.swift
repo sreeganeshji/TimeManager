@@ -136,7 +136,7 @@ class models: ObservableObject
         var categoryInd:Int
         var time:TimeInterval
     }
-    var summaryTimeRange = Calendar.Component.day
+    var summaryTimeRange : Calendar.Component = .day
     var refDate = Date()
     @Published var taskRecordArr:[taskRecord] = .init()
     @Published var catRecordArr:[catRecord] = .init()
