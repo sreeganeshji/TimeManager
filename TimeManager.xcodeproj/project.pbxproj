@@ -65,6 +65,7 @@
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
+		1FF8BA5124ABAFB80068C894 /* chooseTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA5024ABAFB80068C894 /* chooseTimeInterval.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,7 @@
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
 		1FF8BA4324AA72E20068C894 /* LaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchIcon.png; sourceTree = "<group>"; };
 		1FF8BA4524AA851E0068C894 /* circle-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-cropped.png"; sourceTree = "<group>"; };
+		1FF8BA5024ABAFB80068C894 /* chooseTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chooseTimeInterval.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -379,6 +381,7 @@
 				1F51D56524A842CC000D118D /* selectRange.swift */,
 				1F51D56724A86FE9000D118D /* chooseDate.swift */,
 				1F6290E724A96D7B008C57A4 /* chooseMonth.swift */,
+				1FF8BA5024ABAFB80068C894 /* chooseTimeInterval.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
 				1F51D56824A86FE9000D118D /* chooseDate.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
+				1FF8BA5124ABAFB80068C894 /* chooseTimeInterval.swift in Sources */,
 				1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */,
 				1F6290E824A96D7B008C57A4 /* chooseMonth.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,

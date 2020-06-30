@@ -16,7 +16,7 @@ struct ContentView: View {
 //    let today = Calendar.current.dateComponents([.day,.hour,.minute,.second], from: Date())
     @State var interval = TimeInterval()
     let format = DateFormatter()
-    let today :String
+    @State var today :String = ""
     let displayFormat = DateFormatter()
     
     @State var showSheet = false
@@ -30,7 +30,6 @@ struct ContentView: View {
     
     init() {
         self.format.dateFormat = "MM_dd_yyyy"
-        self.today = format.string(from: Date())
         self.displayFormat.dateFormat = "hh:MM:ss"
     }
     
@@ -174,6 +173,7 @@ struct ContentView: View {
                         self.data.taskData[i].lastChanged = nil
                     }
                 }
+                self.today = self.format.string(from: Date())
             }
                 .navigationBarTitle("Tasks")
             
@@ -247,6 +247,10 @@ struct ContentView: View {
                                      self.incrementTaskCounter(task: self.$data.taskData[ind])
                                    }
                                  }
+                        if (self.format.string(from: .init()) != self.today)
+                        {
+                            self.today = self.format.string(from: .init())
+                        }
                     }
                     //Update Summary records
                     if(self.data.calculateSummary){

@@ -141,4 +141,6 @@ class models: ObservableObject
     @Published var taskRecordArr:[taskRecord] = .init()
     @Published var catRecordArr:[catRecord] = .init()
     var calculateSummary = false
+    var showTaskvsCategory = true
+
 }

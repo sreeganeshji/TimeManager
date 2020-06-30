@@ -17,44 +17,41 @@ struct SummaryiOS: View {
     var format = DateFormatter()
     @EnvironmentObject var data:models
     @State var selection = 0
-  
+    @State var showSheet = false
     @State var ShowTaskvsCategory = true
-
+    var timeFrame:String{
+        switch self.data.summaryTimeRange {
+        case .day:
+            return "Day"
+        case .weekOfYear:
+            return "Week"
+        case .month:
+            return "Month"
+        case .year:
+            return "Year"
+        default:
+            return "Day"
+        }
+    }
     
-//    func updateSummaryAndGiveInterval()->String
-//    {
-//        self.data.sumaryRecord.taskArr = self.data.taskData
-//        self.data.sumaryRecord.categoryList = self.data.categories
-//        self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
-//        self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
-//        self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
-//        return ("Interval")
-//    }
+
     
     var body: some View {
     
-//        NavigationView{
+
             VStack{
-              
-                Picker(selection: self.$data.summaryTimeRange, label: Text("Interval")) {
+
+                Form{
+                Picker(selection: self.$data.summaryTimeRange, label: Text("Time interval")) {
                 Text("Day").tag(Calendar.Component.day)
                 Text("Week").tag(Calendar.Component.weekOfYear)
                 Text("Month").tag(Calendar.Component.month)
                 Text("Year").tag(Calendar.Component.year)
-            }
-                .pickerStyle(SegmentedPickerStyle())
 
-        
-//            .onReceive([self.calComponent].publisher.first(), perform: { value in
-//                .onReceive(self.timer4){ _ in
-//                print("updating View")
-//                self.summaryRecord.taskArr = self.data.taskData
-//                self.summaryRecord.categoryList = self.data.categories
-//                self.summaryRecord.update(dateComponent: self.calComponent, startDate: Date())}
-           
-                 
+                }
 
-                VStack{
+
+                Section{
                     if(self.data.taskRecordArr.count == 0)
                             {
                                 Spacer()
@@ -72,7 +69,7 @@ struct SummaryiOS: View {
             }
         }
     }
-    
+                }
                 selectRange(dateField: self.$data.summaryTimeRange, dateValue: self.$data.refDate).environmentObject(self.data)
 
                     Picker(selection: self.$ShowTaskvsCategory, label:Text("Choice"))
@@ -87,7 +84,7 @@ struct SummaryiOS: View {
             
     .navigationBarTitle("Summary")
 
-//        }
+        
         .onAppear()
             {
                 self.format.dateFormat = "MM_dd_yyyy"
