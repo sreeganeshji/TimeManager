@@ -46,6 +46,7 @@ struct addTaskiOS: View {
                                 Text(self.data.categories[ind].name).tag(ind)
                                     Spacer()
                                 }
+                            .tag(ind)
 //                                .tag(category)
 //                            .padding()
                             }
@@ -53,7 +54,7 @@ struct addTaskiOS: View {
                         }
                     .labelsHidden()
 //                        .tabItem({Text("Stuff")})
-                        TextField("Description",text: $task.description)
+//                        TextField("Description",text: $task.description)
                         
                 }
         
