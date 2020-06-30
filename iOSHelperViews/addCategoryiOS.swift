@@ -6,7 +6,6 @@
 //  Copyright © 2020 SreeGaneshji. All rights reserved.
 //
 
-
 import SwiftUI
 
 struct addCategoryiOS: View {
@@ -30,8 +29,8 @@ struct addCategoryiOS: View {
         NavigationView{
                 List
                     {
-                        TextField("Name", text: $category.name)
-                        Picker( selection: $category.color,label: Text("Color")) {
+                        TextField("Name", text: self.$category.name)
+                        Picker( selection: self.$category.color,label: Text("Color")) {
                             ForEach(data.colors,id: \.self)
                             {
                                 color in
