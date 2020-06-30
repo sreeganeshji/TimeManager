@@ -11,23 +11,36 @@ import SwiftUI
 struct categorySummary: View {
     @EnvironmentObject var data:models
     
-    func giveTime(time:Int)->String
-    {
-        var sec = time
-        var min = sec/60
-        let hr = min/60
-        sec %= 60
-        min %= 60
-        if (hr>0){
-            return ("\(hr):\(min):\(sec)")
-        }
-        else if(min>0)
+       func giveTime(time:Int)->String
+     {
+         var sec = time
+         var min = sec/60
+         var hr = min/60
+        let days = hr/24
+         sec %= 60
+         min %= 60
+        hr %= 24
+        if (days>0)
         {
-            return ("\(min):\(sec)")
+            if(days == 1)
+            {
+            return("\(days) day \(hr):\(min):\(sec)")
+            }
+            else
+            {
+            return("\(days) days \(hr):\(min):\(sec)")
+            }
         }
-        
-        return ("\(sec)")
-    }
+         if (hr>0){
+             return ("\(hr):\(min):\(sec)")
+         }
+         else if(min>0)
+         {
+             return ("\(min):\(sec)")
+         }
+         
+         return ("\(sec)")
+     }
     
     var catSum :Int{
         var currSum = 0

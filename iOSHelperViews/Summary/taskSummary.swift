@@ -15,9 +15,15 @@ struct taskSummary: View {
      {
          var sec = time
          var min = sec/60
-         let hr = min/60
+         var hr = min/60
+        let days = hr/24
          sec %= 60
          min %= 60
+        hr %= 24
+        if (days>0)
+        {
+            return("\(days) days \(hr):\(min):\(sec)")
+        }
          if (hr>0){
              return ("\(hr):\(min):\(sec)")
          }
