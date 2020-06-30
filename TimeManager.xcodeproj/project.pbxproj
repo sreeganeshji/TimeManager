@@ -857,7 +857,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -885,7 +885,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -907,7 +907,7 @@
 				DEVELOPMENT_TEAM = C5978J5948;
 				IBSC_MODULE = TimeManager_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeManager WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -928,7 +928,7 @@
 				DEVELOPMENT_TEAM = C5978J5948;
 				IBSC_MODULE = TimeManager_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeManager WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -953,7 +953,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally;
 				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
@@ -975,7 +975,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally;
 				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
