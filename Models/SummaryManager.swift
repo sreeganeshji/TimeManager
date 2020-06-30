@@ -17,11 +17,34 @@ class SummaryDaemon:ObservableObject
     var formatter = DateFormatter()
     var DayTaskWise:[models.task:TimeInterval] = .init()
     var DayCatWise:[Int:TimeInterval] = .init()
-    var taskRecordArr : [models.taskRecord] = .init()
-    var catRecordArr : [models.catRecord] = .init()
+    var taskRecordArr : [taskRecord] = .init()
+    var catRecordArr : [catRecord] = .init()
     var processing:Bool = false
     var categoryList: [models.category]
 
+    
+    //Summary models
+    struct taskRecord : Hashable
+    {
+        init(_ task:models.task,_ time:TimeInterval)
+        {
+            self.task = task
+            self.time = time
+        }
+        var task:models.task
+        var time:TimeInterval
+    }
+    struct catRecord : Hashable
+    {
+        init(_ catInd:Int,_ time:TimeInterval)
+        {
+            self.categoryInd = catInd
+            self.time = time
+        }
+        var categoryInd:Int
+        var time:TimeInterval
+    }
+    
     init(format:String = "MM_dd_yyyy")
     {
         self.formatter.dateFormat = format
@@ -42,9 +65,9 @@ class SummaryDaemon:ObservableObject
 //            array.append(L(key,value))
 //        }
 //    }
-    func fillTaskArray(dic:[models.task:TimeInterval],curArray:inout [models.taskRecord])
+    func fillTaskArray(dic:[models.task:TimeInterval],curArray:inout [taskRecord])
     {
-        var array:[models.taskRecord] = .init()
+        var array:[taskRecord] = .init()
         for (task,time) in dic{
             array.append(.init(task, time))
         }
@@ -63,9 +86,9 @@ class SummaryDaemon:ObservableObject
         curArray = .init(array)
     }
 
-    func giveTaskArray(dic:[models.task:TimeInterval]) ->([models.taskRecord])
+    func giveTaskArray(dic:[models.task:TimeInterval]) ->([taskRecord])
     {
-        var array:[models.taskRecord] = .init()
+        var array:[taskRecord] = .init()
         for (task,time) in dic{
             array.append(.init(task, time))
         }
@@ -84,9 +107,9 @@ class SummaryDaemon:ObservableObject
         return array
     }
     
-    func fillCatArray(dic:[Int:TimeInterval],curArray:inout [models.catRecord])
+    func fillCatArray(dic:[Int:TimeInterval],curArray:inout [catRecord])
        {
-        var array :[models.catRecord] = .init()
+        var array :[catRecord] = .init()
            for (cat,time) in dic{
                array.append(.init(cat, time))
            }
@@ -105,9 +128,9 @@ class SummaryDaemon:ObservableObject
         curArray = .init(array)
     }
     
-    func giveCatArray(dic:[Int:TimeInterval])->([models.catRecord])
+    func giveCatArray(dic:[Int:TimeInterval])->([catRecord])
        {
-        var array :[models.catRecord] = .init()
+        var array :[catRecord] = .init()
            for (cat,time) in dic{
                array.append(.init(cat, time))
            }

@@ -49,7 +49,6 @@
 		1F1AAC3C244F7F6600134634 /* TaskEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC38244EA8DD00134634 /* TaskEdit.swift */; };
 		1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F250E9F249F099C005674E2 /* addCategoryiOS.swift */; };
 		1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AAC36244EA8C100134634 /* TaskSummary.swift */; };
-		1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F51D56224A8207E000D118D /* SummaryiOS2.swift */; };
 		1F51D56624A842CC000D118D /* selectRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F51D56524A842CC000D118D /* selectRange.swift */; };
 		1F51D56824A86FE9000D118D /* chooseDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F51D56724A86FE9000D118D /* chooseDate.swift */; };
 		1F544A06249F3F630096EA60 /* taskRowiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A05249F3F630096EA60 /* taskRowiOS2.swift */; };
@@ -58,13 +57,14 @@
 		1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5924A68AD40096EA60 /* DataManager.swift */; };
 		1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F544A5B24A70AD40096EA60 /* pieChart.swift */; };
 		1F6290E824A96D7B008C57A4 /* chooseMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290E724A96D7B008C57A4 /* chooseMonth.swift */; };
-		1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290EB24AA5C20008C57A4 /* taskSummary.swift */; };
-		1F6290EE24AA5C2D008C57A4 /* categorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
+		1FF8BA4924AB002E0068C894 /* Summary2iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4824AB002E0068C894 /* Summary2iOS.swift */; };
+		1FF8BA4B24AB01660068C894 /* taskSummary2iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4A24AB01660068C894 /* taskSummary2iOS.swift */; };
+		1FF8BA4D24AB05B60068C894 /* categorySummary2iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4C24AB05B60068C894 /* categorySummary2iOS.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +189,9 @@
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
 		1FF8BA4324AA72E20068C894 /* LaunchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchIcon.png; sourceTree = "<group>"; };
 		1FF8BA4524AA851E0068C894 /* circle-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-cropped.png"; sourceTree = "<group>"; };
+		1FF8BA4824AB002E0068C894 /* Summary2iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary2iOS.swift; sourceTree = "<group>"; };
+		1FF8BA4A24AB01660068C894 /* taskSummary2iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSummary2iOS.swift; sourceTree = "<group>"; };
+		1FF8BA4C24AB05B60068C894 /* categorySummary2iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorySummary2iOS.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +237,7 @@
 				1F7BF80E249862E5001D7021 /* CategoryList.swift */,
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
+				1FF8BA4724AAFFF60068C894 /* Summary2 */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
 			);
@@ -405,6 +409,16 @@
 				1FF8BA4324AA72E20068C894 /* LaunchIcon.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1FF8BA4724AAFFF60068C894 /* Summary2 */ = {
+			isa = PBXGroup;
+			children = (
+				1FF8BA4824AB002E0068C894 /* Summary2iOS.swift */,
+				1FF8BA4A24AB01660068C894 /* taskSummary2iOS.swift */,
+				1FF8BA4C24AB05B60068C894 /* categorySummary2iOS.swift */,
+			);
+			path = Summary2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,9 +620,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF8BA4B24AB01660068C894 /* taskSummary2iOS.swift in Sources */,
 				1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */,
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
 				1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */,
+				1FF8BA4D24AB05B60068C894 /* categorySummary2iOS.swift in Sources */,
 				1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
@@ -616,14 +632,11 @@
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
-				1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */,
 				1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,
-				1F6290EE24AA5C2D008C57A4 /* categorySummary.swift in Sources */,
 				1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */,
 				1F51D56824A86FE9000D118D /* chooseDate.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
-				1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */,
 				1F6290E824A96D7B008C57A4 /* chooseMonth.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
 				1F1AABBA244E211A00134634 /* AppDelegate.swift in Sources */,
@@ -631,6 +644,7 @@
 				1F1AABBC244E211A00134634 /* SceneDelegate.swift in Sources */,
 				1F1AAC24244E288900134634 /* taskRow.swift in Sources */,
 				1F15EBDA245654D6006E283D /* taskSummaryiOS.swift in Sources */,
+				1FF8BA4924AB002E0068C894 /* Summary2iOS.swift in Sources */,
 				1F15EBDE24566424006E283D /* SettingsiOS.swift in Sources */,
 				1F1AAC22244E288900134634 /* deleteTasks.swift in Sources */,
 				1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */,
@@ -852,7 +866,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -878,7 +892,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -898,7 +912,7 @@
 				DEVELOPMENT_TEAM = C5978J5948;
 				IBSC_MODULE = TimeManager_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeManager WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -917,7 +931,7 @@
 				DEVELOPMENT_TEAM = C5978J5948;
 				IBSC_MODULE = TimeManager_WatchKit_Extension;
 				INFOPLIST_FILE = "TimeManager WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -932,15 +946,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TimeManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally;
 				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -952,15 +968,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TimeManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeManager;
+				PRODUCT_BUNDLE_IDENTIFIER = someComp.TimeTally;
 				PRODUCT_NAME = "Time Tally";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

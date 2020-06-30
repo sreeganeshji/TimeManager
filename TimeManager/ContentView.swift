@@ -25,6 +25,8 @@ struct ContentView: View {
     @State var showTaskOptions = false
     @State var selectedTaskInd : Int = 0
     
+    let timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
+    @State var timerCount = 0
     
     let tempTask = models.task(myId: 5, name: "Test task", description: "Something's wrong")
     
@@ -197,7 +199,7 @@ struct ContentView: View {
                 
                 //Summary tab view
                 NavigationView{
-                    SummaryiOS().environmentObject(self.data)
+                    Summary2iOS(summaryDaemon: self.data.sumaryRecord, taskList: self.data.taskData, categoryList: self.data.categories, today:self.today).environmentObject(self.data)
             }
                     .tabItem {
                         Image(systemName: "chart.pie.fill")
@@ -232,11 +234,12 @@ struct ContentView: View {
             } //ending tabView
 
                 // Timer handler
-                .onReceive(self.data.timer) { _ in
-                    //update every fourth count or 1 second.
-                    if(self.data.timeCounter == 4)
-                    {
-                        self.data.timeCounter = 0
+                .onReceive(self.timer) { _ in
+                    //update every 1 second.
+                   
+                   if (self.timerCount == 4)
+                   {
+                    self.timerCount = 0
                                    if self.data.taskData.count == 0
                                    {
                                        return
@@ -248,15 +251,20 @@ struct ContentView: View {
                                    }
                                  }
                     }
+                    
+                    self.timerCount += 1
+                    
                     //Update Summary records
-                    if(self.data.calculateSummary){
+//                    if(self.data.calculateSummary){
                     self.data.sumaryRecord.taskArr = self.data.taskData
                     self.data.sumaryRecord.categoryList = self.data.categories
-                    self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
-                    self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
-                    self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
-                    }
-                    self.data.timeCounter += 1
+                    self.data.sumaryRecord.update(dateComponent: self.data.summaryInterval, startDate: self.data.summaryDate)
+//                    self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
+//                    self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
+//                    }
+                    
+                    
+                
             }
                      
                     .navigationBarTitle("Tasks")

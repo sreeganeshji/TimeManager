@@ -12,7 +12,8 @@ import SwiftUI
 class models: ObservableObject
 {
     
-     @Published var categories:[category] = []
+//     @Published
+    var categories:[category] = []
     
      struct task:Equatable, Hashable, Codable
      {
@@ -97,14 +98,16 @@ class models: ObservableObject
     
     var colors:[Color] = [.blue,.red,.orange,.pink,.purple,.yellow,.green]
     
-    @Published var sumaryRecord = SummaryDaemon()
+//    @Published
+    var sumaryRecord = SummaryDaemon()
+    var summaryDate:Date = .init()
+    var summaryInterval:Calendar.Component = .day
     
-    @Published var concurrentTasks:Bool = false
+//    @Published
+    var concurrentTasks:Bool = false
     
     @Published var taskData:[task] = []
 
-    var timeCounter = 0
-    let timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
     
     init()
     {
@@ -114,31 +117,6 @@ class models: ObservableObject
         //        taskData = taskData = [task( myId:1,name: "CS6515", description: "Study that", categoryInd:0),task(myId:2,name: "analog work", description: "run simulation",categoryInd:1)]
         
         print("Initializing models")
-    }
-    //Summary models
-    struct taskRecord : Hashable
-    {
-        init(_ task:models.task,_ time:TimeInterval)
-        {
-            self.task = task
-            self.time = time
-        }
-        var task:models.task
-        var time:TimeInterval
-    }
-    struct catRecord : Hashable
-    {
-        init(_ catInd:Int,_ time:TimeInterval)
-        {
-            self.categoryInd = catInd
-            self.time = time
-        }
-        var categoryInd:Int
-        var time:TimeInterval
-    }
-    var summaryTimeRange : Calendar.Component = .day
-    var refDate = Date()
-    @Published var taskRecordArr:[taskRecord] = .init()
-    @Published var catRecordArr:[catRecord] = .init()
-    var calculateSummary = false
+    }    
+  
 }

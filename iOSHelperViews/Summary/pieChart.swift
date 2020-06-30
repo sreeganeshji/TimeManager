@@ -36,7 +36,7 @@ struct pieChart: View {
         return slices
     }
     @EnvironmentObject var data:models
-    @Binding var catRecordArr:[models.catRecord]
+    var catRecordArr:[SummaryDaemon.catRecord]
 //    @Binding var reader:GeometryProxy
     var width:Double
     var height:Double
@@ -62,6 +62,6 @@ struct pieChart: View {
 
 struct pieChart_Previews: PreviewProvider {
     static var previews: some View {
-        pieChart(catRecordArr: .constant(.init()), width:300,height:300).environmentObject(models())
+        pieChart(catRecordArr:.init(), width:300,height:300).environmentObject(models())
     }
 }
