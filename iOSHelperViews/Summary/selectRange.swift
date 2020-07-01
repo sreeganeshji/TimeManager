@@ -13,7 +13,7 @@ struct selectRange: View {
     @Binding var dateValue:Date
     @State var dateValueLocal:Date = .init()
     @State var weekOffset:Int = 0
-    @State var thisMonth:Int = 0
+    @State var thisMonth:Int = 1
     @State var showSheet = false
     @State var yearOffset:Int = 0
 //    init()
@@ -65,10 +65,12 @@ struct selectRange: View {
         return "Day:"
     }
     
-    func updateMonth(monthNo:Int)->String{
-        var monthComponent = calendar.dateComponents(in: .autoupdatingCurrent, from: self.dateValue)
-        monthComponent.month = monthNo
-        self.dateValue = calendar.date(from: monthComponent)!
+    func updateMonth()->String{
+        var tempDate = self.dateValueLocal
+        tempDate = calendar.date(bySetting: .month, value: self.thisMonth, of: tempDate)!
+        let monthInterval = calendar.dateInterval(of: .month, for: tempDate)
+        let lastDayOfThisMonth = calendar.date(byAdding: .day, value: -1, to: monthInterval!.end)!
+        self.dateValue = lastDayOfThisMonth
         return "Month:"
     }
     
@@ -145,7 +147,7 @@ struct selectRange: View {
             
             Button(action:{self.showSheet = true})
             {
-                Text(updateMonth(monthNo: self.thisMonth)).bold()
+                Text(updateMonth()).bold()
                 Text(getMonth(self.dateValue))
                 Text(getYear(self.dateValue))
             }
@@ -199,7 +201,9 @@ struct selectRange: View {
                     {
                         NavigationView{
                         chooseMonth(monthVal: self.$thisMonth,showSheet: self.$showSheet)
-                        
+                            .onAppear(){
+                                self.dateValueLocal = .init()
+                            }
                         }
             }
                     
