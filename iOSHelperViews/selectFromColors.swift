@@ -10,9 +10,14 @@ import SwiftUI
 
 struct selectFromColors: View {
     @Binding var colorVal:Color
+    @State var colorValLocal:Color = .blue
+    func updatePicker()->String{
+        self.colorVal = self.colorValLocal
+        return "Color select"
+    }
     var colors:[Color]
     var body: some View {
-        Picker( selection: self.$colorVal,label: Text("Color")) {
+        Picker( selection: self.$colorVal,label: Text(updatePicker())) {
                                     ForEach(self.colors,id: \.self)
                                     {
                                         color in
@@ -27,6 +32,10 @@ struct selectFromColors: View {
                                     }
                                 }
                             .labelsHidden()
+    .onAppear()
+        {
+            self.colorValLocal = self.colorVal
+        }
     }
 }
 
