@@ -60,7 +60,7 @@ struct categorySummary: View {
     }
     
     var body: some View {
-        VStack{
+ 
                         List{
                             
                             
@@ -101,7 +101,7 @@ struct categorySummary: View {
                                                               .padding()
                             .frame(height:300)
                             }
-                        }    }
+                        }
 }
 
 struct categorySummary_Previews: PreviewProvider {

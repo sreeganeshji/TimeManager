@@ -11,6 +11,7 @@ import SwiftUI
 struct selectRange: View {
     @Binding var dateField:Calendar.Component
     @Binding var dateValue:Date
+    @State var dateValueLocal:Date = .init()
     @State var weekOffset:Int = 0
     @State var thisMonth:Int = 0
     @State var showSheet = false
@@ -59,6 +60,11 @@ struct selectRange: View {
         
     }
     
+    func updateDay()->String{
+        self.dateValue = self.dateValueLocal
+        return "Day:"
+    }
+    
     func updateMonth(monthNo:Int)->String{
         var monthComponent = calendar.dateComponents(in: .autoupdatingCurrent, from: self.dateValue)
         monthComponent.month = monthNo
@@ -96,18 +102,22 @@ struct selectRange: View {
             Button(action:{self.showSheet = true})
             {
                 HStack{
-                    Text("Date:").bold()
+                    Text(self.updateDay()).bold()
                     Spacer()
                     Text(getMonth(self.dateValue))
                     Text(getDate(self.dateValue))
                     Text(getYear(self.dateValue))
                     Spacer()
-                    Button(action:{self.dateValue = Date()})
+                    Button(action:
+                        {self.dateValue = Date()
+                        self.dateValueLocal = Date()
+                    })
                     {
                         Text("Today").bold()
                     }
                     .onAppear(){
                         self.dateValue = Date()
+                        self.dateValueLocal = Date()
                     }
                    
                 }
@@ -165,7 +175,7 @@ struct selectRange: View {
             if(self.dateField == .day)
                     {
                         NavigationView{
-                       chooseDate(dateVal: self.$dateValue, showSheet: self.$showSheet)
+                       chooseDate(dateVal: self.$dateValueLocal, showSheet: self.$showSheet)
 
                         }
    

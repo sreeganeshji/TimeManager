@@ -67,6 +67,10 @@
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
 		1FF8BA5124ABAFB80068C894 /* chooseTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA5024ABAFB80068C894 /* chooseTimeInterval.swift */; };
 		1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9BCB82497086A002C19B6 /* ContentView.swift */; };
+		1FFFE3E624ACDDAF00D67065 /* selectFromCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE3E524ACDDAF00D67065 /* selectFromCategory.swift */; };
+		1FFFE3E824ACDFDB00D67065 /* selectFromColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE3E724ACDFDB00D67065 /* selectFromColors.swift */; };
+		1FFFE3EA24ACE11B00D67065 /* PickerTimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE3E924ACE11B00D67065 /* PickerTimeRange.swift */; };
+		1FFFE3EC24ACE1AC00D67065 /* summaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE3EB24ACE1AC00D67065 /* summaryBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +196,10 @@
 		1FF8BA4524AA851E0068C894 /* circle-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-cropped.png"; sourceTree = "<group>"; };
 		1FF8BA5024ABAFB80068C894 /* chooseTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chooseTimeInterval.swift; sourceTree = "<group>"; };
 		1FF9BCB82497086A002C19B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1FFFE3E524ACDDAF00D67065 /* selectFromCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectFromCategory.swift; sourceTree = "<group>"; };
+		1FFFE3E724ACDFDB00D67065 /* selectFromColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectFromColors.swift; sourceTree = "<group>"; };
+		1FFFE3E924ACE11B00D67065 /* PickerTimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTimeRange.swift; sourceTree = "<group>"; };
+		1FFFE3EB24ACE1AC00D67065 /* summaryBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summaryBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,9 +240,11 @@
 				1F544A05249F3F630096EA60 /* taskRowiOS2.swift */,
 				1F15EBD9245654D6006E283D /* taskSummaryiOS.swift */,
 				1F15EBD724564A94006E283D /* addTaskiOS.swift */,
+				1FFFE3E524ACDDAF00D67065 /* selectFromCategory.swift */,
 				1F15EBDD24566424006E283D /* SettingsiOS.swift */,
 				1F7BF80E249862E5001D7021 /* CategoryList.swift */,
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
+				1FFFE3E724ACDFDB00D67065 /* selectFromColors.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
@@ -375,6 +385,8 @@
 			isa = PBXGroup;
 			children = (
 				1F51D56224A8207E000D118D /* SummaryiOS2.swift */,
+				1FFFE3EB24ACE1AC00D67065 /* summaryBody.swift */,
+				1FFFE3E924ACE11B00D67065 /* PickerTimeRange.swift */,
 				1F6290EB24AA5C20008C57A4 /* taskSummary.swift */,
 				1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */,
 				1F544A5B24A70AD40096EA60 /* pieChart.swift */,
@@ -611,12 +623,15 @@
 			files = (
 				1F544A5A24A68AD40096EA60 /* DataManager.swift in Sources */,
 				1F15EBD824564A94006E283D /* addTaskiOS.swift in Sources */,
+				1FFFE3EA24ACE11B00D67065 /* PickerTimeRange.swift in Sources */,
 				1F544A5C24A70AD50096EA60 /* pieChart.swift in Sources */,
 				1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
+				1FFFE3E624ACDDAF00D67065 /* selectFromCategory.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
 				1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */,
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
+				1FFFE3EC24ACE1AC00D67065 /* summaryBody.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
 				1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */,
@@ -638,6 +653,7 @@
 				1F15EBDE24566424006E283D /* SettingsiOS.swift in Sources */,
 				1F1AAC22244E288900134634 /* deleteTasks.swift in Sources */,
 				1F3056402450F5FA00C412A8 /* TaskSummary.swift in Sources */,
+				1FFFE3E824ACDFDB00D67065 /* selectFromColors.swift in Sources */,
 				1F51D56624A842CC000D118D /* selectRange.swift in Sources */,
 				1F250EA0249F099C005674E2 /* addCategoryiOS.swift in Sources */,
 			);

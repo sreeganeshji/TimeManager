@@ -284,7 +284,7 @@ struct ContentView: View {
                 }
                 else if (self.addTaskRequest)
                 {
-                    addTaskiOS(activeView: self.$showSheet).environmentObject(self.data)
+                    addTaskiOS(activeView: self.$showSheet,categoryList: self.data.categories).environmentObject(self.data)
                     .onDisappear()
                         {
                             self.addTaskRequest = false

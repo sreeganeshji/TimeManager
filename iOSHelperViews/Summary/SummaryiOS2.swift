@@ -19,21 +19,13 @@ struct SummaryiOS: View {
     @State var selection = 0
     @State var showSheet = false
     @State var ShowTaskvsCategory = true
-    var timeFrame:String{
-        switch self.data.summaryTimeRange {
-        case .day:
-            return "Day"
-        case .weekOfYear:
-            return "Week"
-        case .month:
-            return "Month"
-        case .year:
-            return "Year"
-        default:
-            return "Day"
-        }
-    }
+    @State var interval:Calendar.Component = .day
+
     
+    func updateInterval()->String{
+        self.data.summaryTimeRange = self.interval
+        return "Interval"
+    }
 
     
     var body: some View {
@@ -41,35 +33,11 @@ struct SummaryiOS: View {
 
             VStack{
 
-                Form{
-                Picker(selection: self.$data.summaryTimeRange, label: Text("Time interval")) {
-                Text("Day").tag(Calendar.Component.day)
-                Text("Week").tag(Calendar.Component.weekOfYear)
-                Text("Month").tag(Calendar.Component.month)
-                Text("Year").tag(Calendar.Component.year)
+//                List{
+                    PickerTimeRange(summaryTimeRange: self.$interval,label:updateInterval())
 
-                }
-
-
-                Section{
-                    if(self.data.taskRecordArr.count == 0)
-                            {
-                                Spacer()
-                            }
-           
-    else{
-            if(self.ShowTaskvsCategory)
-            {
-                taskSummary().environmentObject(self.data)
-
-            }
-        else{
-                categorySummary().environmentObject(self.data)
-
-            }
-        }
-    }
-                }
+                    summaryBody(data: self._data, ShowTaskvsCategory: self.$ShowTaskvsCategory)
+//                }
                 selectRange(dateField: self.$data.summaryTimeRange, dateValue: self.$data.refDate).environmentObject(self.data)
 
                     Picker(selection: self.$ShowTaskvsCategory, label:Text("Choice"))

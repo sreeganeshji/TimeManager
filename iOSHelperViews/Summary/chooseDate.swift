@@ -18,7 +18,12 @@ struct chooseDate: View {
         .navigationBarTitle("Select day")
             .navigationBarItems(trailing: Button(action:{self.showSheet = false})
             {
-                Text("Done")
+                Button(action:{
+                    self.showSheet = false
+                })
+                {
+                    Text("Done")
+                }
             })
     }
 }

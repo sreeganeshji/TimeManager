@@ -36,7 +36,7 @@ struct taskSummary: View {
      }
     
     var body: some View {
-       VStack{
+
            List{
 
            
@@ -61,7 +61,7 @@ struct taskSummary: View {
                    }
                }
            }
-    }
+    
 }
 
 struct taskSummary_Previews: PreviewProvider {

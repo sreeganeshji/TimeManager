@@ -14,6 +14,7 @@ struct pieChart: View {
         var endAngle:Angle
         var catInd:Int
     }
+    @State var animationScale:Double = 0
     var totalTime:Double{
         var sum:Double = 0
         for record in self.catRecordArr
@@ -50,12 +51,19 @@ struct pieChart: View {
                 slice in
                 Path{
                     path in
-                    path.addArc(center: .init(x: self.width/2, y: self.height/2), radius: CGFloat(min(self.width/2,self.height/2)), startAngle: slice.startAngle, endAngle: slice.endAngle, clockwise: false)
+                    path.addArc(center: .init(x: self.width/2, y: self.height/2), radius: CGFloat(min(self.width/2,self.height/2)*self.animationScale), startAngle: slice.startAngle, endAngle: slice.endAngle, clockwise: false)
                     path.addLine(to: .init(x: self.width/2, y: self.height/2))
                     path.closeSubpath()
                 }
                 .foregroundColor((slice.catInd < self.data.categories.count) ? self.data.getColor(self.data.categories[slice.catInd].color) : .white)
+
             }
+            .onAppear(){
+                withAnimation(.default)
+                {
+                    self.animationScale = 1.0
+                }
+        }
 //        }
     }
 }

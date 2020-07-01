@@ -13,7 +13,7 @@ struct addTaskiOS: View {
     @EnvironmentObject var data:models
     @State var categoryInd :Int = 0
     @State var task:models.task = models.task(myId: 0, name: "", description: "")
-    
+    var categoryList:[models.category]
     
     func addTaskToList(task: models.task)
     {
@@ -36,23 +36,7 @@ struct addTaskiOS: View {
                         
                         TextField("Name", text: $task.name)
                 
-                        Picker( selection: self.$categoryInd,label: Text("Category")) {
-                            ForEach(data.categories.indices,id: \.self)
-                            {
-                                ind in
-                                HStack{
-                                    Image(systemName:"bookmark.fill").foregroundColor(self.data.getColor(self.data.categories[ind].color))
-                                   
-                                Text(self.data.categories[ind].name).tag(ind)
-                                    Spacer()
-                                }
-                            .tag(ind)
-//                                .tag(category)
-//                            .padding()
-                            }
-
-                        }
-                    .labelsHidden()
+                        selectFromCategory(categoryInd: self.$categoryInd, categoryList: self.categoryList)
 //                        .tabItem({Text("Stuff")})
 //                        TextField("Description",text: $task.description)
                         
@@ -67,7 +51,7 @@ struct addTaskiOS: View {
                        }) {
                            Text("Add")
                        })
-         
+
     }
             
     }
@@ -76,6 +60,6 @@ struct addTaskiOS: View {
 
 struct addTaskiOS_Previews: PreviewProvider {
     static var previews: some View {
-        addTaskiOS(activeView: .constant(false)).environmentObject(models())
+        addTaskiOS(activeView: .constant(false),categoryList: []).environmentObject(models())
     }
 }
