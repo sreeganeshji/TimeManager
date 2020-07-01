@@ -18,7 +18,7 @@ struct SummaryiOS: View {
     @EnvironmentObject var data:models
     @State var selection = 0
     @State var showSheet = false
-    @State var ShowTaskvsCategory = true
+    @State var ShowTaskvsCategory:Bool
     @State var interval:Calendar.Component = .day
 
     
@@ -27,6 +27,10 @@ struct SummaryiOS: View {
         return "Interval"
     }
 
+    func updateTaskvsCat()->String{
+        self.data.showTaskvsCategory = self.ShowTaskvsCategory
+        return "taskvscat"
+    }
     
     var body: some View {
     
@@ -40,7 +44,7 @@ struct SummaryiOS: View {
 //                }
                 selectRange(dateField: self.$data.summaryTimeRange, dateValue: self.$data.refDate).environmentObject(self.data)
 
-                    Picker(selection: self.$ShowTaskvsCategory, label:Text("Choice"))
+                    Picker(selection: self.$ShowTaskvsCategory, label:Text(updateTaskvsCat()))
                     {
                         
                         Text("Task").tag(true)
@@ -58,6 +62,7 @@ struct SummaryiOS: View {
                 self.format.dateFormat = "MM_dd_yyyy"
 
                 self.data.calculateSummary = true
+                self.ShowTaskvsCategory = self.data.showTaskvsCategory
         }
         .onDisappear(){
             self.data.calculateSummary = false
@@ -67,6 +72,6 @@ struct SummaryiOS: View {
 
 struct SummaryiOS_Previews: PreviewProvider {
     static var previews: some View {
-        SummaryiOS().environmentObject(models())
+        SummaryiOS(ShowTaskvsCategory: true).environmentObject(models())
     }
 }
