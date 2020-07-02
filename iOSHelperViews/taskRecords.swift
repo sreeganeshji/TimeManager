@@ -53,6 +53,7 @@ struct taskRecords: View {
         var res:[taskRecordHistory] = []
         for (key,value) in self.data.taskData[self.taskInd].timestamp{
             res.append(.init(date: format.date(from: key) ?? .init(), time: value))
+            
         }
         
         res.sort { (taskRecordHistory1, taskRecordHistory2) -> Bool in
@@ -81,16 +82,31 @@ struct taskRecords: View {
     var body: some View {
 
         List{
-            ForEach(self.taskRecordHistoryArr,id:\.self)
+            if(self.taskRecordHistoryArr.count > 0)
             {
-                record in
+                if(self.taskRecordHistoryArr[0].date == self.format.date(from: self.format.string(from: .init()))){
+                    HStack{
+                        Text(self.getMonth(self.taskRecordHistoryArr[0].date))
+                        Text(self.getDate(self.taskRecordHistoryArr[0].date))
+                        Text(self.getYear(self.taskRecordHistoryArr[0].date))
+                        Spacer()
+                        Text(self.giveTime(time: Int(self.taskRecordHistoryArr[0].time)))
+                    }
+                .padding()
+                }
+            }
+            if(self.taskRecordHistoryArr.count > 1)
+            {
+            ForEach(1...self.taskRecordHistoryArr.count-1,id:\.self)
+            {
+                ind in
 //                Text("\(record.date.description), \(giveTime(record.time))")
                 HStack{
-                Text(self.getMonth(record.date))
-                Text(self.getDate(record.date))
-                Text(self.getYear(record.date))
+                    Text(self.getMonth(self.taskRecordHistoryArr[ind].date))
+                    Text(self.getDate(self.taskRecordHistoryArr[ind].date))
+                    Text(self.getYear(self.taskRecordHistoryArr[ind].date))
                     Spacer()
-                    Text(self.giveTime(time: Int(record.time)))
+                    Text(self.giveTime(time: Int(self.taskRecordHistoryArr[ind].time)))
                 }
             .padding()
                 
@@ -102,6 +118,7 @@ struct taskRecords: View {
                 self.data.taskData[self.taskInd].timestamp.removeValue(forKey: self.format.string(from: self.taskRecordHistoryArr[ind].date))
             }
         })
+        }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarTitle("\(self.data.taskData[self.taskInd].name)")
