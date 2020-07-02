@@ -66,8 +66,11 @@ struct selectRange: View {
     }
     
     func updateMonth()->String{
-        var tempDate = self.dateValueLocal
-        tempDate = calendar.date(bySetting: .month, value: self.thisMonth, of: tempDate)!
+        let year = self.calendar.component(.year, from: self.dateValue)
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = self.thisMonth
+        let tempDate = self.calendar.date(from: dateComponents)!
         let monthInterval = calendar.dateInterval(of: .month, for: tempDate)
         let lastDayOfThisMonth = calendar.date(byAdding: .day, value: -1, to: monthInterval!.end)!
         self.dateValue = lastDayOfThisMonth
@@ -154,6 +157,7 @@ struct selectRange: View {
                 .onAppear(){
                     self.dateValue = .init()
                     self.thisMonth = self.calendar.component(.month, from: self.dateValue)
+                    self.dateValueLocal = .init()
             }
             
             }
