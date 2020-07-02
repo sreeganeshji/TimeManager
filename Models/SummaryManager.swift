@@ -15,7 +15,7 @@ class SummaryDaemon:ObservableObject
   
     var taskArr:[models.task]
     var formatter = DateFormatter()
-    var DayTaskWise:[models.task:TimeInterval] = .init()
+    var DayTaskWise:[Int:TimeInterval] = .init()
     var DayCatWise:[Int:TimeInterval] = .init()
     var taskRecordArr : [models.taskRecord] = .init()
     var catRecordArr : [models.catRecord] = .init()
@@ -42,7 +42,7 @@ class SummaryDaemon:ObservableObject
 //            array.append(L(key,value))
 //        }
 //    }
-    func fillTaskArray(dic:[models.task:TimeInterval],curArray:inout [models.taskRecord])
+    func fillTaskArray(dic:[Int:TimeInterval],curArray:inout [models.taskRecord])
     {
         var array:[models.taskRecord] = .init()
         for (task,time) in dic{
@@ -53,7 +53,7 @@ class SummaryDaemon:ObservableObject
             {
                 return true
             }
-            else if (taskRecord1.time == taskRecord2.time) && (taskRecord1.task.name > taskRecord2.task.name)
+            else if (taskRecord1.time == taskRecord2.time) && (self.taskArr[taskRecord1.task].name > self.taskArr[taskRecord2.task].name)
             {
                 return true
             }
@@ -63,7 +63,7 @@ class SummaryDaemon:ObservableObject
         curArray = .init(array)
     }
 
-    func giveTaskArray(dic:[models.task:TimeInterval]) ->([models.taskRecord])
+    func giveTaskArray(dic:[Int:TimeInterval]) ->([models.taskRecord])
     {
         var array:[models.taskRecord] = .init()
         for (task,time) in dic{
@@ -74,7 +74,7 @@ class SummaryDaemon:ObservableObject
             {
                 return true
             }
-            else if (taskRecord1.time == taskRecord2.time) && (taskRecord1.task.name > taskRecord2.task.name)
+            else if (taskRecord1.time == taskRecord2.time) && (self.taskArr[taskRecord1.task].name > self.taskArr[taskRecord2.task].name)
             {
                 return true
             }
@@ -137,16 +137,16 @@ class SummaryDaemon:ObservableObject
     {
         // find all tasks in that day and add up their values
         let today = self.formatter.string(from: date)
-        for task in self.taskArr
+        for ind in 0...self.taskArr.count-1
         {
-            if task.timestamp[today] != nil{
-                self.DayTaskWise[task] = task.timestamp[today]
+            if self.taskArr[ind].timestamp[today] != nil{
+                self.DayTaskWise[ind] = self.taskArr[ind].timestamp[today]
              
-                    if self.DayCatWise[task.categoryInd] == nil{
-                        self.DayCatWise[task.categoryInd] = task.timestamp[today]
+                if self.DayCatWise[self.taskArr[ind].categoryInd] == nil{
+                    self.DayCatWise[self.taskArr[ind].categoryInd] = self.taskArr[ind].timestamp[today]
                     }
                     else{
-                        self.DayCatWise[task.categoryInd] = self.DayCatWise[task.categoryInd]?.advanced(by: task.timestamp[today] ?? 0)
+                    self.DayCatWise[self.taskArr[ind].categoryInd] = self.DayCatWise[self.taskArr[ind].categoryInd]?.advanced(by: self.taskArr[ind].timestamp[today] ?? 0)
                     }
                 }
             }

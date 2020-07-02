@@ -40,6 +40,7 @@
 		1F6290EE24AA5C2D008C57A4 /* categorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */; };
 		1F7BF80F249862E5001D7021 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF80E249862E5001D7021 /* CategoryList.swift */; };
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
+		1F92B30924AD739A009107AB /* taskRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30824AD739A009107AB /* taskRecords.swift */; };
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
@@ -139,6 +140,7 @@
 		1F6290ED24AA5C2D008C57A4 /* categorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categorySummary.swift; sourceTree = "<group>"; };
 		1F7BF80E249862E5001D7021 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		1F92B30824AD739A009107AB /* taskRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRecords.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1F250E9F249F099C005674E2 /* addCategoryiOS.swift */,
 				1FFFE3E724ACDFDB00D67065 /* selectFromColors.swift */,
 				1F7BF8102498648B001D7021 /* CategoryDetail.swift */,
+				1F92B30824AD739A009107AB /* taskRecords.swift */,
 				1F544A1224A456880096EA60 /* Archives */,
 				1F544A1124A44E030096EA60 /* Summary */,
 			);
@@ -514,6 +517,7 @@
 				1FFFE3EC24ACE1AC00D67065 /* summaryBody.swift in Sources */,
 				1F1AAC21244E288900134634 /* categoryEditView.swift in Sources */,
 				1F1AAC39244EA8DD00134634 /* TaskEdit.swift in Sources */,
+				1F92B30924AD739A009107AB /* taskRecords.swift in Sources */,
 				1F6290EC24AA5C20008C57A4 /* taskSummary.swift in Sources */,
 				1F544A0C24A2C0C20096EA60 /* SummaryManager.swift in Sources */,
 				1FF9BCB92497086A002C19B6 /* ContentView.swift in Sources */,

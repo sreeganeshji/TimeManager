@@ -118,12 +118,12 @@ class models: ObservableObject
     //Summary models
     struct taskRecord : Hashable
     {
-        init(_ task:models.task,_ time:TimeInterval)
+        init(_ task:Int,_ time:TimeInterval)
         {
             self.task = task
             self.time = time
         }
-        var task:models.task
+        var task:Int
         var time:TimeInterval
     }
     struct catRecord : Hashable

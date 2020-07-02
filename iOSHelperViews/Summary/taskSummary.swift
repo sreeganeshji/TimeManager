@@ -50,14 +50,16 @@ struct taskSummary: View {
            ForEach(self.data.taskRecordArr.indices,id:\.self)
                    {
            ind in
-        
+                    NavigationLink(destination:taskRecords(taskInd: self.data.taskRecordArr[ind].task, formatString: "MM_dd_yyyy").environmentObject(self.data))
+                    {
            HStack      {
                Rectangle().frame(width:20)
-                   .foregroundColor((self.data.taskData.count > ind) ? self.data.getColor(self.data.categories[self.data.taskRecordArr[ind].task.categoryInd].color) : .gray)
-               Text((self.data.taskData.count > ind) ? self.data.taskRecordArr[ind].task.name : "Deleted")
+                .foregroundColor((self.data.taskData.count > ind) ? self.data.getColor(self.data.categories[self.data.taskData[self.data.taskRecordArr[ind].task].categoryInd].color) : .gray)
+            Text((self.data.taskData.count > ind) ? self.data.taskData[self.data.taskRecordArr[ind].task].name : "Deleted")
                Spacer()
                Text(self.giveTime(time: (self.data.taskData.count > ind) ? Int(self.data.taskRecordArr[ind].time) : 0))
                        }
+            }
                    }
                }
            }

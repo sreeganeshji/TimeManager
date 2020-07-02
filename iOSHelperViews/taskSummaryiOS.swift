@@ -100,6 +100,13 @@ struct TaskSummaryiOS: View {
             }
             
 //                   Divider()
+        
+//                NavigationLink(destination:
+//            taskRecords(task: self.$data.taskData[self.taskInd]))
+//                {
+//                    Text("History")
+//                }
+            
         }
         .navigationBarItems(trailing: Button(action:{self.showSheet = false}){Text("Done")})
         .navigationBarTitle(self.data.taskData[self.taskInd].name)

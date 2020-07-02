@@ -72,7 +72,12 @@ struct ContentView: View {
                 task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: Double(Int(duration))))
             }
             else{
+                if(task.wrappedValue.timestamp[self.today] != nil){
             task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: 1))
+                }
+                else{
+                    task.wrappedValue.timestamp[self.today] = .init()
+                }
             }
         
         
