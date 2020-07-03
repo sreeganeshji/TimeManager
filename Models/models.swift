@@ -45,6 +45,26 @@ class models: ObservableObject
  
     }
     
+    var pauseAllTasksMem:[Int] = []
+    func pauseAllTasks(){
+        self.pauseAllTasksMem = []
+        
+        for ind in self.taskData.indices{
+            if self.taskData[ind].selected{
+                pauseAllTasksMem.append(ind)
+                self.taskData[ind].selected = false
+            }
+        }
+    }
+    
+    func resumeAllTasks(){
+        for ind in pauseAllTasksMem{
+            self.taskData[ind].selected = true
+        }
+        self.pauseAllTasksMem = []
+    }
+    
+    
     func getColorName(_ color:Color)->String
     {
         switch color {
@@ -64,6 +84,18 @@ class models: ObservableObject
             return "red"
         case .yellow:
             return "yellow"
+        case .init(red: 195/256, green: 151/256, blue: 151/256):
+            return "brown"
+        case.init(red: 0/256, green: 206/256, blue: 209/256):
+            return "cyan"
+        case .init(red: 128/256, green: 0/256, blue: 0/256):
+            return "maroon"
+        case .init(red: 255/256, green: 195/256, blue: 160/256):
+            return "pale"
+        case .init(red:0,green:128/256,blue:128/256):
+            return "dark green"
+        case .init(red:218/256,green:165/256,blue:32/256):
+            return "gold"
         default:
             return "orange"
         }
@@ -88,6 +120,18 @@ class models: ObservableObject
             return .orange
         case "green":
             return .green
+        case "brown":
+            return .init(red: 195/256, green: 151/256, blue: 151/256)
+        case "cyan":
+            return .init(red: 0/256, green: 206/256, blue: 209/256)
+        case "maroon":
+            return .init(red: 128/256, green: 0/256, blue: 0/256)
+        case "pale":
+            return .init(red: 255/256, green: 195/256, blue: 160/256)
+        case "dark green":
+            return .init(red:0,green:128/256,blue:128/256)
+        case "gold":
+            return .init(red:218/256,green:165/256,blue:32/256)
         default:
             return .orange
         }
@@ -95,7 +139,10 @@ class models: ObservableObject
     
     var today:String = ""
     
-    var colors:[Color] = [.blue,.red,.orange,.pink,.purple,.yellow,.green]
+    var colors:[Color] = [.blue,.red,.orange,.pink,.purple,.yellow,.green,
+                          .init(red: 195/256, green: 151/256, blue: 151/256),.init(red: 0/256, green: 206/256, blue: 209/256),.init(red: 128/256, green: 0/256, blue: 0/256), .init(red: 255/256, green: 195/256, blue: 160/256),.init(red:0,green:128/256,blue:128/256),
+                          .init(red:218/256,green:165/256,blue:32/256)
+    ]
     
     @Published var sumaryRecord = SummaryDaemon()
     
@@ -143,4 +190,5 @@ class models: ObservableObject
     var calculateSummary = false
     var showTaskvsCategory = true
 
+    
 }

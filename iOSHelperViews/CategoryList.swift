@@ -53,9 +53,16 @@ struct CategoryList: View {
         }
         }
         .navigationBarTitle("Categories")
-            .navigationBarItems(leading: EditButton(), trailing: Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
+            .navigationBarItems(leading: EditButton(), trailing:
+                
+//                NavigationLink(destination: addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data))
+//                {
+//                   Image(systemName: "square.and.pencil")
+//                }
+//            )
+                Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
        
-//        }
+        
         .sheet(isPresented: self.$showAddCategoryView, content: {
             addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)
             

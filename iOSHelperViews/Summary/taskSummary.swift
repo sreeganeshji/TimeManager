@@ -10,6 +10,8 @@ import SwiftUI
 
 struct taskSummary: View {
     @EnvironmentObject var data:models
+    @State var showSheet:Bool = false
+    @State var taskInd:Int = 0
     
     func giveTime(time:Int)->String
      {
@@ -50,8 +52,7 @@ struct taskSummary: View {
            ForEach(self.data.taskRecordArr.indices,id:\.self)
                    {
            ind in
-                    NavigationLink(destination:taskRecords(taskInd: self.data.taskRecordArr[ind].task, formatString: "MM_dd_yyyy").environmentObject(self.data))
-                    {
+                  
            HStack      {
                Rectangle().frame(width:20)
                 .foregroundColor((self.data.taskData.count > ind) ? self.data.getColor(self.data.categories[self.data.taskData[self.data.taskRecordArr[ind].task].categoryInd].color) : .gray)
@@ -59,9 +60,21 @@ struct taskSummary: View {
                Spacer()
                Text(self.giveTime(time: (self.data.taskData.count > ind) ? Int(self.data.taskRecordArr[ind].time) : 0))
                        }
-            }
+                   .contentShape(Rectangle())
+           .onTapGesture {
+            self.showSheet = true
+            self.taskInd = self.data.taskRecordArr[ind].task
+                        }
+            
+                   
                    }
                }
+           .sheet(isPresented: self.$showSheet, content: {
+            NavigationView{
+                taskRecords(taskInd: self.taskInd,showSheet: self.$showSheet,letChangeTime: false).environmentObject(self.data)
+               
+            }
+           })
            }
     
 }

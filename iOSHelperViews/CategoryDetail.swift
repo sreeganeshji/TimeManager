@@ -51,7 +51,7 @@ struct CategoryDetail: View {
                                 Image(systemName: "bookmark.fill")
                                     .foregroundColor(color)
 //                                Spacer()
-                                Text(color.description)
+                                Text(self.data.getColorName(color))
                                                               Spacer()
 
                             }

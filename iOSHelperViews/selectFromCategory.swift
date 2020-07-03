@@ -12,30 +12,8 @@ struct selectFromCategory: View {
     @Binding var categoryInd:Int
     @State var categoryIndLocal:Int = 0
     var categoryList:[models.category]
+    @EnvironmentObject var data:models
   
-    func getColor(_ colorName:String)->Color
-    {
-        switch colorName {
-        case "gray":
-            return .gray
-        case "blue":
-            return .blue
-        case "yellow":
-            return .yellow
-        case "red":
-            return .red
-        case "purple":
-            return .purple
-        case "pink":
-            return .pink
-        case "orange":
-            return .orange
-        case "green":
-            return .green
-        default:
-            return .orange
-        }
-    }
 
     func updatePicker()->String{
         self.categoryInd = self.categoryIndLocal
@@ -48,7 +26,7 @@ struct selectFromCategory: View {
                                     {
                                         ind in
                                         HStack{
-                                            Image(systemName:"bookmark.fill").foregroundColor(self.getColor(self.categoryList[ind].color))
+                                            Image(systemName:"bookmark.fill").foregroundColor(self.data.getColor(self.categoryList[ind].color))
                                            
                                             Text(self.categoryList[ind].name).tag(ind)
                                             Spacer()

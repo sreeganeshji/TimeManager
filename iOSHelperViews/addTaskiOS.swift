@@ -36,10 +36,16 @@ struct addTaskiOS: View {
                         
                         TextField("Name", text: $task.name)
                 
-                        selectFromCategory(categoryInd: self.$categoryInd, categoryList: self.categoryList)
+                        selectFromCategory(categoryInd: self.$categoryInd, categoryList: self.categoryList).environmentObject(self.data)
 //                        .tabItem({Text("Stuff")})
 //                        TextField("Description",text: $task.description)
                         
+                }
+                .onAppear(){
+                    self.data.pauseAllTasks()
+                }
+                .onDisappear(){
+                    self.data.resumeAllTasks()
                 }
         
     .padding()

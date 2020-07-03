@@ -139,8 +139,13 @@ class SummaryDaemon:ObservableObject
         let today = self.formatter.string(from: date)
         for ind in 0...self.taskArr.count-1
         {
-            if self.taskArr[ind].timestamp[today] != nil{
-                self.DayTaskWise[ind] = self.taskArr[ind].timestamp[today]
+            if self.taskArr[ind].timestamp[today] != nil && self.taskArr[ind].timestamp[today] != 0{
+                if(self.DayTaskWise[ind] == nil){
+                    self.DayTaskWise[ind] = self.taskArr[ind].timestamp[today]
+                }
+                else{
+                    self.DayTaskWise[ind] = self.DayTaskWise[ind]?.advanced(by: self.taskArr[ind].timestamp[today] ?? 0) 
+                }
              
                 if self.DayCatWise[self.taskArr[ind].categoryInd] == nil{
                     self.DayCatWise[self.taskArr[ind].categoryInd] = self.taskArr[ind].timestamp[today]

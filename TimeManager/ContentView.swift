@@ -72,12 +72,10 @@ struct ContentView: View {
                 task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: Double(Int(duration))))
             }
             else{
-                if(task.wrappedValue.timestamp[self.today] != nil){
+            
             task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: 1))
-                }
-                else{
-                    task.wrappedValue.timestamp[self.today] = .init()
-                }
+                
+               
             }
         
         
@@ -263,6 +261,9 @@ struct ContentView: View {
                     self.data.sumaryRecord.categoryList = self.data.categories
                     self.data.sumaryRecord.update(dateComponent: self.data.summaryTimeRange, startDate: self.data.refDate)
                     self.data.taskRecordArr = self.data.sumaryRecord.taskRecordArr
+//                        for record in self.data.taskRecordArr{
+////                            print(record.task, "time",record.time)
+//                        }
                     self.data.catRecordArr = self.data.sumaryRecord.catRecordArr
                     }
                     self.data.timeCounter += 1
@@ -281,7 +282,10 @@ struct ContentView: View {
                 }
                 else if (self.showTaskOptions)
                 {
+                    NavigationView{
                     TaskSummaryiOS(taskInd: self.selectedTaskInd, showSheet: self.$showSheet).environmentObject(self.data)
+                        
+                }
                     .onDisappear()
                         {
                             self.showTaskOptions = false

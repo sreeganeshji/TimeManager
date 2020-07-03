@@ -23,7 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        data.taskData = dataManager.load("tasks") ?? [models.task( myId:1,name: "Workout", description: "Weight training", categoryInd:5),models.task(myId:2,name: "Piano practice", description: "Western classical",categoryInd:6),models.task(myId:3,name: "Watching Youtube", description: "",categoryInd:3),models.task(myId:4,name: "Jogging", description: "",categoryInd:5),models.task(myId:5,name: "Party", description: "",categoryInd:4),models.task(myId:6,name: "Database Systems", description: "CS6400",categoryInd:2),models.task(myId:7,name: "Hiking", description: "",categoryInd:5),models.task(myId:8,name: "Dance", description: "Salsa",categoryInd:6),models.task(myId:9,name: "TV", description: "Movies",categoryInd:3)]
+        data.taskData = dataManager.load("tasks") ?? [models.task( myId:1,name: "Workout", description: "Weight training", categoryInd:5
+//            ,timestamp: ["07_01_2020":4000,"07_02_2020":3600,"03_04_2020":3000]
+            ),models.task(myId:2,name: "Piano practice", description: "Western classical",categoryInd:6
+//                ,timestamp: ["07_02_2020":3600]
+            ),models.task(myId:3,name: "Watching Youtube", description: "",categoryInd:3
+//                ,timestamp:[ "07_02_2020":1800]
+            ),models.task(myId:4,name: "Jogging", description: "",categoryInd:5),models.task(myId:5,name: "Party", description: "",categoryInd:4),models.task(myId:6,name: "Database Systems", description: "CS6400",categoryInd:2
+//                ,timestamp: ["07_02_2020":3600]
+            ),models.task(myId:7,name: "Hiking", description: "",categoryInd:5),models.task(myId:8,name: "Dance", description: "Salsa",categoryInd:6),models.task(myId:9,name: "TV", description: "Movies",categoryInd:3)]
         data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Leisure","purple"),models.category("Socialize","green"),models.category("Fitness","Orange"),models.category("Hobby","pink")]
 
         

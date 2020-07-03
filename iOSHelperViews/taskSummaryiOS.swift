@@ -51,7 +51,8 @@ struct TaskSummaryiOS: View {
 //        return self.data.categories[self.data.taskData[self.taskInd].categoryInd].color
 //    }
     var body: some View {
-        NavigationView{
+        VStack{
+            VStack{
         Form{
             HStack{
                 Text("Name:").bold()
@@ -106,7 +107,21 @@ struct TaskSummaryiOS: View {
 //                {
 //                    Text("History")
 //                }
-            
+            }
+            }
+            Text("Records").bold()
+            VStack{
+                
+//                NavigationLink(destination:
+            taskRecords(taskInd: self.taskInd, showSheet: .constant(true), letChangeTime: true)
+//                )
+//                {
+//                    Text("Records")
+//                }
+                
+            }
+   
+        
         }
         .navigationBarItems(trailing: Button(action:{self.showSheet = false}){Text("Done")})
         .navigationBarTitle(self.data.taskData[self.taskInd].name)
@@ -129,7 +144,7 @@ struct TaskSummaryiOS: View {
             
         }
     }
-}
+
 
 struct TaskSummaryiOS_Previews: PreviewProvider {
     static var previews: some View {

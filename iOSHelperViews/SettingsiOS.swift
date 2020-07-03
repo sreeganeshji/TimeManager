@@ -20,6 +20,7 @@ struct SettingsiOS: View {
             {
                 Toggle(isOn: self.$data.concurrentTasks) {
                     Text("Concurrent tasks")
+//                        .foregroundColor(.init(red: 121/256, green: 64/256, blue: 68/256))
                 }
 
             }

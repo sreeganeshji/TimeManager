@@ -60,7 +60,7 @@ struct SummaryiOS: View {
         .onAppear()
             {
                 self.format.dateFormat = "MM_dd_yyyy"
-
+                print("initialized summary view")
                 self.data.calculateSummary = true
                 self.ShowTaskvsCategory = self.data.showTaskvsCategory
         }

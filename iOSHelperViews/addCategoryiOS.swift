@@ -31,7 +31,7 @@ struct addCategoryiOS: View {
                 List
                     {
                         TextField("Name", text: self.$category.name)
-                        selectFromColors(colorVal: self.$colorVal, colors: self.data.colors)
+                        selectFromColors(colorVal: self.$colorVal, colors: self.data.colors).environmentObject(self.data)
 //                        .tabItem({Text("Stuff")})
                 }
     .padding()
@@ -43,8 +43,18 @@ struct addCategoryiOS: View {
                        }) {
                            Text("Add")
                        })
+            
+           .onAppear(){
+                self.data.pauseAllTasks()
+            print("pausing")
+            }
+            .onDisappear(){
+                self.data.resumeAllTasks()
+                print("Resuming")
+            }
          
     }
+        
             
     }
         }
