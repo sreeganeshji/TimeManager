@@ -64,7 +64,9 @@ struct CategoryList: View {
        
         
         .sheet(isPresented: self.$showAddCategoryView, content: {
+            NavigationView{
             addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)
+            }
             
         })
     }

@@ -121,7 +121,7 @@ struct selectHours: View {
     }
         .onAppear(){
             self.data.pauseAllTasks()
-            self.timeState.setTime(totalSec: Int(self.data.taskData[self.taskInd].timestamp[self.dateString]!))
+            self.timeState.setTime(totalSec: Int(Swift.min(self.data.taskData[self.taskInd].timestamp[self.dateString]!, 60*60*24)))
             print("initialized state")
         
         }

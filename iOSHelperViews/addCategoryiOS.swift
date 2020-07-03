@@ -27,14 +27,14 @@ struct addCategoryiOS: View {
     }
     
     var body: some View {
-        NavigationView{
-                List
+//        NavigationView{
+                Form
                     {
                         TextField("Name", text: self.$category.name)
                         selectFromColors(colorVal: self.$colorVal, colors: self.data.colors).environmentObject(self.data)
 //                        .tabItem({Text("Stuff")})
                 }
-    .padding()
+//    .padding()
     .navigationBarTitle("Add Category")
         .navigationBarItems(trailing:  Button(action:
                            {
@@ -53,7 +53,7 @@ struct addCategoryiOS: View {
                 print("Resuming")
             }
          
-    }
+//    }
         
             
     }

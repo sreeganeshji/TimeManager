@@ -74,6 +74,7 @@ struct ContentView: View {
             else{
             
             task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: 1))
+                task.wrappedValue.timestamp[self.today] = Swift.min(task.wrappedValue.timestamp[self.today] ?? 0,60*60*24)
                 
                
             }
@@ -293,7 +294,9 @@ struct ContentView: View {
                 }
                 else if (self.addTaskRequest)
                 {
+                    NavigationView{
                     addTaskiOS(activeView: self.$showSheet,categoryList: self.data.categories).environmentObject(self.data)
+                }
                     .onDisappear()
                         {
                             self.addTaskRequest = false

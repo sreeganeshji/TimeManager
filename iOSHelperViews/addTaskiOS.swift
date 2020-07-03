@@ -29,9 +29,8 @@ struct addTaskiOS: View {
     }
     
     var body: some View {
-        NavigationView{
            
-                List
+                Form
                     {
                         
                         TextField("Name", text: $task.name)
@@ -48,7 +47,7 @@ struct addTaskiOS: View {
                     self.data.resumeAllTasks()
                 }
         
-    .padding()
+//    .padding()
     .navigationBarTitle("Add task")
         .navigationBarItems(trailing:  Button(action:
                            {
@@ -57,9 +56,7 @@ struct addTaskiOS: View {
                        }) {
                            Text("Add")
                        })
-
-    }
-            
+        
     }
         }
         

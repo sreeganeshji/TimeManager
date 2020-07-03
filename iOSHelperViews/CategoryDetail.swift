@@ -62,6 +62,12 @@ struct CategoryDetail: View {
                 
             }
 //            .navigationBarTitle("Category: \(category.name)")
+                .onAppear(){
+                    self.data.pauseAllTasks()
+        }
+            .onDisappear(){
+                self.data.resumeAllTasks()
+        }
     
         
     }
