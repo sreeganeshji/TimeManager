@@ -11,6 +11,7 @@ import SwiftUI
 struct CategoryDetail: View {
     @Binding var category:models.category
     @EnvironmentObject var data:models
+    @Binding var showSheet:Bool
     var body: some View {
        
             
@@ -58,11 +59,17 @@ struct CategoryDetail: View {
                             .tag(self.data.getColorName(color))
                         }
                     }
+                .labelsHidden()
                 }
                 
             }
-//            .navigationBarTitle("Category: \(category.name)")
-
+            .navigationBarTitle("\(category.name)")
+            .navigationBarItems(trailing: Button(action:{
+                self.showSheet = false
+            })
+            {
+                Text("Done")
+            })
     
         
     }
@@ -70,6 +77,6 @@ struct CategoryDetail: View {
 
 struct CategoryDetail_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryDetail(category: .constant(models.category("work"))).environmentObject(models())
+        CategoryDetail(category: .constant(models.category("work")), showSheet: .constant(true)).environmentObject(models())
     }
 }

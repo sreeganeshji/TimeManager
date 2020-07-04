@@ -10,7 +10,9 @@ import SwiftUI
 
 struct CategoryList: View {
 @EnvironmentObject var data:models
-    @State var showAddCategoryView = false
+    @State var showSheet = false
+    @State var showDetail = false
+    @State var selectedCat = 0
     
     var body: some View {
 //        NavigationView{
@@ -20,8 +22,13 @@ struct CategoryList: View {
             ForEach(1...self.data.categories.count-1, id: \.self)
             {
                 catInd in
-                NavigationLink(destination: CategoryDetail(category: self.$data.categories[catInd]).environmentObject(self.data))
-                {
+//                NavigationLink(destination: CategoryDetail(category: self.$data.categories[catInd]).environmentObject(self.data))
+//                {
+                Button(action:{self.showDetail = true
+                    self.showDetail = true
+                    self.selectedCat = catInd
+                    self.showSheet = true
+                }){
                     HStack{
                     Text(self.data.categories[catInd].name)
                         Spacer()
@@ -32,8 +39,9 @@ struct CategoryList: View {
                             .foregroundColor(self.data.getColor(self.data.categories[catInd].color))
                     }
                 }
+                }
                 
-            }
+//            }
         .onDelete(perform: {
             index in
             for i in index{
@@ -60,12 +68,22 @@ struct CategoryList: View {
 //                   Image(systemName: "square.and.pencil")
 //                }
 //            )
-                Button(action:{self.showAddCategoryView = true}){ Image(systemName: "square.and.pencil")})
+                Button(action:{
+                    self.showDetail = false
+                    self.showSheet = true
+                }){ Image(systemName: "square.and.pencil")})
        
         
-        .sheet(isPresented: self.$showAddCategoryView, content: {
+        .sheet(isPresented: self.$showSheet, content: {
+            if(!self.showDetail){
             NavigationView{
-            addCategoryiOS(activeView: self.$showAddCategoryView).environmentObject(self.data)
+            addCategoryiOS(activeView: self.$showSheet).environmentObject(self.data)
+            }
+            }
+            else{
+                NavigationView{
+                    CategoryDetail(category: self.$data.categories[self.selectedCat], showSheet: self.$showSheet).environmentObject(self.data)
+                }
             }
             
         })
