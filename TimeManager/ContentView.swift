@@ -104,14 +104,16 @@ struct ContentView: View {
             }
                 .navigationBarTitle("Tasks")
             
-                .navigationBarItems(leading: EditButton() ,trailing:
+            .navigationBarItems(leading: EditButton() ,trailing:
               
                     Button(action:{
+                        print("Pressed")
                         self.addTaskRequest = true
                         self.showSheet = true
+                        self.data.pauseTasksAndSummary()
                     })
                         {
-                    Image(systemName: "square.and.pencil")
+                            Image(systemName: "square.and.pencil")
                         }
                     )
 //                }

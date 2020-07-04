@@ -284,7 +284,14 @@ class models: ObservableObject
                 task.wrappedValue.lastChanged = Date().timeIntervalSince1970
                 if duration > 1.50
                 {
+                    if(duration > 60*60*24){
+                        // adding more than a day.
+                        //temporary fix
+                        duration = min(duration,60*60*24)
+                    }
+                    
                     task.wrappedValue.timestamp[self.today] = TimeInterval((interval ?? TimeInterval(0)).advanced(by: Double(Int(duration))))
+                    
                 }
                 else{
                 
