@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ),models.task(myId:4,name: "Jogging", description: "",categoryInd:5),models.task(myId:5,name: "Party", description: "",categoryInd:4),models.task(myId:6,name: "Database Systems", description: "CS6400",categoryInd:2
 //                ,timestamp: ["07_02_2020":3600]
             ),models.task(myId:7,name: "Hiking", description: "",categoryInd:5),models.task(myId:8,name: "Dance", description: "Salsa",categoryInd:6),models.task(myId:9,name: "TV", description: "Movies",categoryInd:3)]
-        data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Leisure","purple"),models.category("Socialize","green"),models.category("Fitness","Orange"),models.category("Hobby","pink")]
+        data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Leisure","purple"),models.category("Social","green"),models.category("Fitness","orange"),models.category("Hobby","pink")]
 
         
         // Create the SwiftUI view that provides the window contents.

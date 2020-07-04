@@ -54,6 +54,10 @@ struct CategoryList: View {
                     {
                         self.data.taskData[taskInd].categoryInd  = 0
                     }
+                    else if(self.data.taskData[taskInd].categoryInd > i+1)
+                    {
+                        self.data.taskData[taskInd].categoryInd -= 1
+                    }
                 }
                   self.data.categories.remove(at: i+1)
             }
