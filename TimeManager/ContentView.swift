@@ -176,9 +176,11 @@ struct ContentView: View {
                     NavigationView{
                     TaskSummaryiOS(taskInd: self.selectedTaskInd, showSheet: self.$showSheet).environmentObject(self.data)
                         
+                        
                 }
                     .onDisappear()
                         {
+                            self.data.resumeAllTasks()
                             self.showTaskOptions = false
                     }
                 }

@@ -91,6 +91,7 @@ struct taskRecords: View {
     var body: some View {
         List{
             if(self.letChangeTime){
+                
             ForEach(self.taskRecordHistoryArr,id:\.self)
             {
                 taskRecord in
@@ -103,10 +104,10 @@ struct taskRecords: View {
                 }
                 .onDisappear()
                     {
-                        print("On disappear not working")
                         self.data.resumeTasksAndSummary()
                 }
-                    .padding()){
+                    .padding()
+                ){
                 HStack{
                     if(taskRecord.date == self.format.date(from: self.format.string(from: .init())))
                     {
@@ -123,6 +124,8 @@ struct taskRecords: View {
                     }
                  }
             .padding()
+                .disabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
+            .deleteDisabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
                 
             }
         .onDelete(perform: {

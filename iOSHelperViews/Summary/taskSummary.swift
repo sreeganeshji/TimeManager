@@ -71,13 +71,12 @@ struct taskSummary: View {
                }
            .sheet(isPresented: self.$showSheet, content: {
             NavigationView{
-                taskRecords(taskInd: self.taskInd,showSheet: self.$showSheet,letChangeTime: true).environmentObject(self.data)
+                taskRecords(taskInd: self.taskInd,showSheet: self.$showSheet,letChangeTime: false).environmentObject(self.data)
                     .onDisappear(){
                         self.data.resumeTasksAndSummary()
-                }
-               
-            }
-           })
+                        }
+                    }
+                })
            }
     
 }

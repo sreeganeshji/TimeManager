@@ -12,7 +12,6 @@ struct taskRowiOS2: View {
     var taskInd:Int
     @State var task:models.task = .init(myId: 0, name: "", description: "")
     @EnvironmentObject var data:models
-    @State var today:String = ""
     var format = DateFormatter()
     @Binding var selectedTaskInd:Int
     @Binding var showTaskOptions:Bool
@@ -54,7 +53,7 @@ struct taskRowiOS2: View {
                 Text(self.data.taskData[self.taskInd].description)
             }
             Spacer()
-            Text("\(self.giveTime(time:Int(self.data.taskData[self.taskInd].timestamp[self.today]?.magnitude ?? 0)))")
+                Text("\(self.giveTime(time:Int(self.data.taskData[self.taskInd].timestamp[self.data.today]?.magnitude ?? 0)))")
                 .frame(width:80)
             
             Divider()
@@ -86,7 +85,6 @@ struct taskRowiOS2: View {
         .onAppear()
             {
                 self.format.dateFormat = "MM_dd_yyyy"
-                self.today = self.format.string(from:Date())
 //                self.task = self.data.taskData[self.taskInd]
 
         }

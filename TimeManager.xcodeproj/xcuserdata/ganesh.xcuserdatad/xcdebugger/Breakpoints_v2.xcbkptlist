@@ -429,8 +429,8 @@
             filePath = "iOSHelperViews/taskRowiOS2.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -877,8 +877,8 @@
             filePath = "iOSHelperViews/taskRowiOS2.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "giveTime(time:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -893,8 +893,8 @@
             filePath = "Models/models.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "incrementTaskCounter(task:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -909,8 +909,8 @@
             filePath = "Models/models.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "incrementTaskCounter(task:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -977,6 +977,38 @@
             endingLineNumber = "192"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD82C815-E593-4F00-B9C7-FB4045133102"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSHelperViews/Summary/selectHours.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE95B0B7-EA33-4204-9283-CB340694B6E1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Models/models.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "incrementTaskCounter(task:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

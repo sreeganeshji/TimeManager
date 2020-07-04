@@ -47,7 +47,9 @@ class models: ObservableObject
     
     var pauseUpdate:Bool = false
     var pauseAllTasksMem:[Int] = []
+    var pauseAtom:Bool = false
     func pauseAllTasks(){
+        if(!pauseAtom){
         self.pauseAllTasksMem = []
 
         for ind in self.taskData.indices{
@@ -56,13 +58,18 @@ class models: ObservableObject
                 self.taskData[ind].selected = false
             }
         }
+            self.pauseAtom = true
+        }
     }
     
     func resumeAllTasks(){
+        if(self.pauseAtom == true){
         for ind in pauseAllTasksMem{
             self.taskData[ind].selected = true
         }
         self.pauseAllTasksMem = []
+            self.pauseAtom = false
+        }
     }
     
     func pauseSummaryUpdates(){
@@ -264,17 +271,24 @@ class models: ObservableObject
                  */
                 let lastChangedDate = Date(timeIntervalSince1970: task.wrappedValue.lastChanged ?? Date().timeIntervalSince1970)
     //        print(lastChangedDate.timeIntervalSince1970)
-
-                let duration = DateInterval(start: lastChangedDate, end: Date()).duration.magnitude
-                
+                let endDate = Date()
+            var duration :Double = 0
+//            print("start \(lastChangedDate.description) and end \(endDate.description)")
+            if(lastChangedDate < endDate){
+            let DateIntervalVal = DateInterval(start: lastChangedDate, end: endDate)
+            duration = DateIntervalVal.duration.magnitude
+            }
+            else{
+                duration = 0
+            }
                 task.wrappedValue.lastChanged = Date().timeIntervalSince1970
                 if duration > 1.50
                 {
-                    task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: Double(Int(duration))))
+                    task.wrappedValue.timestamp[self.today] = TimeInterval((interval ?? TimeInterval(0)).advanced(by: Double(Int(duration))))
                 }
                 else{
                 
-                task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: 1))
+                task.wrappedValue.timestamp[self.today] = TimeInterval((interval ?? TimeInterval(0)).advanced(by: 1))
                     task.wrappedValue.timestamp[self.today] = Swift.min(task.wrappedValue.timestamp[self.today] ?? 0,60*60*24)
                     
                    
