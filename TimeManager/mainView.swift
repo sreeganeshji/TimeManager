@@ -129,6 +129,9 @@ struct mainView: View {
                         .onAppear(){
                             self.data.pauseTasksAndSummary()
                     }
+                    .onDisappear(){
+                        print("Disappeared")
+                    }
                 }
                     .tabItem({
                         Image(systemName: "bookmark.fill")

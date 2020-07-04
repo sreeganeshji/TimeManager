@@ -101,6 +101,8 @@ struct taskRecords: View {
                         {
 //                            print("going to change time view")
                             self.data.pauseTasksAndSummary()
+                            self.data.taskData[self.taskInd].lastChanged = nil
+                            
                 }
                 .onDisappear()
                     {
@@ -124,8 +126,8 @@ struct taskRecords: View {
                     }
                  }
             .padding()
-                .disabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
-            .deleteDisabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
+//                .disabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
+//            .deleteDisabled((taskRecord.date == self.format.date(from: self.format.string(from: .init()))) && self.data.taskData[self.taskInd].selected)
                 
             }
         .onDelete(perform: {

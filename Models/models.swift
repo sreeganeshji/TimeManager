@@ -49,6 +49,7 @@ class models: ObservableObject
     var pauseAllTasksMem:[Int] = []
     var pauseAtom:Bool = false
     func pauseAllTasks(){
+        print("pauseAllTasks")
         if(!pauseAtom){
         self.pauseAllTasksMem = []
 
@@ -63,6 +64,7 @@ class models: ObservableObject
     }
     
     func resumeAllTasks(){
+        print("resumeAllTasks")
         if(self.pauseAtom == true){
         for ind in pauseAllTasksMem{
             self.taskData[ind].selected = true
@@ -73,19 +75,23 @@ class models: ObservableObject
     }
     
     func pauseSummaryUpdates(){
+        print("pauseSummaryUpdates")
         self.pauseUpdate = true
     }
     
     func resumeSummaryUpdates(){
+        print("resumeSummaryUpdates")
         self.pauseUpdate = false
     }
     
     func pauseTasksAndSummary(){
+        print("pauseTasksAndSummary")
         self.pauseAllTasks()
         self.pauseSummaryUpdates()
     }
     
     func resumeTasksAndSummary(){
+        print("resumeTasksAndSummary")
         self.resumeAllTasks()
         self.resumeSummaryUpdates()
     }
