@@ -18,7 +18,7 @@ struct selectFromColors: View {
     }
     var colors:[Color]
     var body: some View {
-        Picker( selection: self.$colorVal,label: Text(updatePicker())) {
+        Picker( selection: self.$colorVal,label: Text("colorPicker")) {
                                     ForEach(self.colors,id: \.self)
                                     {
                                         color in
@@ -37,6 +37,9 @@ struct selectFromColors: View {
     .onAppear()
         {
             self.colorValLocal = self.colorVal
+        }
+        .onDisappear(){
+            self.updatePicker()
         }
     }
 }

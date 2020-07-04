@@ -30,22 +30,33 @@ struct addTaskiOS: View {
     
     var body: some View {
            
-                Form
+                List
                     {
                         
                         TextField("Name", text: $task.name)
                 
+//                        Picker(selection: self.$categoryInd, label:  HStack{Text("Category:").bold()
+//
+//                                  }) {
+//
+//                                      ForEach(self.data.categories.indices,id:\.self)
+//                                      {
+//                                          categoryInd in
+//                                          HStack{
+//                                              Image(systemName: "bookmark.fill").foregroundColor(self.data.getColor((self.data.categories[categoryInd].color)))
+//                                              Text(self.data.categories[categoryInd].name)
+//                                          }
+//                                      .tag(categoryInd)
+//                                      }
+//
+//                                  }
+                        
                         selectFromCategory(categoryInd: self.$categoryInd, categoryList: self.categoryList).environmentObject(self.data)
-//                        .tabItem({Text("Stuff")})
+                        .tabItem({Text("Stuff")})
 //                        TextField("Description",text: $task.description)
                         
                 }
-                .onAppear(){
-                    self.data.pauseAllTasks()
-                }
-                .onDisappear(){
-                    self.data.resumeAllTasks()
-                }
+
         
 //    .padding()
     .navigationBarTitle("Add task")

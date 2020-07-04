@@ -34,6 +34,7 @@ struct taskRecords: View {
         self.format.dateFormat = "MM_dd_yyyy"
         self._showSheet = showSheet
         self.letChangeTime = letChangeTime
+        print("taskRecords init")
     }
     
     func giveTime(time:Int)->String
@@ -94,7 +95,16 @@ struct taskRecords: View {
             {
                 taskRecord in
 //                Text("\(record.date.description), \(giveTime(record.time))")
-                NavigationLink(destination:selectHours(dateString: self.format.string(from: taskRecord.date), dateDisplayString: "\(self.getMonth(taskRecord.date)) \(self.getDate(taskRecord.date)) \(self.getYear(taskRecord.date))", taskInd: self.taskInd).environmentObject(self.data)
+                NavigationLink(destination:selectHours(showSheet: self.$showSheet, dateString: self.format.string(from: taskRecord.date), dateDisplayString: "\(self.getMonth(taskRecord.date)) \(self.getDate(taskRecord.date)) \(self.getYear(taskRecord.date))", taskInd: self.taskInd).environmentObject(self.data)
+                    .onAppear()
+                        {
+                            print("going to change time view")
+                            self.data.pauseTasksAndSummary()
+                }
+                .onDisappear()
+                    {
+                        self.data.resumeTasksAndSummary()
+                }
                     .padding()){
                 HStack{
                     if(taskRecord.date == self.format.date(from: self.format.string(from: .init())))

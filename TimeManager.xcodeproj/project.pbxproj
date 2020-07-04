@@ -42,6 +42,7 @@
 		1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BF8102498648B001D7021 /* CategoryDetail.swift */; };
 		1F92B30924AD739A009107AB /* taskRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30824AD739A009107AB /* taskRecords.swift */; };
 		1F92B30B24AE5B42009107AB /* selectHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30A24AE5B42009107AB /* selectHours.swift */; };
+		1F92B30D24AF8C63009107AB /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30C24AF8C63009107AB /* mainView.swift */; };
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
@@ -143,6 +144,7 @@
 		1F7BF8102498648B001D7021 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		1F92B30824AD739A009107AB /* taskRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRecords.swift; sourceTree = "<group>"; };
 		1F92B30A24AE5B42009107AB /* selectHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectHours.swift; sourceTree = "<group>"; };
+		1F92B30C24AF8C63009107AB /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				1F1AABB9244E211A00134634 /* AppDelegate.swift */,
 				1F1AABBB244E211A00134634 /* SceneDelegate.swift */,
 				1FF9BCB82497086A002C19B6 /* ContentView.swift */,
+				1F92B30C24AF8C63009107AB /* mainView.swift */,
 				1F1AABBF244E211C00134634 /* Assets.xcassets */,
 				1FF8BA4224AA72AB0068C894 /* Resources */,
 				1F1AABC4244E211C00134634 /* LaunchScreen.storyboard */,
@@ -530,6 +533,7 @@
 				1F51D56824A86FE9000D118D /* chooseDate.swift in Sources */,
 				1F1AAC25244E288900134634 /* Settings.swift in Sources */,
 				1FF8BA5124ABAFB80068C894 /* chooseTimeInterval.swift in Sources */,
+				1F92B30D24AF8C63009107AB /* mainView.swift in Sources */,
 				1F51D56324A8207E000D118D /* SummaryiOS2.swift in Sources */,
 				1F6290E824A96D7B008C57A4 /* chooseMonth.swift in Sources */,
 				1F1AAC35244EA5D400134634 /* TaskOptions.swift in Sources */,
@@ -717,7 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;
@@ -739,7 +743,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;

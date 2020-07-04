@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct selectRange: View {
+    @EnvironmentObject var data:models
     @Binding var dateField:Calendar.Component
     @Binding var dateValue:Date
     @State var dateValueLocal:Date = .init()
@@ -16,6 +17,7 @@ struct selectRange: View {
     @State var thisMonth:Int = 1
     @State var showSheet = false
     @State var yearOffset:Int = 0
+
 //    init()
 //    {
 //        self.weekOffset = 0
@@ -60,10 +62,11 @@ struct selectRange: View {
         
     }
     
-    func updateDay()->String{
-        self.dateValue = self.dateValueLocal
-        return "Day:"
-    }
+//    func updateDay()->String{
+//        print("Updating day")
+//        self.dateValue = self.dateValueLocal
+//        return "Day:"
+//    }
     
     func updateMonth()->String{
         let year = self.calendar.component(.year, from: self.dateValue)
@@ -90,13 +93,13 @@ struct selectRange: View {
         return getYear(offsetEndDate)
     }
     
-//    func updateYear(yearNo:Int)->String{
-//        let yearInterval = calendar.dateInterval(of: .year, for: calendar.date(bySetting: .year, value: yearNo, of: .init())!)
-//        let nextYearFirstDay = yearInterval!.end
-//        let givenYearLastDay = calendar.date(byAdding: .day, value: -1, to: nextYearFirstDay)
-//        self.dateValue = givenYearLastDay!
-//        return "Year:"
-//    }
+    func updateYear(yearNo:Int)->String{
+        let yearInterval = calendar.dateInterval(of: .year, for: calendar.date(bySetting: .year, value: yearNo, of: .init())!)
+        let nextYearFirstDay = yearInterval!.end
+        let givenYearLastDay = calendar.date(byAdding: .day, value: -1, to: nextYearFirstDay)
+        self.dateValue = givenYearLastDay!
+        return "Year:"
+    }
     
     var body: some View {
         VStack{
@@ -107,7 +110,7 @@ struct selectRange: View {
             Button(action:{self.showSheet = true})
             {
                 HStack{
-                    Text(self.updateDay()).bold()
+                    Text("Date").bold()
                     Spacer()
                     Text(getMonth(self.dateValue))
                     Text(getDate(self.dateValue))
@@ -181,9 +184,15 @@ struct selectRange: View {
             if(self.dateField == .day)
                     {
                         NavigationView{
-                       chooseDate(dateVal: self.$dateValueLocal, showSheet: self.$showSheet)
-
+                            chooseDate(dateVal: self.$dateValue, showSheet: self.$showSheet).environmentObject(self.data)
+                                .onAppear(){
+                                    self.data.pauseTasksAndSummary()
+                            }
+                            .onDisappear(){
+                                self.data.resumeTasksAndSummary()
+                            }
                         }
+
    
                     }
                     else if(self.dateField == .weekOfYear)
@@ -218,6 +227,6 @@ struct selectRange: View {
 
 struct selectRange_Previews: PreviewProvider {
     static var previews: some View {
-        selectRange(dateField: .constant(.weekday),dateValue: .constant(.init()))
+        selectRange(dateField: .constant(.weekday),dateValue: .constant(.init())).environmentObject(models())
     }
 }

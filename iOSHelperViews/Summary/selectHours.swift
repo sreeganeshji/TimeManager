@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct selectHours: View {
+    @Binding var showSheet:Bool
     var dateString:String
     var dateDisplayString2:String{
         var tmpDate :String = .init()
@@ -60,8 +61,9 @@ struct selectHours: View {
     @State var timeState:timeVal = .init(hr: 0, min: 0, sec: 0)
     
     
-    func updateTime(){
-        self.data.taskData[self.taskInd].timestamp[self.dateString] = .init(self.timeState.totalSec)
+    func updateTime()->String{
+        self.data.taskData[self.taskInd].timestamp[self.dateString] = .init(Swift.min(self.timeState.totalSec,60*60*24))
+        return "Hours"
 
     }
     
@@ -120,22 +122,29 @@ struct selectHours: View {
         
     }
         .onAppear(){
-            self.data.pauseAllTasks()
-            self.timeState.setTime(totalSec: Int(Swift.min(self.data.taskData[self.taskInd].timestamp[self.dateString]!, 60*60*24)))
+            self.data.pauseTasksAndSummary()
+            self.timeState.setTime(totalSec: Int(Swift.min(self.data.taskData[self.taskInd].timestamp[self.dateString] ?? 0, 60*60*24)))
             print("initialized state")
         
         }
         .onDisappear(){
             self.updateTime()
-            self.data.resumeAllTasks()
+            self.data.resumeTasksAndSummary()
         }
         .navigationBarTitle("\(self.dateDisplayString)")
+        .navigationBarItems(trailing: Button(action:{
+            self.updateTime()
+            self.data.resumeTasksAndSummary()
+            self.showSheet = false
+        }){
+            Text("Done")
+        })
 
     }
 }
 
 struct selectHours_Previews: PreviewProvider {
     static var previews: some View {
-        selectHours(dateString: "07_02_2020", dateDisplayString: "June 02 2020", taskInd: 0)
+        selectHours(showSheet: .constant(true), dateString: "07_02_2020", dateDisplayString: "June 02 2020", taskInd: 0)
     }
 }

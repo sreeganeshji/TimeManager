@@ -113,7 +113,7 @@ struct TaskSummaryiOS: View {
             VStack{
                 
 //                NavigationLink(destination:
-            taskRecords(taskInd: self.taskInd, showSheet: .constant(true), letChangeTime: true)
+                taskRecords(taskInd: self.taskInd, showSheet: self.$showSheet, letChangeTime: true)
 //                )
 //                {
 //                    Text("Records")

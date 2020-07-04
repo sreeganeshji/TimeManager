@@ -21,14 +21,15 @@ struct selectFromCategory: View {
     }
     
     var body: some View {
-           Picker( selection: self.$categoryIndLocal,label: Text(updatePicker())) {
+           Picker( selection: self.$categoryIndLocal,label: Text("categorySelect")) {
                                     ForEach(self.categoryList.indices,id: \.self)
                                     {
                                         ind in
                                         HStack{
                                             Image(systemName:"bookmark.fill").foregroundColor(self.data.getColor(self.categoryList[ind].color))
                                            
-                                            Text(self.categoryList[ind].name).tag(ind)
+                                            Text(self.categoryList[ind].name)
+//                                                .tag(ind)
                                             Spacer()
                                         }
                                     .tag(ind)
@@ -40,6 +41,9 @@ struct selectFromCategory: View {
                             .labelsHidden()
            .onAppear(){
             self.categoryIndLocal = self.categoryInd
+        }
+           .onDisappear(){
+            self.updatePicker()
         }
     }
 }

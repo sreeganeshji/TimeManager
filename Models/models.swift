@@ -11,7 +11,7 @@ import SwiftUI
 
 class models: ObservableObject
 {
-    
+    var timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
      @Published var categories:[category] = []
     
      struct task:Equatable, Hashable, Codable
@@ -45,10 +45,11 @@ class models: ObservableObject
  
     }
     
+    var pauseUpdate:Bool = false
     var pauseAllTasksMem:[Int] = []
     func pauseAllTasks(){
         self.pauseAllTasksMem = []
-        
+
         for ind in self.taskData.indices{
             if self.taskData[ind].selected{
                 pauseAllTasksMem.append(ind)
@@ -64,6 +65,23 @@ class models: ObservableObject
         self.pauseAllTasksMem = []
     }
     
+    func pauseSummaryUpdates(){
+        self.pauseUpdate = true
+    }
+    
+    func resumeSummaryUpdates(){
+        self.pauseUpdate = false
+    }
+    
+    func pauseTasksAndSummary(){
+        self.pauseAllTasks()
+        self.pauseSummaryUpdates()
+    }
+    
+    func resumeTasksAndSummary(){
+        self.resumeAllTasks()
+        self.resumeSummaryUpdates()
+    }
     
     func getColorName(_ color:Color)->String
     {
@@ -151,7 +169,6 @@ class models: ObservableObject
     @Published var taskData:[task] = []
 
     var timeCounter = 0
-    let timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
     
     init()
     {
@@ -190,5 +207,85 @@ class models: ObservableObject
     var calculateSummary = false
     var showTaskvsCategory = true
 
+    //Task Management
+    var currentTaskIndx:Int? //set if concurrent tasks are disabled
+    
+      //select task based on app settings.
+      func selectTask(taskInd:Int)
+      {
+    
+          //if running, stop
+          if (self.taskData[taskInd].selected)
+          {
+              self.taskData[taskInd].selected = false
+              self.taskData[taskInd].lastChanged = nil
+              self.currentTaskIndx = nil
+              return
+          }
+          
+          /*
+             1. check if the the current task is selected and check for the concurrent condition.
+             2. increment that interval for the current day
+             */
+          if(!self.concurrentTasks && self.currentTaskIndx != nil && self.currentTaskIndx! < self.taskData.count)
+          {
+              //if one task is already selected, stop the running task
+              self.taskData[self.currentTaskIndx!].lastChanged = nil
+              self.taskData[self.currentTaskIndx!].selected = false
+          }
+          else if (self.currentTaskIndx != nil && self.currentTaskIndx! >= self.taskData.count)
+          {
+              self.currentTaskIndx = nil
+          }
+          //add today's record if it doesn't exist
+          let todayData = self.taskData[taskInd].timestamp[self.today]
+          if (todayData == nil)
+          {
+              //add to the task
+              self.taskData[taskInd].timestamp[self.today] = TimeInterval()
+          }
+          
+          self.taskData[taskInd].selected = true
+          if(!self.concurrentTasks){
+              self.currentTaskIndx = taskInd
+          }
+      }
+    
+        // increment the activated task times based on the timer.
+        func incrementTaskCounter(task:Binding< models.task>)
+        {
+            /*
+            If the task is selected, increment its counter
+             */
+            let originalTaskname = task.wrappedValue.name
+                let interval = task.wrappedValue.timestamp[self.today]
+                /*
+                 Check if the timer was changed recently.
+                 
+                 */
+                let lastChangedDate = Date(timeIntervalSince1970: task.wrappedValue.lastChanged ?? Date().timeIntervalSince1970)
+    //        print(lastChangedDate.timeIntervalSince1970)
+            let newTaskname = task.wrappedValue.name
+            if(originalTaskname != newTaskname)
+            {
+                print("Task changed from \(originalTaskname) to \(newTaskname)")
+            }
+                let duration = DateInterval(start: lastChangedDate, end: Date()).duration.magnitude
+                
+                task.wrappedValue.lastChanged = Date().timeIntervalSince1970
+                if duration > 1.50
+                {
+                    task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: Double(Int(duration))))
+                }
+                else{
+                
+                task.wrappedValue.timestamp[self.today] = TimeInterval(interval!.advanced(by: 1))
+                    task.wrappedValue.timestamp[self.today] = Swift.min(task.wrappedValue.timestamp[self.today] ?? 0,60*60*24)
+                    
+                   
+                }
+            
+            
+        }
     
 }

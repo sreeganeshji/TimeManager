@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct taskRowiOS2: View {
-    @State var taskInd:Int
+    var taskInd:Int
     @State var task:models.task = .init(myId: 0, name: "", description: "")
     @EnvironmentObject var data:models
     @State var today:String = ""
     var format = DateFormatter()
+    @Binding var selectedTaskInd:Int
+    @Binding var showTaskOptions:Bool
+    @Binding var showSheet:Bool
+              
     
     func giveTime(time:Int)->String
     {
@@ -35,6 +39,11 @@ struct taskRowiOS2: View {
     }
     
     var body: some View {
+        Button(action:{
+            self.selectedTaskInd = self.taskInd
+            self.showTaskOptions = true
+            self.showSheet = true
+        }){
         HStack{
             if(self.taskInd < self.data.taskData.count)
             {
@@ -49,7 +58,10 @@ struct taskRowiOS2: View {
                 .frame(width:80)
             
             Divider()
-
+                Button(action:{
+                     self.data.selectTask(taskInd: self.taskInd)
+                })
+                {
             if self.data.taskData[self.taskInd].selected
             {
                 Image(systemName: "stop.fill")
@@ -63,6 +75,7 @@ struct taskRowiOS2: View {
                 .padding()
                     .frame(width:50)
             }
+                }
             }
             else{
                 Text("Deleted")
@@ -77,12 +90,13 @@ struct taskRowiOS2: View {
 //                self.task = self.data.taskData[self.taskInd]
 
         }
+        }
         
     }
 }
 
 struct taskRowiOS2_Previews: PreviewProvider {
     static var previews: some View {
-        taskRowiOS2(taskInd: 0).frame(height:40).environmentObject(models())
+        taskRowiOS2(taskInd: 0, selectedTaskInd: .constant(2), showTaskOptions: .constant(true), showSheet: .constant(true)).environmentObject(models())
     }
 }
