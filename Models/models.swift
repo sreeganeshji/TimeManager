@@ -257,7 +257,6 @@ class models: ObservableObject
             /*
             If the task is selected, increment its counter
              */
-            let originalTaskname = task.wrappedValue.name
                 let interval = task.wrappedValue.timestamp[self.today]
                 /*
                  Check if the timer was changed recently.
@@ -265,11 +264,7 @@ class models: ObservableObject
                  */
                 let lastChangedDate = Date(timeIntervalSince1970: task.wrappedValue.lastChanged ?? Date().timeIntervalSince1970)
     //        print(lastChangedDate.timeIntervalSince1970)
-            let newTaskname = task.wrappedValue.name
-            if(originalTaskname != newTaskname)
-            {
-                print("Task changed from \(originalTaskname) to \(newTaskname)")
-            }
+
                 let duration = DateInterval(start: lastChangedDate, end: Date()).duration.magnitude
                 
                 task.wrappedValue.lastChanged = Date().timeIntervalSince1970

@@ -98,11 +98,12 @@ struct taskRecords: View {
                 NavigationLink(destination:selectHours(showSheet: self.$showSheet, dateString: self.format.string(from: taskRecord.date), dateDisplayString: "\(self.getMonth(taskRecord.date)) \(self.getDate(taskRecord.date)) \(self.getYear(taskRecord.date))", taskInd: self.taskInd).environmentObject(self.data)
                     .onAppear()
                         {
-                            print("going to change time view")
+//                            print("going to change time view")
                             self.data.pauseTasksAndSummary()
                 }
                 .onDisappear()
                     {
+                        print("On disappear not working")
                         self.data.resumeTasksAndSummary()
                 }
                     .padding()){

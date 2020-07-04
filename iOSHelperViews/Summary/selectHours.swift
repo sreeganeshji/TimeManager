@@ -122,14 +122,14 @@ struct selectHours: View {
         
     }
         .onAppear(){
-            self.data.pauseTasksAndSummary()
+//            self.data.pauseTasksAndSummary()
             self.timeState.setTime(totalSec: Int(Swift.min(self.data.taskData[self.taskInd].timestamp[self.dateString] ?? 0, 60*60*24)))
             print("initialized state")
         
         }
         .onDisappear(){
             self.updateTime()
-            self.data.resumeTasksAndSummary()
+//            self.data.resumeTasksAndSummary()
         }
         .navigationBarTitle("\(self.dateDisplayString)")
         .navigationBarItems(trailing: Button(action:{

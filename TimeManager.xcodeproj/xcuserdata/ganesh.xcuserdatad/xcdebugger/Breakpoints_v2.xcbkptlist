@@ -870,22 +870,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6CBDC1CF-74F0-4478-B981-C6A7E8339A7D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iOSHelperViews/selectFromCategory.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "updatePicker()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4A3A7731-5DB8-4CCA-A8FC-2AC7E4116DC7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -909,8 +893,8 @@
             filePath = "Models/models.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "incrementTaskCounter(task:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -925,8 +909,8 @@
             filePath = "Models/models.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "incrementTaskCounter(task:)"
             landmarkType = "7">
          </BreakpointContent>

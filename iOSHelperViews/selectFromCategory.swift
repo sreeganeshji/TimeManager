@@ -10,18 +10,14 @@ import SwiftUI
 
 struct selectFromCategory: View {
     @Binding var categoryInd:Int
-    @State var categoryIndLocal:Int = 0
     var categoryList:[models.category]
     @EnvironmentObject var data:models
   
 
-    func updatePicker()->String{
-        self.categoryInd = self.categoryIndLocal
-        return "Category select"
-    }
+
     
     var body: some View {
-           Picker( selection: self.$categoryIndLocal,label: Text("categorySelect")) {
+           Picker( selection: self.$categoryInd,label: Text("categorySelect")) {
                                     ForEach(self.categoryList.indices,id: \.self)
                                     {
                                         ind in
@@ -39,12 +35,6 @@ struct selectFromCategory: View {
 
                                 }
                             .labelsHidden()
-           .onAppear(){
-            self.categoryIndLocal = self.categoryInd
-        }
-           .onDisappear(){
-            self.updatePicker()
-        }
     }
 }
 
