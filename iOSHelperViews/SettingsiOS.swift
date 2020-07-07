@@ -18,7 +18,7 @@ struct SettingsiOS: View {
   
         Section
             {
-                Toggle(isOn: self.$data.concurrentTasks) {
+                Toggle(isOn: self.$data.taskState.concurrentTasks) {
                     Text("Concurrent tasks")
 //                        .foregroundColor(.init(red: 121/256, green: 64/256, blue: 68/256))
                 }
@@ -38,7 +38,7 @@ struct SettingsiOS: View {
         }
         .onDisappear(perform: {
         print("Disappering")
-                          if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
+            if !self.data.taskState.concurrentTasks && (self.originalConcurrentState != self.data.taskState.concurrentTasks)
                           {
                           for i in 0...self.data.taskData.count-1
                           {
@@ -50,7 +50,7 @@ struct SettingsiOS: View {
 
     .onAppear(perform: {
         print("on Appear")
-        self.originalConcurrentState = self.data.concurrentTasks
+        self.originalConcurrentState = self.data.taskState.concurrentTasks
     })
 
     .navigationBarTitle("Settings")

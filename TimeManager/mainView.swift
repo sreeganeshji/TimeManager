@@ -157,6 +157,7 @@ struct mainView: View {
                     .onAppear(){
                         self.data.pauseTasksAndSummary()
                     }
+
                 }
                     .tabItem{
                         Image(systemName: "slider.horizontal.3")

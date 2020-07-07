@@ -87,12 +87,12 @@ struct ContentView: View {
                     }
                 }
             .onAppear(){
-                if(self.data.concurrentTasks)
+                if(self.data.taskState.concurrentTasks)
                 {
-                    self.data.currentTaskIndx = nil
+                    self.data.taskState.currentTaskIndx = nil
                 }
                 
-                if(self.data.currentTaskIndx == nil && !self.data.concurrentTasks)
+                if(self.data.taskState.currentTaskIndx == nil && !self.data.taskState.concurrentTasks)
                 {
                     for i in 0...self.data.taskData.count-1
                     {
@@ -203,11 +203,11 @@ struct ContentView: View {
           
                 })
         
-                    .onAppear(){
-                        print("Resme timer")
-                        self.data.resumeAllTasks()
-                        self.data.timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
-        }
+//                    .onAppear(){
+//                        print("Resme timer")
+//                        self.data.resumeAllTasks()
+//                        self.data.timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
+//        }
 
 //            .contextMenu(menuItems: {
 //

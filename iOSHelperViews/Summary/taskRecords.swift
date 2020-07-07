@@ -92,6 +92,8 @@ struct taskRecords: View {
         List{
             if(self.letChangeTime){
                 
+                
+                
             ForEach(self.taskRecordHistoryArr,id:\.self)
             {
                 taskRecord in

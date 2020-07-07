@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ),models.task(myId:7,name: "Hiking", description: "",categoryInd:5),models.task(myId:8,name: "Dance", description: "Salsa",categoryInd:6),models.task(myId:9,name: "TV", description: "Movies",categoryInd:3)]
         data.categories = dataManager.load("categories") ?? [models.category("No category", "gray"),models.category("Work","blue"),models.category("Study","yellow"),models.category("Leisure","purple"),models.category("Social","green"),models.category("Fitness","orange"),models.category("Hobby","pink")]
 
+        data.taskState = dataManager.load("taskState") ?? .init()
         
         // Create the SwiftUI view that provides the window contents.
         let contentView = mainView().environmentObject(data)
@@ -52,11 +53,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        print("scene did diisconnect")
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        print("scene did become active")
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -65,6 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("will resign active")
         dataManager.save("tasks", data: data.taskData)
         dataManager.save("categories",data:data.categories)
+        dataManager.save("taskState", data: data.taskState)
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -81,6 +85,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("did enter background")
         dataManager.save("tasks", data: data.taskData)
         dataManager.save("categories", data: data.categories)
+        dataManager.save("taskState", data: data.taskState)
         
     }
 

@@ -18,11 +18,11 @@ struct Settings: View {
   
         ScrollView
             {
-                Toggle(isOn: self.$data.concurrentTasks) {
+                Toggle(isOn: self.$data.taskState.concurrentTasks) {
                     Text("Concurrent tasks")
                 }.padding()
                 .onDisappear(perform: {
-                    if !self.data.concurrentTasks && (self.originalConcurrentState != self.data.concurrentTasks)
+                    if !self.data.taskState.concurrentTasks && (self.originalConcurrentState != self.data.taskState.concurrentTasks)
                     {
                     for i in 0...self.data.taskData.count-1
                     {
@@ -40,7 +40,7 @@ struct Settings: View {
         }
         }
     .onAppear(perform: {
-        self.originalConcurrentState = self.data.concurrentTasks
+        self.originalConcurrentState = self.data.taskState.concurrentTasks
     })
     .navigationBarTitle("Settings")
     }

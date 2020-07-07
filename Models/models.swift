@@ -14,6 +14,15 @@ class models: ObservableObject
     var timer = Timer.publish(every: 1.0/4.0, on: .main  , in: .common).autoconnect()
      @Published var categories:[category] = []
     
+    struct taskStateMonitor:Equatable,Hashable,Codable{
+         var concurrentTasks:Bool = false
+            //Task Management
+        var currentTaskIndx:Int? //set if concurrent tasks are disabled
+        
+    }
+    
+    var taskState:taskStateMonitor = .init()
+    
      struct task:Equatable, Hashable, Codable
      {
         
@@ -177,7 +186,7 @@ class models: ObservableObject
     
     @Published var sumaryRecord = SummaryDaemon()
     
-    @Published var concurrentTasks:Bool = false
+    
     
     @Published var taskData:[task] = []
 
@@ -220,8 +229,7 @@ class models: ObservableObject
     var calculateSummary = false
     var showTaskvsCategory = true
 
-    //Task Management
-    var currentTaskIndx:Int? //set if concurrent tasks are disabled
+
     
       //select task based on app settings.
       func selectTask(taskInd:Int)
@@ -232,7 +240,7 @@ class models: ObservableObject
           {
               self.taskData[taskInd].selected = false
               self.taskData[taskInd].lastChanged = nil
-              self.currentTaskIndx = nil
+              self.taskState.currentTaskIndx = nil
               return
           }
           
@@ -240,15 +248,15 @@ class models: ObservableObject
              1. check if the the current task is selected and check for the concurrent condition.
              2. increment that interval for the current day
              */
-          if(!self.concurrentTasks && self.currentTaskIndx != nil && self.currentTaskIndx! < self.taskData.count)
+          if(!self.taskState.concurrentTasks && self.taskState.currentTaskIndx != nil && self.taskState.currentTaskIndx! < self.taskData.count)
           {
               //if one task is already selected, stop the running task
-              self.taskData[self.currentTaskIndx!].lastChanged = nil
-              self.taskData[self.currentTaskIndx!].selected = false
+              self.taskData[self.taskState.currentTaskIndx!].lastChanged = nil
+              self.taskData[self.taskState.currentTaskIndx!].selected = false
           }
-          else if (self.currentTaskIndx != nil && self.currentTaskIndx! >= self.taskData.count)
+          else if (self.taskState.currentTaskIndx != nil && self.taskState.currentTaskIndx! >= self.taskData.count)
           {
-              self.currentTaskIndx = nil
+              self.taskState.currentTaskIndx = nil
           }
           //add today's record if it doesn't exist
           let todayData = self.taskData[taskInd].timestamp[self.today]
@@ -259,8 +267,8 @@ class models: ObservableObject
           }
           
           self.taskData[taskInd].selected = true
-          if(!self.concurrentTasks){
-              self.currentTaskIndx = taskInd
+        if(!self.taskState.concurrentTasks){
+              self.taskState.currentTaskIndx = taskInd
           }
       }
     

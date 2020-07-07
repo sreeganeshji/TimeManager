@@ -43,6 +43,7 @@
 		1F92B30924AD739A009107AB /* taskRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30824AD739A009107AB /* taskRecords.swift */; };
 		1F92B30B24AE5B42009107AB /* selectHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30A24AE5B42009107AB /* selectHours.swift */; };
 		1F92B30D24AF8C63009107AB /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30C24AF8C63009107AB /* mainView.swift */; };
+		1F92B30F24B23A2E009107AB /* addTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92B30E24B23A2E009107AB /* addTime.swift */; };
 		1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4024AA67050068C894 /* iconMaker.swift */; };
 		1FF8BA4424AA72E20068C894 /* LaunchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4324AA72E20068C894 /* LaunchIcon.png */; };
 		1FF8BA4624AA851F0068C894 /* circle-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF8BA4524AA851E0068C894 /* circle-cropped.png */; };
@@ -145,6 +146,7 @@
 		1F92B30824AD739A009107AB /* taskRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRecords.swift; sourceTree = "<group>"; };
 		1F92B30A24AE5B42009107AB /* selectHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectHours.swift; sourceTree = "<group>"; };
 		1F92B30C24AF8C63009107AB /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
+		1F92B30E24B23A2E009107AB /* addTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTime.swift; sourceTree = "<group>"; };
 		1FAF1D2B24993EA5002B10AA /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		1FE107922455E240000934C2 /* taskRowIos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskRowIos.swift; sourceTree = "<group>"; };
 		1FF8BA4024AA67050068C894 /* iconMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iconMaker.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			children = (
 				1F92B30824AD739A009107AB /* taskRecords.swift */,
 				1F92B30A24AE5B42009107AB /* selectHours.swift */,
+				1F92B30E24B23A2E009107AB /* addTime.swift */,
 				1F51D56224A8207E000D118D /* SummaryiOS2.swift */,
 				1FFFE3EB24ACE1AC00D67065 /* summaryBody.swift */,
 				1FFFE3E924ACE11B00D67065 /* PickerTimeRange.swift */,
@@ -517,6 +520,7 @@
 				1FF8BA4124AA67050068C894 /* iconMaker.swift in Sources */,
 				1F1AAC23244E288900134634 /* addTask.swift in Sources */,
 				1FFFE3E624ACDDAF00D67065 /* selectFromCategory.swift in Sources */,
+				1F92B30F24B23A2E009107AB /* addTime.swift in Sources */,
 				1F1AAC31244E2A8900134634 /* addCategory.swift in Sources */,
 				1F7BF8112498648B001D7021 /* CategoryDetail.swift in Sources */,
 				1F1AAC27244E289100134634 /* models.swift in Sources */,
@@ -721,7 +725,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.6;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;
@@ -743,7 +747,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.6;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeManager/Preview Content\"";
 				DEVELOPMENT_TEAM = C5978J5948;
 				ENABLE_PREVIEWS = YES;

@@ -109,7 +109,22 @@ struct TaskSummaryiOS: View {
 //                }
             }
             }
-            Text("Records").bold()
+            HStack{
+                          Spacer()
+                     Text("Records").bold()
+                Spacer()
+                NavigationLink(destination:addTime(taskInd:self.taskInd, showSheet: self.$showSheet).environmentObject(self.data)
+                    .onAppear(){
+                        self.data.pauseTasksAndSummary()
+                    }
+                .onDisappear(){
+                    self.data.resumeAllTasks()
+                    }
+                ){
+             
+                    Image(systemName: "square.and.pencil")
+                }
+            }.padding()
             VStack{
                 
 //                NavigationLink(destination:
