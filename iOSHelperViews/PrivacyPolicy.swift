@@ -13,9 +13,9 @@ struct PrivacyPolicy: View {
         VStack(){
             Text("Privacy policy").font(.title)
             Divider()
-            Text("This policy applies to all information collected on our iphone apps.\nInformation we collect: \nTime Tally does not collect any data from the app. \nAll the app data are stored locally.\nChanges to this policy: \nIf we decide to change our privacy policy as we add new features, we will post those changes on this page. \nSummary: \nJuly 7th 2020: First published.")
+            Text("This policy applies to all information collected on this app.\nInformation we collect: \nTime Tally does not collect any data. \nAll the app data are stored locally.\nChanges to this policy: \nAny changes to the policy will be updated below. \nSummary: \nJuly 7th 2020: First published.")
             Divider()
-            Text("This information can be found at")
+            Text("This information can also be found at")
             Text("http://projmgrtool.com/timetally/privacy")
             Spacer()
          
