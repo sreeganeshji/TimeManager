@@ -24,6 +24,12 @@ struct SettingsiOS: View {
                 }
 
             }
+            Section{
+                NavigationLink(destination:PrivacyPolicy())
+                {
+                    Text("Privacy policy")
+                }
+            }
 
 //            Section{
 //

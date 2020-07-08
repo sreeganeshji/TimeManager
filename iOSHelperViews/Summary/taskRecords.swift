@@ -89,10 +89,27 @@ struct taskRecords: View {
      }
     
     var body: some View {
+        VStack{
+        HStack{
+                      Spacer()
+                 Text("Records").bold()
+            Spacer()
+            NavigationLink(destination:addTime(taskInd:self.taskInd, showSheet: self.$showSheet).environmentObject(self.data)
+                .onAppear(){
+                    self.data.pauseTasksAndSummary()
+                }
+            .onDisappear(){
+                self.data.resumeAllTasks()
+                }
+            ){
+         
+                Image(systemName: "square.and.pencil")
+            }
+        }.padding()
         List{
             if(self.letChangeTime){
                 
-                
+
                 
             ForEach(self.taskRecordHistoryArr,id:\.self)
             {
@@ -174,7 +191,7 @@ struct taskRecords: View {
                         })
 
             }
-        
+            }
         
         }
         .navigationViewStyle(StackNavigationViewStyle())
