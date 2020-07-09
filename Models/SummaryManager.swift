@@ -137,6 +137,8 @@ class SummaryDaemon:ObservableObject
     {
         // find all tasks in that day and add up their values
         let today = self.formatter.string(from: date)
+        if self.taskArr.count > 0
+        {
         for ind in 0...self.taskArr.count-1
         {
             if self.taskArr[ind].timestamp[today] != nil && self.taskArr[ind].timestamp[today] != 0{
@@ -155,7 +157,7 @@ class SummaryDaemon:ObservableObject
                     }
                 }
             }
-        
+    }
         self.fillTaskArray(dic: self.DayTaskWise, curArray: &self.taskRecordArr)
         self.fillCatArray(dic: self.DayCatWise, curArray: &self.catRecordArr)
     }

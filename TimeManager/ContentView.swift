@@ -57,8 +57,24 @@ struct ContentView: View {
 //            TabView() {
                 //Begin task tab view
 //                NavigationView{
+//        VStack{
+//            HStack{
+//                EditButton()
+//                Spacer()
+//                Button(action:{
+//                                   print("Pressed")
+//                                   self.addTaskRequest = true
+//                                   self.showSheet = true
+//                                   self.data.pauseTasksAndSummary()
+//                               })
+//                                   {
+//                                       Image(systemName: "square.and.pencil")
+//                                   }
+//
+//            }.padding()
 
             List{
+//                Text("Tasks").font(.largeTitle).bold()
                         ForEach(data.taskData.indices,id: \.self)
                         {
                             index in
@@ -86,6 +102,7 @@ struct ContentView: View {
                                 self.data.taskData.move(fromOffsets: IndSet, toOffset: ind)
                     }
                 }
+//    }
             .onAppear(){
                 if(self.data.taskState.concurrentTasks)
                 {
@@ -102,7 +119,9 @@ struct ContentView: View {
                 }
                 self.data.today = self.format.string(from: Date())
             }
+            
                 .navigationBarTitle("Tasks")
+//    .navigationBarHidden(true)
             
             .navigationBarItems(leading: EditButton() ,trailing:
               
@@ -161,8 +180,6 @@ struct ContentView: View {
 //            } //ending tabView
 
 
-                     
-                    .navigationBarTitle("Tasks")
             .sheet(isPresented: $showSheet, content: {
                 
                 if (self.settingsView)
