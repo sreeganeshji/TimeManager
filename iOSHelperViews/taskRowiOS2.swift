@@ -54,7 +54,7 @@ struct taskRowiOS2: View {
             }
             Spacer()
                 Text("\(self.giveTime(time:Int(self.data.taskData[self.taskInd].timestamp[self.data.today]?.magnitude ?? 0)))")
-                .frame(width:80)
+                .frame(width:100)
             
             Divider()
                 Button(action:{
